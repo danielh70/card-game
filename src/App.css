@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+}
+
+.grid {
+	justify-content: space-between;
+	display: grid;
+	grid-template: repeat(3, 200px) / repeat(6, 400px);
+}
