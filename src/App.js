@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Cards from './components/cardgen';
 
 class App extends Component {
 	constructor() {
@@ -24,13 +25,25 @@ class App extends Component {
 		this.setState({ cards: currentState });
 	}
 
+	spitCards = () => {
+		this.state.cards.map(( el, i ) => {
+			let num = 2;
+			let switcher = ( i % 4 ) === 0 ? num + 1 : null;
+
+			return (
+				<div key={i} className="card">
+				{ el[switcher] }
+				</div>
+			)	
+		})
+	}
+
   render() {
 		console.log("this state", this.state);
     return (
       <div className="App">
 				<div className="grid">
-
-				
+					{this.spitCards()}
 				</div>
       </div>
     );
