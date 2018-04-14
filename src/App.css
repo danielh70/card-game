@@ -2,14 +2,36 @@
   text-align: center;
 }
 
-.grid {
+.big-text {
+  font-size: 30px;
+}
+
+/* .grid {
 	grid-gap: 20px;
 	justify-content: center;
 	display: grid;
-	grid-template: repeat(3, 350px) / repeat(3, 200px);
-}
+	grid-template: repeat(5, 350px) / repeat(3, 200px);
+  margin: 0 auto;
+  min-width: 500px;
+} */
 
 .card {
+  padding-top: 5px;
+  width: 115px;
+  height: 150px;
+  margin: 5px;
 	border: 1px solid black;
-	radius: 5px;
+	border-radius: 5px;
+  display: inline-block;
 }
+
+/*
+.grid {
+  display:inline-grid;
+} */
+
+/* @media only screen and (min-width:600px) {
+  .card {
+    display: inline-block;
+  }
+} */

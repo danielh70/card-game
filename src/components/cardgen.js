@@ -1,38 +1,38 @@
-import React, { Component} from 'react';
-import App from '../App';
+import React, { Component } from 'react';
+import { Row, Grid, Col } from 'react-bootstrap';
+import '../App.css';
+
 
 class Cards extends Component {
-		constructor(props) {
-			super(props);
-			this.state = {
-				cards: []
-		}
-	}
 
-	componentWillMount() {
-		let currentState = Object.assign([], this.state.cards);
-		let suits = [ "hearts", "spades", "diamonds", "clubs" ];
-		let numbers = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king", "ace" ];
+	//
+	// handleCardFlip = () => {
+	//
+	// }
 
-		for (var i = 0; i < numbers.length; i++) {
-			for (var j = 0; j < 4; j++) {
-				currentState.push({
-					[numbers[i]]: suits[j]
-				})
-			}
-		}
-		this.setState({ cards: currentState });
-	}
+  render() {
+		console.log(this.props);
+    return (
+      <div className="App">
+				<Grid>
+						<Row>
+							{ this.props.cards.map(( el, i ) => {
+								let vals = Object.values(el)
+								let card = Object.keys(el)
 
-
-	render() {
-
-		return (
-			<div>
-				<App cards={this.state.cards}/>
-			</div>
-		);
-	}
+								return (
+									<Col key={i} lg={4} md={6} xs={12} className="card">
+										{ card } { vals }
+									</Col>
+								)
+							})}
+						</Row>
+					</Grid>
+      </div>
+    );
+  }
 }
 
 export default Cards;
+
+// var switcher = ( i % 4 ) === 0 ? this.num++ : null;
