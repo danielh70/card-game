@@ -10,7 +10,7 @@ class Cards extends Component {
 	}
 
 	componentWillMount() {
-		let currentState = Object.assign([], this.state.cards); 
+		let currentState = Object.assign([], this.state.cards);
 		let suits = [ "hearts", "spades", "diamonds", "clubs" ];
 		let numbers = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king", "ace" ];
 
@@ -26,9 +26,9 @@ class Cards extends Component {
 
 
 	render() {
-		console.log(this.state);
+
 		return (
-			<div> 
+			<div>
 				<App cards={this.state.cards}/>
 			</div>
 		);
