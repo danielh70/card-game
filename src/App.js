@@ -22,15 +22,30 @@ class App extends Component {
 				})
 			}
 		}
-		this.setState({ cards: currentState });
+		this.setState({ cards: currentState, computer: currentState });
+	}
+
+	handleCardSelect = (e) => {
+		let cardId = parseInt(e.target.id)
+		let currentState = Object.assign([], this.state.cards);
+
+		currentState.splice(cardId, 1);
+
+		this.setState({ cards: currentState })
+
+		console.log(cardId);
 	}
 
 
 	render() {
-
+		console.log("removing card", this.state.cards);
 		return (
 			<div>
-				<Cards cards={this.state.cards}/>
+				<Cards
+					cards={this.state.cards}
+					computer={this.state.computer}
+					handleCardSelect={this.handleCardSelect}
+				/>
 			</div>
 		);
 	}
