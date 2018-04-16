@@ -25,15 +25,13 @@ class App extends Component {
 		this.setState({ cards: currentState, computer: currentState });
 	}
 
-	handleCardSelect = (e) => {
-		let cardId = parseInt(e.target.id)
+	handleCardSelect = (playerCard, computerCard) => {
 		let currentState = Object.assign([], this.state.cards);
+		let currentStateComputer = Object.assign([], this.state.computer)
 
-		currentState.splice(cardId, 1);
-
-		this.setState({ cards: currentState })
-
-		console.log(cardId);
+		currentState.splice(currentState, 1);
+		currentStateComputer.splice(currentStateComputer, 1);
+		this.setState({ cards: currentState, computer: currentStateComputer })
 	}
 
 
@@ -45,6 +43,7 @@ class App extends Component {
 					cards={this.state.cards}
 					computer={this.state.computer}
 					handleCardSelect={this.handleCardSelect}
+					deleteCard={this.handleCardSelect}
 				/>
 			</div>
 		);

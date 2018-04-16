@@ -9,7 +9,7 @@ class Cards extends Component {
     super(props);
     this.state = {
       player1: [],
-      computer: {},
+      computer: [],
       loading: false
     }
   }
@@ -19,11 +19,11 @@ class Cards extends Component {
   }
 
 	handlePick = (e) => {
-		// let cardId = parseInt(e.target.id);
-    let currentCard = Math.floor(Math.random() * this.props.cards.length)
+		let currentCard = () => Math.floor(Math.random() * this.props.cards.length)
 
-    this.setState({ player1: this.props.cards[currentCard] })
-    console.log(currentCard);
+    this.setState({ player1: this.props.cards[currentCard()], computer: this.props.computer[currentCard()] })
+
+		this.props.deleteCard(this.state.player1, this.state.computer);
 	}
 
 	componentDidMount() {
@@ -35,19 +35,23 @@ class Cards extends Component {
 	}
 
   render() {
-		console.log(this.state.player1);
-
+		console.log(this.state);
 
     return (
       <div className="App">
         { this.state.loading && <Loader /> }
         <button onClick={this.handlePick}>Pick Card</button>
 				<Grid>
+					Player:
 					<Row>
             <div className="card">
-              { Object.values(this.state.player1) }
+              { Object.keys(this.state.player1) } { Object.values(this.state.player1) }
             </div>
+             <div className="card">
+             { Object.keys(this.state.computer) } { Object.values(this.state.computer) }
+             </div> 
 					</Row>
+					Computer:
 				</Grid>
       </div>
     );
