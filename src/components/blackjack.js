@@ -13,8 +13,8 @@ class Blackjack extends Component {
       player1: [],
       player1Score: 0,
       computerScore: 0,
-      computerDeck: this.props.computer,
-      player1Deck: this.props.player1,
+      computerDeck: [],
+      player1Deck: [],
       flipped: 'card',
       gameOver: false,
       message: ''
@@ -51,16 +51,17 @@ class Blackjack extends Component {
 
     let nu = 0
 
-     while (deck.computerScore < 16 || nu < 1) {
+     while (deck.computerScore < 17 || nu < 1) {
       nu++
       deck.computer.push(computer[cards()]);
-      let removeFirstC = deck.computerDeck.indexOf(this.state.computer[nu])
-       deck.computerDeck.splice(removeFirstC, nu);
+
+
       // let removeSecondC = deck.computerDeck.indexOf(this.state.computer[nu])
       //   deck.computerDeck.splice(removeSecondC, nu);
 
 
          let val = Object.keys(deck.computer[deck.computer.length -1 ]);
+         console.log(val);
 
          switch(val[0]) {
            case "jack":
@@ -75,7 +76,9 @@ class Blackjack extends Component {
            val = parseInt(val);
          }
          deck.computerScore += val
-         console.log(deck.computer);
+         // console.log(deck.computer);
+         let removeFirstC = deck.computerDeck.indexOf(this.state.computer[this.state.computer.length -1])
+         deck.computerDeck.splice(removeFirstC, 1);
     }
 
     for (x in deck.player1) {
@@ -83,11 +86,7 @@ class Blackjack extends Component {
 
         switch(val[0]) {
           case "jack":
-            val = 10;
-            break;
           case "queen":
-            val = 10;
-            break;
           case "king":
             val = 10;
             break;
