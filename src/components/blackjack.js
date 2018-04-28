@@ -21,7 +21,7 @@ class Blackjack extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { computer, player1 } = this.props
     const { computerDeck } = this.state
     let deck = Object.assign({}, this.state, { player1Deck: player1, computerDeck: computer });
@@ -185,6 +185,7 @@ class Blackjack extends Component {
             {this.state.computer.length &&
             <Col xs={4} xsOffset={4}>
               <h3>Computer:</h3>
+              { this.state.gameOver && <h4 style={{color: 'red'}}>Score: { this.state.computerScore } </h4>}
 
               <div className="card-container">
                 { this.state.gameOver &&
@@ -245,8 +246,8 @@ class Blackjack extends Component {
             {this.state.computer.length &&
             <Col xs={4} xsOffset={2}>
               <h1>{ this.state.message } </h1>
-              <h3>Player One:</h3> <br />
-              Score: { this.state.player1Score }
+              <h3>Player One:</h3>
+              <h4 style={{color: 'red'}}> Score: { this.state.player1Score }</h4>
 
               <div className="card-container">
 

@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import Cards from './components/cardgen';
 import Blackjack from './components/blackjack.js';
+import Navbar from './components/navbar';
 
 
 class App extends Component {
@@ -70,6 +71,7 @@ class App extends Component {
 		console.log(this.state);
 		return (
 			<div>
+				
 				{ blackjack &&
 					<Blackjack
 						player1={player1}
