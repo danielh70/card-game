@@ -54,7 +54,7 @@ class Cards extends Component {
              </Col>
             <Col xs={4}>
 							Computer Deck:
-              <div id="player-deck">{ this.props.computerWins }</div>
+              <div id="computer-deck">{ this.props.computerWins }</div>
             </Col>
 					</Row>
 					Computer:

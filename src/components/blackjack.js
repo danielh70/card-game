@@ -47,13 +47,17 @@ class Blackjack extends Component {
                   </div>
 
                 </div>
-                <div className="card">
-                  { Object.keys(computer[1]) } <br />
-                  { Object.values(computer[1]) }
-                </div>
-                <div className="card">
-                  { Object.keys(computer[1]) } <br />
-                  { Object.values(computer[1]) }
+                <div className="card" id="show">
+                  <div className="front">
+
+                    { Object.keys(computer[1]) } <br />
+                    { Object.values(computer[1]) }
+
+                  </div>
+                  <div className="back">
+                    <div className="photo"></div>
+                  </div>
+
                 </div>
               </div>
             </Col>
@@ -61,7 +65,7 @@ class Blackjack extends Component {
 
           <Row>
             <Col xs={4} xsOffset={4}>
-              <h3>PLayer One:</h3>
+              <h3>Player One:</h3>
 
               <div className="card">
                 hi?

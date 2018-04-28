@@ -1,8 +1,16 @@
-.App {
-  text-align: center; }
-
-.card-wrapper {
-  perspective: 300px; }
+.card-container {
+  display: flex;
+  flex-wrap: wrap; }
+  .card-container #show {
+    transform: rotatey(-180deg);
+    -webkit-transform: rotatey(-180deg);
+    -moz-transform: rotatey(-180deg);
+    -ms-transform: rotatey(-180deg);
+    -o-transform: rotatey(-180deg); }
+    .card-container #show .back {
+      display: none !important; }
+    .card-container #show .front {
+      z-index: 10 !important; }
 
 .card {
   transform-style: preserve-3d;
@@ -17,57 +25,46 @@
   -webkit-transition-duration: .5s;
   /* Safari */
   transition-duration: .5s;
-  margin: 10px;
+  margin: 5px;
   width: 115px;
   height: 170px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
   display: inline-block;
   box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);
-  position: relative; }
+  position: relative;
+  text-align: center; }
   .card:hover {
     transform: rotatey(-180deg);
     -webkit-transform: rotatey(-180deg);
     -moz-transform: rotatey(-180deg);
     -ms-transform: rotatey(-180deg);
     -o-transform: rotatey(-180deg);
-    border: none; }
+    border: 1px solid rgba(0, 0, 0, 0.5); }
   .card .front, .card .back {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
     -o-backface-visibility: hidden;
-    position: absolute; }
+    position: absolute;
+    display: flex;
+    justify-content: center; }
   .card .front {
-    z-index: 3; }
-  .card .back {
-    transform: rotatey(180deg);
-    -webkit-transform: rotatey(180deg);
-    -moz-transform: rotatey(180deg);
-    -ms-transform: rotatey(180deg);
-    -o-transform: rotatey(180deg);
+    transform: rotatey(-180deg);
+    -webkit-transform: rotatey(-180deg);
+    -moz-transform: rotatey(-180deg);
+    -ms-transform: rotatey(-180deg);
+    -o-transform: rotatey(-180deg);
     z-index: 1;
+    height: 100%;
+    width: 100%; }
+  .card .back {
+    z-index: 3;
     width: 100%;
     height: 100%;
     background-image: url("../images/card-back.png");
     background-size: 100% 100%; }
-    .card .back .photo {
-      width: 100%; }
-
-/*
-.card:hover {
-  box-shadow: 1px 2px 2px 1px black;
-} */
-#player-deck {
-  box-shadow: 1px 1px 2px black;
-  padding-top: 5px;
-  width: 115px;
-  height: 150px;
-  margin: 5px;
-  border: 1px solid black;
-  border-radius: 5px;
-  display: inline-block; }
 
 /*
 .grid {
