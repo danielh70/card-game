@@ -29,23 +29,54 @@ class Blackjack extends Component {
     let cards = () => Math.floor(Math.random() * player1.length);
     let x;
 
-    deck.computer.push(computer[cards()]);
-    deck.computer.push(computer[cards()]);
+    // deck.computer.push(computer[cards()]);
+    // deck.computer.push(computer[cards()]);
     deck.player1.push(player1[cards()]);
     deck.player1.push(player1[cards()]);
 
 
 
-
-    let removeFirstC = deck.computerDeck.indexOf(this.state.computer[0])
     let removeFirstP = deck.player1Deck.indexOf(this.state.player1[0])
-    deck.computerDeck.splice(removeFirstC, 1);
+
     deck.player1Deck.splice(removeFirstP, 1);
 
-    let removeSecondC = deck.computerDeck.indexOf(this.state.computer[1])
+
     let removeSecondP = deck.player1Deck.indexOf(this.state.player1[1])
-    deck.computerDeck.splice(removeSecondC, 1);
+
     deck.player1Deck.splice(removeSecondP, 1);
+
+
+
+
+
+    let nu = 0
+
+     while (deck.computerScore < 16 || nu < 1) {
+      nu++
+      deck.computer.push(computer[cards()]);
+      let removeFirstC = deck.computerDeck.indexOf(this.state.computer[nu])
+       deck.computerDeck.splice(removeFirstC, nu);
+      // let removeSecondC = deck.computerDeck.indexOf(this.state.computer[nu])
+      //   deck.computerDeck.splice(removeSecondC, nu);
+
+
+         let val = Object.keys(deck.computer[deck.computer.length -1 ]);
+
+         switch(val[0]) {
+           case "jack":
+           case "queen":
+           case "king":
+             val = 10;
+             break;
+           case "ace":
+             val = 1;
+             break;
+           default:
+           val = parseInt(val);
+         }
+         deck.computerScore += val
+         console.log(deck.computer);
+    }
 
     for (x in deck.player1) {
       let val = Object.keys(deck.player1[x]);
@@ -69,27 +100,7 @@ class Blackjack extends Component {
         deck.player1Score += val
       }
 
-      for (x in deck.computer) {
-        let val = Object.keys(deck.computer[x]);
 
-          switch(val[0]) {
-            case "jack":
-              val = 10;
-              break;
-            case "queen":
-              val = 10;
-              break;
-            case "king":
-              val = 10;
-              break;
-            case "ace":
-              val = 1;
-              break;
-            default:
-            val = parseInt(val);
-          }
-          deck.computerScore += val
-        }
 
     this.setState(deck)
   }
@@ -145,9 +156,13 @@ class Blackjack extends Component {
   handleStand = () => {
     const { player1Score, computerScore } = this.state
 
-    player1Score > computerScore
-      ? this.setState({ message: 'YOU WIN!', flipped: 'card flipit' })
-      : this.setState({ message: 'GAME OVER', flipped: 'card flipit' })
+    if (player1Score > computerScore) {
+      this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true })
+    } else if (computerScore > player1Score && computerScore > 21) {
+      this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true })
+    } else {
+      this.setState({ message: 'TIE', flipped: 'card flipit', gameOver: true })
+    }
 
 
   }
@@ -171,6 +186,22 @@ class Blackjack extends Component {
               <h3>Computer:</h3>
 
               <div className="card-container">
+                { this.state.gameOver &&
+                   computer.map((el, i) => {
+                    let val = Object.keys(el)
+                    let suit = Object.values(el)
+                    return (
+                      <div key={i} className="card" id="show">
+                        <div className="front">
+                          { val } <br />
+                          { suit }
+                        </div>
+                      </div>
+                    )
+                  })
+                }
+
+                { !this.state.gameOver &&
                 <a onClick={this.flipCard}>
                 <div className={this.state.flipped}>
                   <div className="front">
@@ -182,6 +213,8 @@ class Blackjack extends Component {
                   </div>
                 </div>
                 </a>
+              }
+              { !this.state.gameOver &&
                 <div className="card" id="show">
                   <div className="front">
 
@@ -194,6 +227,8 @@ class Blackjack extends Component {
                   </div>
 
                 </div>
+              }
+
               </div>
             </Col>
           }
