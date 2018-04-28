@@ -7,10 +7,6 @@
     -moz-transform: rotatey(-180deg);
     -ms-transform: rotatey(-180deg);
     -o-transform: rotatey(-180deg); }
-    .card-container #show .back {
-      display: none !important; }
-    .card-container #show .front {
-      z-index: 10 !important; }
 
 .card {
   transform-style: preserve-3d;
@@ -35,12 +31,7 @@
   position: relative;
   text-align: center; }
   .card:hover {
-    transform: rotatey(-180deg);
-    -webkit-transform: rotatey(-180deg);
-    -moz-transform: rotatey(-180deg);
-    -ms-transform: rotatey(-180deg);
-    -o-transform: rotatey(-180deg);
-    border: 1px solid rgba(0, 0, 0, 0.5); }
+    cursor: pointer; }
   .card .front, .card .back {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -65,6 +56,23 @@
     height: 100%;
     background-image: url("../images/card-back.png");
     background-size: 100% 100%; }
+
+.flipit {
+  transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transform: rotatey(-180deg);
+  -webkit-transform: rotatey(-180deg);
+  -moz-transform: rotatey(-180deg);
+  -ms-transform: rotatey(-180deg);
+  -o-transform: rotatey(-180deg);
+  border: 1px solid rgba(0, 0, 0, 0.5); }
 
 /*
 .grid {

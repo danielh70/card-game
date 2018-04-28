@@ -34,29 +34,23 @@
 }
 
 
-.card-container {
+
+
+.card-container, {
   // perspective: 300px;
   display: flex;
   flex-wrap: wrap;
   #show {
     @include transform(rotatey(-180deg));
-    .back {
-      display: none !important;
-    }
-    .front {
-
-      z-index: 10 !important;
-    }
   }
 }
 
 .card {
   @include transform-style(preserve-3d);
   @include transition(2s);
-  &:hover {
-    @include transform(rotatey(-180deg));
-    border: 1px solid rgba(0, 0, 0, .5);
-  }
+  // &:hover {
+  //   cursor: pointer;
+  // }
 
   -webkit-transition-duration: .5s; /* Safari */
   transition-duration: .5s;
@@ -71,7 +65,7 @@
   text-align: center;
 
 
-  .front, .back {
+  .front, .back, {
     @include backface-visibility;
     position: absolute;
     display: flex;
@@ -94,6 +88,20 @@
 
   }
 }
+
+.flipit {
+  @include transform-style(preserve-3d);
+  @include transition(.5s);
+  @include transform(rotatey(-180deg));
+  border: 1px solid rgba(0, 0, 0, .5);
+}
+
+// a {
+//   width: 0;
+//   height: 0;
+// }
+
+
 
 // #player-deck {
 //   box-shadow: 1px 1px 2px black;
