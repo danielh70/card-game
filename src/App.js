@@ -5,6 +5,7 @@ class App extends Component {
 		constructor(props) {
 			super(props);
 			this.state = {
+				game: 'blackjack',
 				cards:    [],
 				computer: []
 		}
@@ -22,21 +23,40 @@ class App extends Component {
 				})
 			}
 		}
+
 		this.setState({ cards: currentState, computer: currentState });
 	}
+	//
+	// componentDidMount() {
+	// 	let test = this.state.cards.reduce((collector, card) => {
+	// 		let deck = Object.assign({}, card);
+	// 		if (!collector.hasOwnProperty(card)) {
+	// 			collector[card] = [deck]
+	// 		}
+	// 		else {
+	// 			deck[card].push(card)
+	// 		}
+	// 		return collector
+	// 	}, {})
+	//
+	// 	console.log(test);
+	// }
 
-	handleCardSelect = (playerCard, computerCard) => {
-		let currentState = Object.assign([], this.state.cards);
-		let currentStateComputer = Object.assign([], this.state.computer)
+	componentDidMount() {
+		let deck = Object.assign({}, ...this.state.cards);
+		let keys = Object.keys(deck)
+		let newDeck = [];
 
-		currentState.splice(currentState, 1);
-		currentStateComputer.splice(currentStateComputer, 1);
-		this.setState({ cards: currentState, computer: currentStateComputer })
+
+		// console.log("deck", newDeck);
+		console.log(keys);
 	}
+
+
 
 
 	render() {
-		console.log("removing card", this.state.cards);
+		console.log(this.state);
 		return (
 			<div>
 				<Cards

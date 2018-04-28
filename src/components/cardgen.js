@@ -10,7 +10,9 @@ class Cards extends Component {
     this.state = {
       player1: [],
       computer: [],
-      loading: false
+      loading: false,
+			player1Wins: 0,
+			computerWins: 0
     }
   }
 
@@ -21,8 +23,10 @@ class Cards extends Component {
 	handlePick = (e) => {
 		let currentCard = () => Math.floor(Math.random() * this.props.cards.length)
 
-    this.setState({ player1: this.props.cards[currentCard()], computer: this.props.computer[currentCard()] })
-
+    this.setState({
+      player1: this.props.cards[currentCard()],
+      computer: this.props.computer[currentCard()]
+    })
 		this.props.deleteCard(this.state.player1, this.state.computer);
 	}
 
@@ -44,12 +48,22 @@ class Cards extends Component {
 				<Grid>
 					Player:
 					<Row>
-            <div className="card">
-              { Object.keys(this.state.player1) } { Object.values(this.state.player1) }
-            </div>
-             <div className="card">
-             { Object.keys(this.state.computer) } { Object.values(this.state.computer) }
-             </div> 
+            <Col xs={4}>
+              Player Deck:
+              <div id="player-deck">{ this.props.cardsWins }</div>
+            </Col>
+            <Col xs={4}>
+              <div className="card">
+                { Object.keys(this.state.computer) } { Object.values(this.state.computer) }
+              </div>
+               <div className="card">
+                 { Object.keys(this.state.computer) } { Object.values(this.state.computer) }
+               </div>
+             </Col>
+            <Col xs={4}>
+							Computer Deck:
+              <div id="player-deck">{ this.props.computerWins }</div>
+            </Col>
 					</Row>
 					Computer:
 				</Grid>
@@ -59,6 +73,14 @@ class Cards extends Component {
 }
 
 export default Cards;
+
+
+
+
+
+  // { Object.keys(this.state.player1) } { Object.values(this.state.player1) }
+
+
 
 // { this.props.cards.map(( el, i ) => {
 //   let vals = Object.values(el)
