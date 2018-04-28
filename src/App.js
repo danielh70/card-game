@@ -1,18 +1,20 @@
 import React, { Component} from 'react';
 import Cards from './components/cardgen';
+import Blackjack from './components/blackjack.js';
+
 
 class App extends Component {
 		constructor(props) {
 			super(props);
 			this.state = {
-				game: 'blackjack',
-				cards:    [],
+				blackjack: true,
+				player1:  [],
 				computer: []
 		}
 	}
 
 	componentWillMount() {
-		let currentState = Object.assign([], this.state.cards);
+		let currentState = Object.assign([], this.state.player1);
 		let suits = [ "hearts", "spades", "diamonds", "clubs" ];
 		let numbers = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king", "ace" ];
 
@@ -24,7 +26,7 @@ class App extends Component {
 			}
 		}
 
-		this.setState({ cards: currentState, computer: currentState });
+		this.setState({ player1: currentState, computer: currentState });
 	}
 	//
 	// componentDidMount() {
@@ -42,32 +44,45 @@ class App extends Component {
 	// 	console.log(test);
 	// }
 
-	componentDidMount() {
-		let deck = Object.assign({}, ...this.state.cards);
-		let keys = Object.keys(deck)
-		let newDeck = [];
-
-
-		// console.log("deck", newDeck);
-		console.log(keys);
-	}
+	// componentDidMount() {
+	// 	let deck = Object.assign({}, ...this.state.cards);
+	// 	let keys = Object.keys(deck)
+	// 	let newDeck = [];
+	//
+	// 	keys.map((i, el) => {
+	// 		el:
+	// 	})
+	//
+	// }
 
 
 
 
 	render() {
+
+		const { blackjack, player1, computer } = this.state
+
 		console.log(this.state);
 		return (
 			<div>
-				<Cards
-					cards={this.state.cards}
-					computer={this.state.computer}
-					handleCardSelect={this.handleCardSelect}
-					deleteCard={this.handleCardSelect}
-				/>
+				{ blackjack &&
+					<Blackjack
+						player1={player1}
+						computer={computer}
+					 />
+				}
+
+
 			</div>
 		);
 	}
 }
+
+{/* <Cards
+	cards={this.state.cards}
+	computer={this.state.computer}
+	handleCardSelect={this.handleCardSelect}
+	deleteCard={this.handleCardSelect}
+/> */}
 
 export default App;

@@ -27,16 +27,8 @@ class Cards extends Component {
       player1: this.props.cards[currentCard()],
       computer: this.props.computer[currentCard()]
     })
-		this.props.deleteCard(this.state.player1, this.state.computer);
 	}
 
-	componentDidMount() {
-    // setTimeout(() => {
-    //   this.setState({
-    //     loading: false
-    //   })
-    // }, 2000)
-	}
 
   render() {
 		console.log(this.state);
