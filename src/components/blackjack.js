@@ -159,6 +159,8 @@ class Blackjack extends Component {
       this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true })
     } else if (computerScore > player1Score && computerScore > 21) {
       this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true })
+    } else if (computerScore > player1Score && computerScore <= 21){
+      this.setState({ message: 'GAME OVER', flipped: 'card flipit', gameOver: true })
     } else {
       this.setState({ message: 'TIE', flipped: 'card flipit', gameOver: true })
     }
