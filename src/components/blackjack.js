@@ -26,12 +26,17 @@ class Blackjack extends Component {
     player1Deck: [],
     flipped: 'card',
     gameOver: false,
-    message: ''
+    message: '',
+    hasError: false
   }
 
   componentDidMount() {
     this.gameSetup()
   }
+
+  componentDidCatch(error, info) {
+   this.setState({ hasError: true });
+ }
 
   flipCard = () => {
     this.setState({
@@ -171,6 +176,10 @@ class Blackjack extends Component {
   render() {
     // console.log("blackjack state", this.state);
     const { computer, player1, gameOver } = this.state
+
+    if (this.state.hasError) {
+      alert("Sorry, there was an extremely rare, unforseen error. Please refresh the page");
+    }
 
     return (
       <div className="App">
