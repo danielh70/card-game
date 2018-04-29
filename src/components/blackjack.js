@@ -140,7 +140,7 @@ class Blackjack extends Component {
     }
 
     state.player1Deck.splice(getCard, 1)
-    console.log("init state", initialState);
+    // console.log("init state", initialState);
     this.setState(state)
   }
 
@@ -169,7 +169,7 @@ class Blackjack extends Component {
   }
 
   render() {
-    console.log("blackjack state", this.state);
+    // console.log("blackjack state", this.state);
     const { computer, player1, gameOver } = this.state
 
     return (
@@ -178,8 +178,10 @@ class Blackjack extends Component {
           <Row>
             {this.state.computer.length &&
             <Col xs={6} xsOffset={2}>
-              <h3>Computer:</h3>
-              { this.state.gameOver && <h4 style={{color: 'red'}}>Score: { this.state.computerScore } </h4>}
+              <h3 style={{margin: 0, padding: 2, height: 30}}>Computer:</h3>
+              <div style={{margin: 0, height: 20, padding: 2}}>{ this.state.gameOver && <h4 style={{color: 'red'}}>Score: { this.state.computerScore } </h4>}</div>
+              <br />
+
 
               <div className="card-container">
                 { gameOver &&
@@ -229,6 +231,7 @@ class Blackjack extends Component {
           }
           </Row>
 
+
           <Row>
             <Col xs={2}>
               <Button disabled={gameOver} onClick={this.drawCard}>Hit</Button> <br /><br />
@@ -238,7 +241,9 @@ class Blackjack extends Component {
             </Col>
             {this.state.computer.length &&
             <Col xs={6}>
-              <h1>{ this.state.message } </h1>
+              <br />
+              <h1 style={{margin: 0, padding: 2, height: 30}}>{ this.state.message }</h1>
+              <br />
               <h3>Player One:</h3>
               <h4 style={{color: 'red'}}> Score: { this.state.player1Score }</h4>
 
@@ -251,6 +256,9 @@ class Blackjack extends Component {
                       <div className="front">
                         { val } <br />
                         { suit }
+                      </div>
+                      <div className="back">
+                        <div className="photo"></div>
                       </div>
                     </div>
                   )

@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import Cards from './components/cardgen';
+import { PageHeader } from 'react-bootstrap';
 import Blackjack from './components/blackjack.js';
 
 
@@ -39,9 +40,13 @@ class App extends Component {
 	render() {
 		const { blackjack } = this.state
 
-		console.log(this.state);
+		// console.log(this.state);
 		return (
 			<div>
+				<PageHeader style={{textAlign: 'center'}}>
+					Powered by React
+				</PageHeader>
+
 
 				{ blackjack &&
 					<Blackjack

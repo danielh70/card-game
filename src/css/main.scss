@@ -34,23 +34,33 @@
 }
 
 
+@keyframes cardenter {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform-style: preserve-3d;
+    transform: rotatey(-180deg);
+    transition: 1s;
+  }
+}
 
-
-.card-container, {
+.card-container {
   // perspective: 300px;
   display: flex;
   flex-wrap: wrap;
   #show {
     @include transform(rotatey(-180deg));
+    animation-name: cardenter;
+    animation-duration: .5s;
+      border: 1px solid rgba(0, 0, 0, .5);
   }
+
 }
 
 .card {
   @include transform-style(preserve-3d);
   @include transition(2s);
-  // &:hover {
-  //   cursor: pointer;
-  // }
 
   -webkit-transition-duration: .5s; /* Safari */
   transition-duration: .5s;
@@ -65,7 +75,7 @@
   text-align: center;
 
 
-  .front, .back, {
+  .front, .back {
     @include backface-visibility;
     position: absolute;
     display: flex;
@@ -74,6 +84,7 @@
 
   .front {
     @include transform(rotatey(-180deg));
+
     z-index: 1;
     height: 100%;
     width: 100%;
@@ -85,15 +96,31 @@
     height: 100%;
     background-image: url("../images/card-back.png");
     background-size: 100% 100%;
-
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
+
+
 .flipit {
+  @include transform(rotatey(-180deg));
   @include transform-style(preserve-3d);
   @include transition(.5s);
-  @include transform(rotatey(-180deg));
+
   border: 1px solid rgba(0, 0, 0, .5);
+}
+
+.page-header {
+  margin: 0;
+  background-color: lightblue;
+  background-size: cover;
+  padding-top: 10px;
+  height: 5em;
+  h1 {
+    margin: 0;
+  }
 }
 
 // a {
