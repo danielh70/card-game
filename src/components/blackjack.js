@@ -2,84 +2,91 @@ import React, { Component } from 'react';
 import { Row, Grid, Col, Button } from 'react-bootstrap';
 import Loader from './loader';
 import '../css/main.css';
+const deepFreeze = require('deep-freeze');
 // import '../css/App.css';
 
+const initialState = deepFreeze({
+    computer: [],
+    player1: [],
+    player1Score: 0,
+    computerScore: 0,
+    computerDeck: [],
+    player1Deck: [],
+    flipped: 'card',
+    gameOver: false,
+    message: ''
+  });
 
 class Blackjack extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      computer: [],
-      player1: [],
-      player1Score: 0,
-      computerScore: 0,
-      computerDeck: [],
-      player1Deck: [],
-      flipped: 'card',
-      gameOver: false,
-      message: ''
-    }
+  state = {
+    computer: [],
+    player1: [],
+    player1Score: 0,
+    computerScore: 0,
+    computerDeck: [],
+    player1Deck: [],
+    flipped: 'card',
+    gameOver: false,
+    message: ''
   }
 
   componentDidMount() {
-    const { computer, player1 } = this.props
-    const { computerDeck } = this.state
-    let deck = Object.assign({}, this.state, { player1Deck: player1, computerDeck: computer });
-    let computerCards = { ...this.state };
-    let cards = () => Math.floor(Math.random() * player1.length);
+    this.gameSetup()
+
+  }
+
+  flipCard = () => {
+    this.setState({
+      flipped: 'card flipit'
+    });
+  }
+
+  gameSetup = () => {
+    let p1Hand = [];
+    let compHand = [];
+    let deck = { ...this.state, player1: p1Hand, computer: compHand };
+    let cards = () => Math.floor(Math.random() * deck.player1Deck.length);
     let x;
+    let p1Deck;
+    let compDeck;
+    p1Deck = this.props.buildDeck(p1Deck)
+    compDeck = this.props.buildDeck(compDeck)
+    deck.player1Deck = p1Deck
+    deck.computerDeck = compDeck
 
-    // deck.computer.push(computer[cards()]);
-    // deck.computer.push(computer[cards()]);
-    deck.player1.push(player1[cards()]);
-    deck.player1.push(player1[cards()]);
-
-
+    p1Hand.push(deck.player1Deck[cards()]);
+    p1Hand.push(deck.player1Deck[cards()]);
 
     let removeFirstP = deck.player1Deck.indexOf(this.state.player1[0])
-
-    deck.player1Deck.splice(removeFirstP, 1);
-
-
+      deck.player1Deck.splice(removeFirstP, 1);
     let removeSecondP = deck.player1Deck.indexOf(this.state.player1[1])
-
-    deck.player1Deck.splice(removeSecondP, 1);
-
-
-
-
+      deck.player1Deck.splice(removeSecondP, 1);
 
     let nu = 0
 
-     while (deck.computerScore < 17 || nu < 1) {
+    while (deck.computerScore < 17 || nu < 1) {
       nu++
-      deck.computer.push(computer[cards()]);
+      deck.computer.push(deck.computerDeck[cards()]);
 
+      let val = Object.keys(deck.computer[deck.computer.length -1 ]);
 
-      // let removeSecondC = deck.computerDeck.indexOf(this.state.computer[nu])
-      //   deck.computerDeck.splice(removeSecondC, nu);
+       switch(val[0]) {
+         case "jack":
+         case "queen":
+         case "king":
+           val = 10;
+           break;
+         case "ace":
+           val = deck.computerScore <= 10 ? 11 : 1
+           break;
+         default:
+         val = parseInt(val);
+       }
+       deck.computerScore += val
 
-
-         let val = Object.keys(deck.computer[deck.computer.length -1 ]);
-         console.log(val);
-
-         switch(val[0]) {
-           case "jack":
-           case "queen":
-           case "king":
-             val = 10;
-             break;
-           case "ace":
-             val = 1;
-             break;
-           default:
-           val = parseInt(val);
-         }
-         deck.computerScore += val
-         // console.log(deck.computer);
-         let removeFirstC = deck.computerDeck.indexOf(this.state.computer[this.state.computer.length -1])
-         deck.computerDeck.splice(removeFirstC, 1);
-    }
+       let removeFirstC = deck.computerDeck.indexOf(this.state.computer[this.state.computer.length -1])
+       deck.computerDeck.splice(removeFirstC, 1);
+     }
 
     for (x in deck.player1) {
       let val = Object.keys(deck.player1[x]);
@@ -99,36 +106,24 @@ class Blackjack extends Component {
         deck.player1Score += val
       }
 
-
-
     this.setState(deck)
   }
 
-
-  flipCard = () => {
-    this.setState({
-      flipped: 'card flipit'
-    });
-  }
-
   drawCard = () => {
+    const { player1Deck, player1 } = this.state;
     let state = Object.assign({}, this.state)
-    let getCard = Math.floor(Math.random() * state.player1Deck.length)
-    state.player1.push(state.player1Deck[getCard])
-    let val = Object.keys(state.player1[state.player1.length - 1 ]);
+    let getCard = Math.floor(Math.random() * player1Deck.length)
+    state.player1.push(player1Deck[getCard])
+    let val = Object.keys(player1[player1.length - 1 ]);
 
     switch(val[0]) {
       case "jack":
-        val = 10;
-        break;
       case "queen":
-        val = 10;
-        break;
       case "king":
         val = 10;
         break;
       case "ace":
-        val = 1;
+        val = 11 || 1
         break;
       default:
       val = parseInt(val);
@@ -139,17 +134,23 @@ class Blackjack extends Component {
     if (state.player1Score > 21) {
       state.flipped = 'card flipit'
       state.gameOver = true
-      state.message = 'GAME OVER'
+      state.message = 'YOU BUSTED'
     }
 
     state.player1Deck.splice(getCard, 1)
-
+    console.log("init state", initialState);
     this.setState(state)
   }
 
 
+// console.log("pprops", prevProps, "pstate", prevState);
+
   newGame = () => {
-    window.location.reload()
+    let freshStart = Object.assign({}, initialState);
+
+    this.setState(initialState, () => {
+      this.gameSetup()
+    });
   }
 
   handleStand = () => {
@@ -164,23 +165,15 @@ class Blackjack extends Component {
     } else {
       this.setState({ message: 'TIE', flipped: 'card flipit', gameOver: true })
     }
-
-
   }
-
 
   render() {
     console.log("blackjack state", this.state);
-
     const { computer, player1 } = this.state
-
-    // { this.state.gameOver ? this.flipCard() : null }
-
 
     return (
       <div className="App">
         <Grid>
-
           <Row>
             {this.state.computer.length &&
             <Col xs={4} xsOffset={4}>
@@ -230,7 +223,6 @@ class Blackjack extends Component {
 
                 </div>
               }
-
               </div>
             </Col>
           }
@@ -250,7 +242,6 @@ class Blackjack extends Component {
               <h4 style={{color: 'red'}}> Score: { this.state.player1Score }</h4>
 
               <div className="card-container">
-
                 { this.state.player1.map((el, i) => {
                   let val = Object.keys(el)
                   let suit = Object.values(el)
@@ -263,13 +254,10 @@ class Blackjack extends Component {
                     </div>
                   )
                 })}
-
               </div>
             </Col>
           }
-
           </Row>
-
         </Grid>
       </div>
     );
