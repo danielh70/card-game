@@ -176,8 +176,11 @@ class Blackjack extends Component {
       <div className="App">
         <Grid>
           <Row>
+            <Col md={2} xs={4}>
+
+            </Col>
             {this.state.computer.length &&
-            <Col xs={6} xsOffset={2}>
+            <Col xs={6}>
               <h3 style={{margin: 0, padding: 2, height: 30}}>Computer:</h3>
               <div style={{margin: 0, height: 20, padding: 2}}>{ this.state.gameOver && <h4 style={{color: 'red'}}>Score: { this.state.computerScore } </h4>}</div>
               <br />
@@ -233,12 +236,14 @@ class Blackjack extends Component {
 
 
           <Row>
-            <Col xs={2}>
-              <Button disabled={gameOver} onClick={this.drawCard}>Hit</Button> <br /><br />
-              <Button disabled={gameOver} onClick={this.handleStand}>Stand</Button> <br /><br />
-              <Button disabled>Double</Button> <br /><br />
-              <Button onClick={this.newGame}>New Game</Button> <br /><br />
-            </Col>
+            <div id="button-group">
+              <Col md={2} xs={4}>
+                <Button disabled={gameOver} onClick={this.drawCard}>Hit</Button> <br /><br />
+                <Button disabled={gameOver} onClick={this.handleStand}>Stand</Button> <br /><br />
+                <Button disabled>Double</Button> <br /><br />
+                <Button onClick={this.newGame}>New Game</Button> <br /><br />
+              </Col>
+            </div>
             {this.state.computer.length &&
             <Col xs={6}>
               <br />
