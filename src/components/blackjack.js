@@ -75,6 +75,8 @@ class Blackjack extends Component {
     while (deck.computerScore < 17 || nu < 1) {
       nu++
       deck.computer.push(deck.computerDeck[cards()]);
+      let removeFirstC = deck.computerDeck.indexOf(this.state.computer[this.state.computer.length -1])
+      deck.computerDeck.splice(removeFirstC, 1);
 
       let val = Object.keys(deck.computer[deck.computer.length -1 ]);
 
@@ -92,8 +94,7 @@ class Blackjack extends Component {
        }
        deck.computerScore += val
 
-       let removeFirstC = deck.computerDeck.indexOf(this.state.computer[this.state.computer.length -1])
-       deck.computerDeck.splice(removeFirstC, 1);
+
      }
 
      // find the key (value in this case) for every object in the array, and add them up
