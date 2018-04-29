@@ -33,6 +33,12 @@
 	$opacity: $opacity / 100;
 }
 
+// variables
+// $main-background-color: rgba(230, 10, 10, .5);
+$main-background-color: rgba(51, 102, 255, .5);
+$main-color: rgb(230, 10, 10);
+$text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
+
 
 @keyframes cardenter {
   0% {
@@ -45,10 +51,30 @@
   }
 }
 
+@keyframes react-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 @media only screen and (max-width: 600px){
   .card {
     display: block;
   }
+  .react-logo {
+    display: none;
+  }
+}
+
+body {
+  background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+}
+
+.react-logo {
+  animation: react-logo-spin infinite 10s linear;
+  height: 50px;
+  margin: auto;
+  position: relative;
+  opacity: .8;
 }
 
 .card-container {
@@ -119,12 +145,16 @@
 
 .page-header {
   margin: 0;
-  background-color: lightblue;
+  margin-bottom: 10px;
+  background-color: $main-background-color;
   background-size: cover;
   padding-top: 10px;
   height: 5em;
+  box-shadow: 1px 1px 2px black;
+
   h1 {
     margin: 0;
+    padding: 0;
   }
 }
 
@@ -132,6 +162,11 @@
   min-width: 200px;
   position: relative;
   margin: 5px;
+}
+
+.score-text {
+  text-shadow: $text-shadow;
+  color: $main-color;
 }
 
 // a {

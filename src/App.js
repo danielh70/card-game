@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import Cards from './components/cardgen';
 import { PageHeader } from 'react-bootstrap';
 import Blackjack from './components/blackjack.js';
+import react from './images/react.svg';
 
 
 class App extends Component {
@@ -44,7 +45,9 @@ class App extends Component {
 		return (
 			<div>
 				<PageHeader style={{textAlign: 'center'}}>
+					<img className="react-logo" src={react} alt="logo" />
 					Powered by React
+					<img className="react-logo" src={react} alt="logo" />
 				</PageHeader>
 
 

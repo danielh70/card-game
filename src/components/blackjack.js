@@ -182,7 +182,7 @@ class Blackjack extends Component {
             {this.state.computer.length &&
             <Col xs={6}>
               <h3 style={{margin: 0, padding: 2, height: 30}}>Computer:</h3>
-              <div style={{margin: 0, height: 20, padding: 2}}>{ this.state.gameOver && <h4 style={{color: 'red'}}>Score: { this.state.computerScore } </h4>}</div>
+              <div style={{margin: 0, height: 20, padding: 2}}>{ this.state.gameOver && <h4><span className="score-text">Score: { this.state.computerScore }</span> </h4>}</div>
               <br />
 
 
@@ -250,7 +250,7 @@ class Blackjack extends Component {
               <h1 style={{margin: 0, padding: 2, height: 30}}>{ this.state.message }</h1>
               <br />
               <h3>Player One:</h3>
-              <h4 style={{color: 'red'}}> Score: { this.state.player1Score }</h4>
+              <h4> <span className="score-text">Score: { this.state.player1Score }</span></h4>
 
               <div className="card-container">
                 { this.state.player1.map((el, i) => {
