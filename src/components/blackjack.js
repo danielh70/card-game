@@ -35,6 +35,8 @@ class Blackjack extends Component {
   }
 
   componentDidCatch(error, info) {
+    console.log("error", error, "info", info);
+    this.forceUpdate();
    this.setState({ hasError: true });
  }
 
