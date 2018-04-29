@@ -3,7 +3,6 @@ import { Row, Grid, Col, Button } from 'react-bootstrap';
 import Loader from './loader';
 import '../css/main.css';
 const deepFreeze = require('deep-freeze');
-// import '../css/App.css';
 
 const initialState = deepFreeze({
     computer: [],
@@ -32,7 +31,6 @@ class Blackjack extends Component {
 
   componentDidMount() {
     this.gameSetup()
-
   }
 
   flipCard = () => {
@@ -54,9 +52,11 @@ class Blackjack extends Component {
     deck.player1Deck = p1Deck
     deck.computerDeck = compDeck
 
+    // add the first 2 drawn cards to variable deck
     p1Hand.push(deck.player1Deck[cards()]);
     p1Hand.push(deck.player1Deck[cards()]);
 
+    // match the index of the first 2 drawn cards and splice them out of the deck
     let removeFirstP = deck.player1Deck.indexOf(this.state.player1[0])
       deck.player1Deck.splice(removeFirstP, 1);
     let removeSecondP = deck.player1Deck.indexOf(this.state.player1[1])
@@ -64,6 +64,7 @@ class Blackjack extends Component {
 
     let nu = 0
 
+    // computer will keep drawing until their hand value is at least 17
     while (deck.computerScore < 17 || nu < 1) {
       nu++
       deck.computer.push(deck.computerDeck[cards()]);
@@ -88,6 +89,7 @@ class Blackjack extends Component {
        deck.computerDeck.splice(removeFirstC, 1);
      }
 
+     // find the key (value in this case) for every object in the array, and add them up
     for (x in deck.player1) {
       let val = Object.keys(deck.player1[x]);
 
@@ -123,7 +125,7 @@ class Blackjack extends Component {
         val = 10;
         break;
       case "ace":
-        val = 11 || 1
+        val = state.player1Score <= 10 ? 11 : 1
         break;
       default:
       val = parseInt(val);
@@ -142,12 +144,11 @@ class Blackjack extends Component {
     this.setState(state)
   }
 
-
-// console.log("pprops", prevProps, "pstate", prevState);
-
   newGame = () => {
+    // clone our fresh initialState to start over
     let freshStart = Object.assign({}, initialState);
 
+    // callback in setState, to make sure the state is refreshed before making decks
     this.setState(initialState, () => {
       this.gameSetup()
     });
@@ -176,7 +177,7 @@ class Blackjack extends Component {
         <Grid>
           <Row>
             {this.state.computer.length &&
-            <Col xs={4} xsOffset={4}>
+            <Col xs={6} xsOffset={2}>
               <h3>Computer:</h3>
               { this.state.gameOver && <h4 style={{color: 'red'}}>Score: { this.state.computerScore } </h4>}
 
@@ -236,7 +237,7 @@ class Blackjack extends Component {
               <Button onClick={this.newGame}>New Game</Button> <br /><br />
             </Col>
             {this.state.computer.length &&
-            <Col xs={4} xsOffset={2}>
+            <Col xs={6}>
               <h1>{ this.state.message } </h1>
               <h3>Player One:</h3>
               <h4 style={{color: 'red'}}> Score: { this.state.player1Score }</h4>

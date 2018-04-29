@@ -37,7 +37,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { blackjack, player1, computer } = this.state
+		const { blackjack } = this.state
 
 		console.log(this.state);
 		return (
@@ -45,8 +45,6 @@ class App extends Component {
 
 				{ blackjack &&
 					<Blackjack
-						player1={player1}
-						computer={computer}
 						buildDeck={this.buildDeck}
 					 />
 				}
