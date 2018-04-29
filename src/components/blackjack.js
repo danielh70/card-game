@@ -231,8 +231,8 @@ class Blackjack extends Component {
 
           <Row>
             <Col xs={2}>
-              <Button onClick={this.drawCard}>Hit</Button> <br /><br />
-              <Button onClick={this.handleStand}>Stand</Button> <br /><br />
+              <Button disabled={this.state.gameOver} onClick={this.drawCard}>Hit</Button> <br /><br />
+              <Button disabled={this.state.gameOver} onClick={this.handleStand}>Stand</Button> <br /><br />
               <Button disabled>Double</Button> <br /><br />
               <Button onClick={this.newGame}>New Game</Button> <br /><br />
             </Col>
