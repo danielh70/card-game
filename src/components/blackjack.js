@@ -107,7 +107,7 @@ class Blackjack extends Component {
             val = 10;
             break;
           case "ace":
-            val = 1;
+            val = deck.player1Score <= 10 ? 11 : 1;
             break;
           default:
           val = parseInt(val);
