@@ -170,7 +170,7 @@ class Blackjack extends Component {
 
   render() {
     console.log("blackjack state", this.state);
-    const { computer, player1 } = this.state
+    const { computer, player1, gameOver } = this.state
 
     return (
       <div className="App">
@@ -182,7 +182,7 @@ class Blackjack extends Component {
               { this.state.gameOver && <h4 style={{color: 'red'}}>Score: { this.state.computerScore } </h4>}
 
               <div className="card-container">
-                { this.state.gameOver &&
+                { gameOver &&
                    computer.map((el, i) => {
                     let val = Object.keys(el)
                     let suit = Object.values(el)
@@ -197,7 +197,7 @@ class Blackjack extends Component {
                   })
                 }
 
-                { !this.state.gameOver &&
+                { !gameOver &&
                 <a onClick={this.flipCard}>
                 <div className={this.state.flipped}>
                   <div className="front">
@@ -231,8 +231,8 @@ class Blackjack extends Component {
 
           <Row>
             <Col xs={2}>
-              <Button disabled={this.state.gameOver} onClick={this.drawCard}>Hit</Button> <br /><br />
-              <Button disabled={this.state.gameOver} onClick={this.handleStand}>Stand</Button> <br /><br />
+              <Button disabled={gameOver} onClick={this.drawCard}>Hit</Button> <br /><br />
+              <Button disabled={gameOver} onClick={this.handleStand}>Stand</Button> <br /><br />
               <Button disabled>Double</Button> <br /><br />
               <Button onClick={this.newGame}>New Game</Button> <br /><br />
             </Col>
