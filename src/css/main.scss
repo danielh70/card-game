@@ -70,7 +70,7 @@ body {
 }
 
 .react-logo {
-  animation: react-logo-spin infinite 10s linear;
+  animation: react-logo-spin infinite 15s linear;
   height: 50px;
   margin: auto;
   position: relative;
@@ -159,14 +159,32 @@ body {
 }
 
 #button-group {
-  min-width: 200px;
-  position: relative;
+  min-width: 130px;
+  position: fixed;
+  display: inline-block;
+  height: 100vh;
   margin: 5px;
 }
 
 .score-text {
   text-shadow: $text-shadow;
   color: $main-color;
+}
+
+#custom-button {
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, .0);
+  background-color: $main-background-color;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100px;
+  &:disabled {
+    opacity: .4;
+  }
+  &:hover {
+    @include transition(.4s);
+    border: 1px solid rgba(0, 0, 0, .5);
+  }
 }
 
 // a {
