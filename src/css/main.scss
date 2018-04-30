@@ -226,7 +226,7 @@ body {
   }
 
   75% {
-    width: 100%;
+    width: 25em;
     height: 30px;
     margin-top: inherit;
     .menu-items {
@@ -235,21 +235,21 @@ body {
   }
 
   100% {
-    height: 100%;
-    width: 100%;
-    margin-top: -250px;
+    height: 35em;
+    width: 25em;
+    margin-top: -17em;
   }
 }
 
 @keyframes slideIn {
   0% {
-    height: 100%;
-    width: 100%;
-    margin-top: -250px;
+    height: 35em;
+    width: 25em;
+    margin-top: -17em;
   }
 
   75% {
-    width: 100%;
+    width: 25em;
     height: 30px;
     margin-top: inherit;
   }
