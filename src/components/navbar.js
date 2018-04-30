@@ -30,9 +30,24 @@ class Navbar extends Component {
 				<div className="nav-wrapper">
 					<div className={this.state.classes.join(' ')}>
 						<div className="menu-items">
-							Some info
-							More info
-							Hello world
+							<h3>Highscores</h3>
+								<ol>
+									<li>
+										Daniel Hook
+									</li>
+									<li>
+										Daniel Hook
+									</li>
+									<li>
+										Daniel Hook
+									</li>
+								</ol>
+							<br />
+							Other games: <br />
+
+							War (coming soon)<br />
+							Solitare (coming soon)<br />
+							Multiplayer (coming soon)<br />
 						</div>
 					</div>
 				</div>

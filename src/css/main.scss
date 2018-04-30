@@ -180,7 +180,7 @@ body {
   display: inline-block;
   top: 30%;
   left: auto;
-  z-index: 300;
+  z-index: 30;
 }
 
 .score-text {
@@ -215,7 +215,7 @@ body {
   width: 25px;
   height: 60px;
   float: left;
-  top: 48%;
+  top: 48.5%;
 }
 
 @keyframes slideOut {
@@ -272,10 +272,12 @@ body {
   width: 0px;
   top: 50%;
   transition: 2s ease-out;
+  z-index: 500;
+  text-align: center;
 
   .nav-menu {
     @include clear-box;
-    background: none;
+    background: rgba(244, 167, 66, .5);
     animation-name: slideOut;
     animation-duration: 1s;
     animation-fill-mode: forwards;
@@ -284,11 +286,16 @@ body {
       animation-delay: .75s;
       animation-duration: .1s;
       animation-fill-mode: forwards;
+
+      ol {
+        list-style-position: inside;
+        padding: 5px;
+      }
     }
   }
 
   .nav-menu-closed {
-    background: none;
+    background: rgba(244, 167, 66, .5);
     animation-name: slideIn;
     animation-duration: 1s;
     animation-fill-mode: forwards;
