@@ -4,6 +4,9 @@ import { PageHeader } from 'react-bootstrap';
 import Blackjack from './components/blackjack.js';
 import react from './images/react.svg';
 import reactFire from './images/react-fire.svg';
+import Navbar from './components/navbar';
+
+
 
 
 class App extends Component {
@@ -12,7 +15,9 @@ class App extends Component {
 			this.state = {
 				blackjack: true,
 				player1:  [],
-				computer: []
+				computer: [],
+				active: false,
+
 		}
 	}
 

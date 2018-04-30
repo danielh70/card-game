@@ -29,8 +29,16 @@
   -o-transform: $transformation;
 }
 
+
 @mixin border-opacity($color, $opacity) {
 	$opacity: $opacity / 100;
+}
+
+@mixin clear-box {
+  border: 1px solid rgba(0, 0, 0, .5);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 1px 2px 2px;
 }
 
 // variables
@@ -96,7 +104,6 @@ body {
     animation-duration: .5s;
       border: 1px solid rgba(0, 0, 0, .5);
   }
-
 }
 
 .card {
@@ -196,6 +203,134 @@ body {
     border: 1px solid rgba(0, 0, 0, .5);
   }
 }
+
+/* SIDE NAV */
+
+.sidenav-button-a {
+  background: transparentize(blue, .5);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: fixed;
+  z-index: 1000;
+  width: 25px;
+  height: 60px;
+  float: left;
+  top: 48%;
+}
+
+@keyframes slideOut {
+  0% {
+    height: 30px;
+    width: 30px;
+    margin-top: inherit;
+  }
+
+  75% {
+    width: 400px;
+    height: 30px;
+    margin-top: inherit;
+    .menu-items {
+      visibility: visible;
+    }
+  }
+
+  100% {
+    height: 600px;
+    width: 400px;
+    margin-top: -300px;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    height: 600px;
+    width: 400px;
+    margin-top: -300px;
+  }
+
+  75% {
+    width: 400px;
+    height: 30px;
+    margin-top: inherit;
+  }
+
+  100% {
+    height: 30px;
+    width: 0px;
+    margin-top: inherit;
+  }
+}
+
+@keyframes showItems {
+  from { visibility: hidden; }
+  to { visibility: visible; }
+}
+
+.nav-wrapper {
+  position: absolute;
+  height: 30px;
+  width: 0px;
+  top: 50%;
+  transition: 2s ease-out;
+
+  .nav-menu {
+    @include clear-box;
+    background: none;
+    animation-name: slideOut;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    .menu-items {
+      animation-name: showItems;
+      animation-delay: .75s;
+      animation-duration: .1s;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  .nav-menu-closed {
+    background: none;
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    @include clear-box;
+  }
+
+  .menu-items {
+    visibility: hidden;
+  }
+}
+
+
+
+
+
+// .sidebar-menu {
+//   text-align: center;
+
+//   height: 80%;
+//   top: 10%;
+//   width: 10px;
+//   border: 1px solid black;
+//   border-radius: 4px;
+//   z-index: 1000;
+//   position: absolute;
+//   box-shadow: 1px 2px 2px black;
+//   transition: 300ms ease-out;
+//   &:hover {
+//     animation: testthing;
+//     animation: slide-in 0.5s forwards;
+//     animation-duration: 1s;
+//     animation-delay: 2s;
+//   }
+
+//   .close-sidenav {
+//     float: right;
+//   }
+// }
+
+
+
+
 
 // a {
 //   width: 0;
