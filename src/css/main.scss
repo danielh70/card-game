@@ -267,7 +267,7 @@ body {
 }
 
 .nav-wrapper {
-  position: absolute;
+  position: fixed;
   height: 60%;
   width: 25%;
   top: 50%;
@@ -306,64 +306,3 @@ body {
     visibility: hidden;
   }
 }
-
-
-
-
-
-// .sidebar-menu {
-//   text-align: center;
-
-//   height: 80%;
-//   top: 10%;
-//   width: 10px;
-//   border: 1px solid black;
-//   border-radius: 4px;
-//   z-index: 1000;
-//   position: absolute;
-//   box-shadow: 1px 2px 2px black;
-//   transition: 300ms ease-out;
-//   &:hover {
-//     animation: testthing;
-//     animation: slide-in 0.5s forwards;
-//     animation-duration: 1s;
-//     animation-delay: 2s;
-//   }
-
-//   .close-sidenav {
-//     float: right;
-//   }
-// }
-
-
-
-
-
-// a {
-//   width: 0;
-//   height: 0;
-// }
-
-
-
-// #player-deck {
-//   box-shadow: 1px 1px 2px black;
-//   padding-top: 5px;
-//   width: 115px;
-//   height: 150px;
-//   margin: 5px;
-//   border: 1px solid black;
-//   border-radius: 5px;
-//   display: inline-block;
-// }
-
-/*
-.grid {
-  display:inline-grid;
-} */
-
-/* @media only screen and (min-width:600px) {
-  .card {
-    display: inline-block;
-  }
-} */
