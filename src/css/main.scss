@@ -266,6 +266,12 @@ body {
   to { visibility: visible; }
 }
 
+@media only screen and (max-width: 600px){
+  .nav-menu {
+    background: rgb(244, 167, 66);
+  }
+}
+
 .nav-wrapper {
   position: absolute;
   height: 30px;
