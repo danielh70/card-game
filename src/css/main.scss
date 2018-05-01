@@ -52,10 +52,11 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
   0% {
     transform: rotatey(0deg);
   }
+
   100% {
     transform-style: preserve-3d;
-    transform: rotatey(-180deg);
-    transition: 1s;
+    transform: rotatey(-360deg);
+    transition: .5s;
   }
 }
 
@@ -100,7 +101,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   #show {
-    // @include transform(rotatey(-180deg));
+
     animation-name: cardenter;
     animation-duration: .5s;
     border: 1px solid rgba(0, 0, 0, .5);
@@ -109,29 +110,28 @@ body {
 }
 
 .card {
-  @include transform-style(preserve-3d);
-  @include transition(2s);
-
-  -webkit-transition-duration: .5s; /* Safari */
-  transition-duration: .5s;
-  margin: 5px;
-  width: 115px;
-  min-width: 115px;
-  height: 170px;
-	border: 1px solid rgba(0, 0, 0, .0);
-	border-radius: 5px;
-  display: inline-block;
-  box-shadow: 1px 1px 2px 2px rgba(0,0,0,.2);
-  position: relative;
-  text-align: center;
+  // -webkit-transition-duration: .5s; /* Safari */
+  // transition-duration: .5s;
+  // margin: 5px;
+  // width: 115px;
+  // min-width: 115px;
+  // height: 170px;
+	// border: 1px solid rgba(0, 0, 0, .0);
+	// border-radius: 5px;
+  // display: inline-block;
+  // box-shadow: 1px 1px 2px 2px rgba(0,0,0,.2);
   // position: relative;
-  // float: left;
-  // width: 123px;
-  // height: 178px;
-  // border-radius: 10px;
-  // background: #fff;
-  // -webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
-  // box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+  // text-align: center;
+
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 123px;
+  height: 178px;
+  border-radius: 10px;
+  background: #fff;
+  -webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
 
   .front, .back {
     @include backface-visibility;
@@ -385,7 +385,7 @@ body {
 
     :nth-child(3) {
       left: 60px;
-      top: 5px;
+      top: 10px;
       -webkit-transform: rotate(30deg);
       -moz-transform: rotate(30deg);
       -o-transform: rotate(30deg);
@@ -396,12 +396,23 @@ body {
 
     :nth-child(4) {
       left: 80px;
-      top: 10px;
+      top: 20px;
       -webkit-transform: rotate(50deg);
       -moz-transform: rotate(50deg);
       -o-transform: rotate(50deg);
       -ms-transform: rotate(50deg);
       transform: rotate(50deg);
+      transition: .5s;
+    }
+
+    :nth-child(5) {
+      left: 100px;
+      top: 30px;
+      -webkit-transform: rotate(70deg);
+      -moz-transform: rotate(70deg);
+      -o-transform: rotate(70deg);
+      -ms-transform: rotate(70deg);
+      transform: rotate(70deg);
       transition: .5s;
     }
   }
@@ -450,6 +461,7 @@ body {
 }
 
 .card {
+
   position: relative;
   float: left;
   margin-right: 10px;
@@ -460,10 +472,12 @@ body {
   -webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
   box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
 
+
   p {
     text-align: center;
     font: 80px/160px Georgia, Times New Roman, serif;
   }
+
 }
 
 .suitdiamonds:before, .suitdiamonds:after {

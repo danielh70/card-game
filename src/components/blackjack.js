@@ -232,7 +232,8 @@ class Blackjack extends Component {
               }
               { !this.state.gameOver &&
                 <div className="front">
-                  <div className={`card ${Object.values(computer[1])}`} id="show">
+                <div className={`card ${Object.values(computer[1])}`} id="show">
+
 
                     <p>{ Object.keys(computer[1]) }</p>
 
