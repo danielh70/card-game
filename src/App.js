@@ -46,6 +46,7 @@ class App extends Component {
 
 	render() {
 		const { blackjack } = this.state
+		let arr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ];
 
 		// console.log(this.state);
 		return (
@@ -63,10 +64,44 @@ class App extends Component {
 					 />
 				}
 
+				<center>
+
+
+
+							<div class="hand spread">
+
+							  <div class="cardd suitdiamonds">
+							    <p>A</p>
+							  </div>
+
+							  <div class="cardd suithearts">
+							    <p>A</p>
+							  </div>
+
+							  <div class="cardd suitclubs">
+							    <p>A</p>
+							  </div>
+
+							  <div class="cardd suitspades">
+							    <p>A</p>
+							  </div>
+
+							</div>
+
+
+
+
+
+				</center>
 			</div>
 		);
 	}
 }
-
+//
+// <div className="card-wrapper">
+// 	<div className={`card-${i} h`}>
+//
+// 	</div>
+// </div>
 
 export default App;
