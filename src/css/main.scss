@@ -55,7 +55,7 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 
   100% {
     transform-style: preserve-3d;
-    transform: rotatey(-360deg);
+    transform: rotatey(180deg);
     transition: .5s;
   }
 }
@@ -142,7 +142,8 @@ body {
   }
 
   .front {
-    @include transform(rotatey(-180deg));
+    @include transform(rotatey(180deg));
+    // animation-name: cardenter;
 
     z-index: 1;
     height: 100%;
