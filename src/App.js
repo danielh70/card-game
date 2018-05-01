@@ -22,8 +22,8 @@ class App extends Component {
 	}
 
 	buildDeck = (deck = []) => {
-		let suits = [ "hearts", "spades", "diamonds", "clubs" ];
-		let numbers = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king", "ace" ];
+		let suits = [ "suithearts", "suitspades", "suitdiamonds", "suitclubs" ];
+		let numbers = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A" ];
 
 		for (var i = 0; i < numbers.length; i++) {
 			for (var j = 0; j < 4; j++) {
@@ -64,35 +64,6 @@ class App extends Component {
 					 />
 				}
 
-				<center>
-
-
-
-							<div class="hand spread">
-
-							  <div class="cardd suitdiamonds">
-							    <p>A</p>
-							  </div>
-
-							  <div class="cardd suithearts">
-							    <p>A</p>
-							  </div>
-
-							  <div class="cardd suitclubs">
-							    <p>A</p>
-							  </div>
-
-							  <div class="cardd suitspades">
-							    <p>A</p>
-							  </div>
-
-							</div>
-
-
-
-
-
-				</center>
 			</div>
 		);
 	}

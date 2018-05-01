@@ -81,12 +81,12 @@ class Blackjack extends Component {
       let val = Object.keys(deck.computer[deck.computer.length -1 ]);
 
        switch(val[0]) {
-         case "jack":
-         case "queen":
-         case "king":
+         case "J":
+         case "Q":
+         case "K":
            val = 10;
            break;
-         case "ace":
+         case "A":
            val = deck.computerScore <= 10 ? 11 : 1
            break;
          default:
@@ -102,12 +102,12 @@ class Blackjack extends Component {
       let val = Object.keys(deck.player1[x]);
 
         switch(val[0]) {
-          case "jack":
-          case "queen":
-          case "king":
+          case "J":
+          case "Q":
+          case "K":
             val = 10;
             break;
-          case "ace":
+          case "A":
             val = deck.player1Score <= 10 ? 11 : 1;
             break;
           default:
@@ -127,12 +127,12 @@ class Blackjack extends Component {
     let val = Object.keys(player1[player1.length - 1 ]);
 
     switch(val[0]) {
-      case "jack":
-      case "queen":
-      case "king":
+      case "J":
+      case "Q":
+      case "K":
         val = 10;
         break;
-      case "ace":
+      case "A":
         val = state.player1Score <= 10 ? 11 : 1
         break;
       default:
@@ -177,11 +177,11 @@ class Blackjack extends Component {
   }
 
   render() {
-    // console.log("blackjack state", this.state);
+    console.log("blackjack state", this.state);
     const { computer, player1, gameOver } = this.state
 
     if (this.state.hasError) {
-      alert("Sorry, there was an extremely rare, unforseen error. Please refresh the page");
+      alert("Please refresh the page");
     }
 
     return (
@@ -198,28 +198,31 @@ class Blackjack extends Component {
               <br />
 
 
+
+
               <div className="card-container">
                 { gameOver &&
                    computer.map((el, i) => {
                     let val = Object.keys(el)
                     let suit = Object.values(el)
                     return (
-                      <div key={i} className="card" id="show">
-                        <div className="front">
-                          { val } <br />
-                          { suit }
-                        </div>
+                      <div key={i} className={`card ${suit}`} id="show">
+
+                          <p>{ val }</p> <br />
+
+
                       </div>
                     )
                   })
                 }
 
                 { !gameOver &&
+
                 <a onClick={this.flipCard}>
-                <div className={this.state.flipped}>
+                <div className={`${this.state.flipped} ${Object.values(computer[0])}`}>
                   <div className="front">
-                    { Object.keys(computer[0]) } <br />
-                    { Object.values(computer[0]) }
+                    <p>{ Object.keys(computer[0]) } </p>
+
                   </div>
                   <div className="back">
                     <div className="photo"></div>
@@ -228,11 +231,10 @@ class Blackjack extends Component {
                 </a>
               }
               { !this.state.gameOver &&
-                <div className="card" id="show">
-                  <div className="front">
+                <div className="front">
+                  <div className={`card ${Object.values(computer[1])}`} id="show">
 
-                    { Object.keys(computer[1]) } <br />
-                    { Object.values(computer[1]) }
+                    <p>{ Object.keys(computer[1]) }</p>
 
                   </div>
                   <div className="back">
@@ -255,7 +257,6 @@ class Blackjack extends Component {
             </Col>
           </div>
 
-
           <Row>
 
             {this.state.computer.length &&
@@ -266,20 +267,17 @@ class Blackjack extends Component {
               <h3>Player One:</h3>
               <h4> <span className="score-text">Score: { this.state.player1Score }</span></h4>
 
-              <div className="card-container">
+              <div className="hand spread" >
+
                 { this.state.player1.map((el, i) => {
                   let val = Object.keys(el)
                   let suit = Object.values(el)
                   return (
-                    <div key={i} className="card" id="show">
-                      <div className="front">
-                        { val } <br />
-                        { suit }
+
+                    <div key={i} className={`card ${suit}`} >
+                        <p>{ val }</p>
                       </div>
-                      <div className="back">
-                        <div className="photo"></div>
-                      </div>
-                    </div>
+
                   )
                 })}
               </div>
