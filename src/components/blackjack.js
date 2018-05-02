@@ -16,6 +16,7 @@ const initialState = deepFreeze({
 	flipped: 'card',
 	gameOver: false,
 	message: '',
+	statusText: '',
 	hasError: false
 });
 
@@ -36,6 +37,7 @@ class Blackjack extends Component {
 		flipped: 'card',
 		gameOver: false,
 		message: '',
+		statusText: '',
 		hasError: false
 	};
 
@@ -175,6 +177,7 @@ class Blackjack extends Component {
 
 		if (state.player1Score > 21 && state.highAces === 0) {
 			state.flipped = 'card flipit';
+			state.statusText = 'loser';
 			state.gameOver = true;
 			state.message = 'YOU BUSTED';
 		}
@@ -199,13 +202,13 @@ class Blackjack extends Component {
 		const { player1Score, computerScore } = this.state;
 
 		if (player1Score > computerScore) {
-			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true });
+			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true, statusText: 'winner' });
 		} else if (computerScore > player1Score && computerScore > 21) {
-			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true });
+			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true, statusText: 'winner' });
 		} else if (computerScore > player1Score && computerScore <= 21){
-			this.setState({ message: 'GAME OVER', flipped: 'card flipit', gameOver: true });
+			this.setState({ message: 'GAME OVER', flipped: 'card flipit', gameOver: true, statusText: 'loser' });
 		} else {
-			this.setState({ message: 'TIE', flipped: 'card flipit', gameOver: true });
+			this.setState({ message: 'TIE', flipped: 'card flipit', gameOver: true, statusText: 'loser' });
 		}
 	};
 
@@ -267,7 +270,7 @@ class Blackjack extends Component {
 						{ computer.length &&
 						<Col xs={6} xsOffset={4}>
 							<br />
-							<h1 style={{margin: 10, padding: 1, height: 20}} className={`${this.state.message === "YOU WIN!" ? 'winner' : 'loser'}`}>{ this.state.message }</h1>
+							<h1 style={{margin: 10, padding: 1, height: 20}} className={this.state.statusText}>{ this.state.message }</h1>
 							<br />
 							<h3 className="player-one">Player One:</h3>
 							<h4> <span className="score-text">Score: { this.state.player1Score }</span></h4>

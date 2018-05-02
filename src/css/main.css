@@ -449,4 +449,4 @@ div[class*='suit']:after {
 
 /* line 589, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .loser {
-  animation: loser 2s ease-in; }
+  animation: loser 2s; }
