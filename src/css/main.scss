@@ -51,25 +51,28 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 @-webkit-keyframes cardenter {
 	0% {
 		transform: rotatey(0deg);
-		-webkit-transform: rotatey(0deg);
+		transform-style: preserve-3d;
+		// -webkit-transform: rotatey(0deg);
+		// -webkit-transform-style: preserve-3d;
+
 	}
 
 	100% {
 		transform-style: preserve-3d;
 		transform: rotatey(180deg);
-		transition: .5s;
-		-webkit-transform-style: preserve-3d;
-		-webkit-transform: rotatey(180deg);
-		-webkit-transition: .5s;
-		-moz-transform-style: preserve-3d;
-		-moz-transform: rotatey(180deg);
-		-moz-transition: .5s;
-		-ms-transform-style: preserve-3d;
-		-ms-transform: rotatey(180deg);
-		-ms-transition: .5s;
-		-o-transform-style: preserve-3d;
-		-o-transform: rotatey(180deg);
-		-o-transition: .5s;
+		
+		// -webkit-transform-style: preserve-3d;
+		// -webkit-transform: rotatey(180deg);
+		
+		// -moz-transform-style: preserve-3d;
+		// -moz-transform: rotatey(180deg);
+		
+		// -ms-transform-style: preserve-3d;
+		// -ms-transform: rotatey(180deg);
+		
+		// -o-transform-style: preserve-3d;
+		// -o-transform: rotatey(180deg);
+		
 
 	}
 }
@@ -101,7 +104,6 @@ body {
 
 }
 .touch {
-
 	height: 37px;
 	margin: auto;
 	margin-left: 15px;
@@ -110,14 +112,12 @@ body {
 }
 
 .card-container {
-	perspective: 900px;
-	display: flex;
-	flex-wrap: wrap;
+	*display: flex;
+	*flex-wrap: wrap;
 }
 
 .card {
 	margin-bottom: 10px;
-	display: inline-block;
 	position: relative;
 	float: left;
 	margin-right: 10px;
@@ -128,30 +128,33 @@ body {
 	-webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
 	box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
 
-
-	p {
-		text-align: center;
-		font: 80px/160px Georgia, Times New Roman, serif;
-		position: absolute;
-		z-index: 20000;
-	}
-
-
 	.front, .back {
 		@include backface-visibility;
 		position: absolute;
+		-webkit-position: absolute;
 		display: flex;
+		-webkit-display: flex;
 		align-content: space-around;
 		justify-content: center;
+
 	}
 
 	.front {
 		@include transform(rotatey(-180deg));
+		@include transform-style(preserve-3d);
+		@include transition(2s);
 		// animation-name: cardenter;
 
 		z-index: 1;
 		height: 100%;
+		position: absolute;
 		width: 100%;
+			p {
+		text-align: center;
+		font: 80px/160px Georgia, Times New Roman, serif;
+		z-index: 20;
+	}
+
 
 	}
 
@@ -169,17 +172,17 @@ body {
 }
 
 .flipit {
-	// @include transform(rotatey(-180deg));
-	// @include transform-style(preserve-3d);
-	// @include transition(2s);
+	@include transform(rotatey(-180deg));
+	@include transform-style(preserve-3d);
+	@include transition(2s);
 	// animation-name: cardenter;
 	// animation-fill-mode: forwards;
 	// animation-duration: .5s;
 	animation: cardenter .5s forwards;
 	-webkit-animation: cardenter .5s forwards;
-	// -webkit-animation-name: cardenter;
-	// -webkit-animation-fill-mode: forwards;
-	// -webkit-transition-duration: .5s; /* Safari */
+	-webkit-animation-name: cardenter;
+	
+	-webkit-transition-duration: .5s; /* Safari */
 	
 	
 
