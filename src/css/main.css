@@ -87,11 +87,11 @@ body {
     justify-content: center; }
   /* line 144, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .card .front {
-    transform: rotatey(180deg);
-    -webkit-transform: rotatey(180deg);
-    -moz-transform: rotatey(180deg);
-    -ms-transform: rotatey(180deg);
-    -o-transform: rotatey(180deg);
+    transform: rotatey(-180deg);
+    -webkit-transform: rotatey(-180deg);
+    -moz-transform: rotatey(-180deg);
+    -ms-transform: rotatey(-180deg);
+    -o-transform: rotatey(-180deg);
     z-index: 1;
     height: 100%;
     width: 100%; }
@@ -108,20 +108,9 @@ body {
 
 /* line 167, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .flipit {
-  transform: rotatey(-180deg);
-  -webkit-transform: rotatey(-180deg);
-  -moz-transform: rotatey(-180deg);
-  -ms-transform: rotatey(-180deg);
-  -o-transform: rotatey(-180deg);
-  transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -o-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s; }
+  animation-name: cardenter;
+  animation-fill-mode: forwards;
+  animation-duration: .5s; }
 
 /* line 177, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .page-header {

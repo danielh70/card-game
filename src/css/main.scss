@@ -142,7 +142,7 @@ body {
 	}
 
 	.front {
-		@include transform(rotatey(180deg));
+		@include transform(rotatey(-180deg));
 		// animation-name: cardenter;
 
 		z-index: 1;
@@ -165,12 +165,12 @@ body {
 }
 
 .flipit {
-	@include transform(rotatey(-180deg));
-	@include transform-style(preserve-3d);
-	@include transition(.5s);
-	// animation-name: cardenter;
-	// animation-fill-mode: forwards;
-	// animation-duration: .5s;
+	// @include transform(rotatey(-180deg));
+	// @include transform-style(preserve-3d);
+	// @include transition(2s);
+	animation-name: cardenter;
+	animation-fill-mode: forwards;
+	animation-duration: .5s;
 	// border: 1px solid rgba(0, 0, 0, .5);
 }
 

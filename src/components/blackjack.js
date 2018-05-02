@@ -202,7 +202,7 @@ class Blackjack extends Component {
 										let val = Object.keys(el);
 										let suit = Object.values(el);
 										return (
-											<div key={i} className={` card ${suit} flipit`} >
+											<div key={i} className={`${this.state.flipped} ${suit}`} >
 												<div className="front">
 													<p>{ val }</p> 
 												</div>
