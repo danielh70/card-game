@@ -99,7 +99,7 @@ class Blackjack extends Component {
 				// val = deck.computerScore <= 10 ? 11 : 1;
 				if (deck.computerScore <= 10) {
 					val = 11;
-					deck.compHighAces++
+					deck.compHighAces++;
 				}
 				else {
 					val = 1;
@@ -110,10 +110,10 @@ class Blackjack extends Component {
 			}
 			deck.computerScore += val;
 
-				if (deck.computerScore > 21 && deck.highAces > 0){
-					deck.highAces--;
-					deck.computerScore = deck.computerScore - 10;
-				}
+			if (deck.computerScore > 21 && deck.highAces > 0){
+				deck.highAces--;
+				deck.computerScore = deck.computerScore - 10;
+			}
 		}
 
 		// find the key (value in this case) for every object in the array, and add them up
@@ -129,7 +129,7 @@ class Blackjack extends Component {
 			case 'A':
 				if (deck.player1Score <= 10) {
 					val = 11;
-					deck.highAces++
+					deck.highAces++;
 				}
 				else {
 					val = 1;
@@ -160,7 +160,7 @@ class Blackjack extends Component {
 		case 'A':
 			if (state.player1Score <= 10) {
 				val = 11;
-				state.highAces++
+				state.highAces++;
 			}
 			else {
 				val = 1;
@@ -212,12 +212,7 @@ class Blackjack extends Component {
 	render() {
 		console.log('blackjack state', this.state);
 		const { computer, player1, gameOver } = this.state;
-		const afterGame = computer.slice(2);
 		const duringGame = gameOver ? computer : computer.slice(0, 2);
-
-		console.log("aftergame", afterGame, "duringGame", duringGame);
-		
-		
 
 		if (this.state.hasError) {
 			alert('Please refresh the page');
@@ -241,17 +236,17 @@ class Blackjack extends Component {
 									let val = Object.keys(el);
 									let suit = Object.values(el);
 		
-										return (
-											<div key={i} className={`${this.state.flipped} ${suit} ${i === 1 ? "flipit" : ''}`} >
-												<div className="front">
-													<p>{ val }</p> 
-												</div>
-												<div className="back">
-													<div className="photo"></div>
-												</div>
+									return (
+										<div key={i} className={`${this.state.flipped} ${suit} ${i === 1 ? 'flipit' : ''}`} >
+											<div className="front">
+												<p>{ val }</p> 
 											</div>
-										);
-									})
+											<div className="back">
+												<div className="photo"></div>
+											</div>
+										</div>
+									);
+								})
 								}
 							</div>
 						</Col>
