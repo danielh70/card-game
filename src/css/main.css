@@ -376,36 +376,37 @@ body {
   /* line 491, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .card p {
     text-align: center;
-    font: 80px/160px Georgia, Times New Roman, serif; }
+    font: 80px/160px Georgia, Times New Roman, serif;
+    position: absolute; }
 
-/* line 498, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 499, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .suitdiamonds:before, .suitdiamonds:after {
   content: "♦";
   color: #ff0000; }
 
-/* line 503, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 504, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .suithearts:before, .suithearts:after {
   content: "♥";
   color: #ff0000; }
 
-/* line 508, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 509, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .suitclubs:before, .suitclubs:after {
   content: "♣";
   color: #000; }
 
-/* line 513, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 514, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .suitspades:before, .suitspades:after {
   content: "♠";
   color: #000; }
 
-/* line 518, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 519, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 div[class*='suit']:before {
   position: absolute;
   font-size: 35px;
   left: 5px;
   top: 5px; }
 
-/* line 525, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 526, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 div[class*='suit']:after {
   position: absolute;
   font-size: 35px;
