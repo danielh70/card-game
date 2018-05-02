@@ -50,7 +50,7 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 
 @-webkit-keyframes cardenter {
 	0% {
-		transform: rotatey(180deg);
+		transform: rotatey(0deg);
 		transform-style: preserve-3d;
 		-webkit-transform: rotatey(0deg);
 		-webkit-transform-style: preserve-3d;
@@ -124,6 +124,9 @@ body {
 }
 
 .card {
+	// @include transform(rotatey(-180deg));
+	// 	@include transform-style(preserve-3d);
+	// 	@include transition(.5s);
 	margin-bottom: 10px;
 	position: relative;
 	float: left;
@@ -148,15 +151,17 @@ body {
 
 	.front {
 		@include transform(rotatey(-180deg));
-		@include transform-style(preserve-3d);
-		@include transition(.5s);
 		// animation-name: cardenter;
-		-webkit-animation: cardenter .5s forwards;
-		// animation: cardenter 1s forwards;
+		-webkit-animation: cardenter 0.1s forwards;
+		animation: cardenter false forwards;
 		z-index: 1;
 		height: 100%;
 		position: absolute;
 		width: 100%;
+
+		animation-name: cardenter;
+		animation-fill-mode: forwards;
+		// animation-duration: .5s;
 		
 
 
@@ -178,22 +183,21 @@ body {
 .flipit {
 	@include transform(rotatey(-180deg));
 	@include transform-style(preserve-3d);
-	@include transition(.5s);
+	// @include transition(.5s);
 	// animation-name: cardenter;
 	// animation-fill-mode: forwards;
 	// animation-duration: .5s;
-	animation: cardenter .5s;
+	animation: cardenter .5s forwards;
 	-webkit-animation: cardenter .5s;
 	// animation: cardenter .5s forwards;   
 }
 
 .front > p {
-	// @include transform(rotatey(-180deg));
-	
+
 	padding: auto;
 	margin: auto;
 	font: 80px/160px Georgia, Times New Roman, serif;
-	z-index: 20;
+	
 	
 }
 
