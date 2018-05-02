@@ -23,8 +23,7 @@ class Navbar extends Component {
 		console.log(this.state)
 		return (
 			<div>
-		    <input type="button" className="sidenav-button-a" onClick={this.toggleNav} />
-
+		   <button className="sidenav-button-a" onClick={this.toggleNav}><i style={{color: 'white'}} className="fas fa-caret-right"></i></button>
 				<div className="nav-wrapper">
 					<div className={this.state.classes.join(' ')}>
 						<div className="menu-items">
