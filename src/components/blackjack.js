@@ -25,6 +25,10 @@ class Blackjack extends Component {
 		buildDeck: PropTypes.func.isRequired
 	};
 
+	static getState = () => {
+		return this.state
+	}
+
 	state = {
 		computer: [],
 		player1: [],

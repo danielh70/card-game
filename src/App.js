@@ -3,6 +3,7 @@ import { PageHeader } from 'react-bootstrap';
 import Blackjack from './components/blackjack.js';
 import react from './images/react.svg';
 import reactFire from './images/react-fire.svg';
+import NavTop from './components/navbar-top';
 
 
 class App extends Component {
@@ -10,8 +11,6 @@ class App extends Component {
 		super(props);
 		this.state = {
 			blackjack: true,
-			player1:  [],
-			computer: [],
 			active: false,
 		};
 	}
@@ -31,43 +30,30 @@ class App extends Component {
   };
 
 
-  componentWillMount() {
-  	let player1Deck;
-  	let computerDeck;
-  	player1Deck = this.buildDeck(player1Deck);
-  	computerDeck = this.buildDeck(computerDeck);
-
-  	this.setState({ player1: player1Deck, computer: computerDeck });
-  }
-
   render() {
   	const { blackjack } = this.state;
+  	console.log(this.state);
 
-  	// console.log(this.state);
   	return (
   		<div>
-  			<PageHeader style={{textAlign: 'center'}}>
-  				<img className="react-logo" src={react} alt="logo" />
-          Powered by React
-  				<img className="react-logo touch" src={reactFire} alt="logo" />
-  			</PageHeader>
+  			<NavTop />
 
+	  			{ blackjack &&
 
-  			{ blackjack &&
-          <Blackjack
-          	buildDeck={this.buildDeck}
-          />
-  			}
-
+	          		<Blackjack
+	          		buildDeck={this.buildDeck}
+	          		/>
+	  			}
+  			
   		</div>
   	);
   }
 }
-//
-// <div className="card-wrapper">
-//  <div className={`card-${i} h`}>
-//
-//  </div>
-// </div>
 
 export default App;
+
+{/*<PageHeader style={{textAlign: 'center'}}>
+  				<img className="react-logo" src={react} alt="logo" />
+          Powered by React
+  				<img className="react-logo touch" src={reactFire} alt="logo" />
+  			</PageHeader>*/}
