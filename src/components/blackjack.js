@@ -13,7 +13,8 @@ const initialState = deepFreeze({
 	player1Deck: [],
 	flipped: 'card',
 	gameOver: false,
-	message: ''
+	message: '',
+	hasError: false
 });
 
 class Blackjack extends Component {
@@ -233,11 +234,11 @@ class Blackjack extends Component {
 										<div className="front">
 											<p>{ Object.keys(computer[1]) }</p>
 										</div>
-									<div className="back">
-										<div className="photo"></div>
-									</div>
+										<div className="back">
+											<div className="photo"></div>
+										</div>
 
-								</div>
+									</div>
 								}
 							</div>
 						</Col>
@@ -263,20 +264,21 @@ class Blackjack extends Component {
 							<h3>Player One:</h3>
 							<h4> <span className="score-text">Score: { this.state.player1Score }</span></h4>
 
-							<div className="hand spread" >
+							<div className={`hand ${this.state.fanned}`} >
 
 								{ player1.map((el, i) => {
 									let val = Object.keys(el);
 									let suit = Object.values(el);
 									return (
-
-										<div key={i} className={`card ${suit}`} >
-											<p>{ val }</p>
+										<div key={i} className={`card ${suit} flipit`} >
+											<div className="front">
+												<p>{ val }</p>
+											</div>
 										</div>
-
 									);
 								})}
 							</div>
+							
 						</Col>
 						}
 					</Row>
