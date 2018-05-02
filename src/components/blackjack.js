@@ -267,9 +267,9 @@ class Blackjack extends Component {
 						{ computer.length &&
 						<Col xs={6} xsOffset={4}>
 							<br />
-							<h1 style={{margin: 0, padding: 2, height: 30}}>{ this.state.message }</h1>
+							<h1 style={{margin: 10, padding: 1, height: 20}} className={`${this.state.message === "YOU WIN!" ? 'winner' : 'loser'}`}>{ this.state.message }</h1>
 							<br />
-							<h3>Player One:</h3>
+							<h3 className="player-one">Player One:</h3>
 							<h4> <span className="score-text">Score: { this.state.player1Score }</span></h4>
 
 							<div className={`hand ${this.state.fanned}`} >

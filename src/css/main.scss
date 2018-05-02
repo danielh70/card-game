@@ -88,6 +88,9 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 	.react-logo {
 		display: none;
 	}
+	.player-one {
+		margin-top: 30px;
+	}
 }
 
 body {
@@ -553,6 +556,39 @@ div[class*='suit']:after {
 	bottom: 5px;
 }
 
+@keyframes winner {
+	from { 
+		color: white;
+		text-shadow: 2px 2px $main-background-color; 
+		 }
+	to { 
+		color: green;
+		text-shadow: 2px 2px  $main-background-color; 
+	}
+}
+
+@keyframes loser {
+	0% {
+		color: black;
+	}
+
+	50% {
+		color: red;
+	}
+
+	100% {
+		color: black
+	}
+}
+
+.winner {	
+	animation: winner .2s ;
+	animation-iteration-count: 5;
+}
+
+.loser {
+	animation: loser 2s ease-in;
+}	
 
 
 
