@@ -179,6 +179,7 @@ class Blackjack extends Component {
 	render() {
 		console.log('blackjack state', this.state);
 		const { computer, player1, gameOver } = this.state;
+		const afterGame = computer.slice(2);
 
 		if (this.state.hasError) {
 			alert('Please refresh the page');
@@ -199,7 +200,8 @@ class Blackjack extends Component {
 
 							<div className="card-container">
 								{ gameOver && 
-									computer.map((el, i) => {
+									afterGame.map((el, i) => {
+
 										let val = Object.keys(el);
 										let suit = Object.values(el);
 										return (
@@ -229,7 +231,6 @@ class Blackjack extends Component {
 								</a>
 								}
 								{ !gameOver &&
-								
 									<div className={`card ${Object.values(computer[1])} flipit`}>
 										<div className="front">
 											<p>{ Object.keys(computer[1]) }</p>
