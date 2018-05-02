@@ -11,6 +11,8 @@ const initialState = deepFreeze({
 	computerScore: 0,
 	computerDeck: [],
 	player1Deck: [],
+	highAces: 0,
+	compHighAces: 0,
 	flipped: 'card',
 	gameOver: false,
 	message: '',
@@ -29,6 +31,8 @@ class Blackjack extends Component {
 		computerScore: 0,
 		computerDeck: [],
 		player1Deck: [],
+		highAces: 0,
+		compHighAces: 0,
 		flipped: 'card',
 		gameOver: false,
 		message: '',
@@ -81,7 +85,7 @@ class Blackjack extends Component {
 			nu++;
 			compHand.push(deck.computerDeck[cards()]);
 			let removeFirstC = deck.computerDeck.indexOf(deck.computer[deck.computer.length -1]);
-			console.log("removeFirstC", removeFirstC);
+			
 			deck.computerDeck.splice(removeFirstC, 1);
 
 			let val = Object.keys(deck.computer[deck.computer.length -1 ]);
@@ -93,12 +97,24 @@ class Blackjack extends Component {
 				val = 10;
 				break;
 			case 'A':
-				val = deck.computerScore <= 10 ? 11 : 1;
+				// val = deck.computerScore <= 10 ? 11 : 1;
+				if (deck.computerScore <= 10) {
+					val = 11;
+					deck.compHighAces++
+				}
+				else {
+					val = 1;
+				}
 				break;
 			default:
 				val = parseInt(val, 10);
 			}
 			deck.computerScore += val;
+
+				if (deck.computerScore > 21 && deck.highAces > 0){
+					deck.highAces--;
+					deck.computerScore = deck.computerScore - 10;
+				}
 		}
 
 		// find the key (value in this case) for every object in the array, and add them up
@@ -112,7 +128,13 @@ class Blackjack extends Component {
 				val = 10;
 				break;
 			case 'A':
-				val = deck.player1Score <= 10 ? 11 : 1;
+				if (deck.player1Score <= 10) {
+					val = 11;
+					deck.highAces++
+				}
+				else {
+					val = 1;
+				}
 				break;
 			default:
 				val = parseInt(val, 10);
@@ -137,18 +159,29 @@ class Blackjack extends Component {
 			val = 10;
 			break;
 		case 'A':
-			val = state.player1Score <= 10 ? 11 : 1;
+			if (state.player1Score <= 10) {
+				val = 11;
+				state.highAces++
+			}
+			else {
+				val = 1;
+			}
 			break;
 		default:
 			val = parseInt(val, 10);
 		}
 
+		// checkAce();
 		state.player1Score += val;
 
-		if (state.player1Score > 21) {
+		if (state.player1Score > 21 && state.highAces === 0) {
 			state.flipped = 'card flipit';
 			state.gameOver = true;
 			state.message = 'YOU BUSTED';
+		}
+		else if (state.player1Score > 21 && state.highAces > 0){
+			state.highAces--;
+			state.player1Score = state.player1Score - 10;
 		}
 
 		state.player1Deck.splice(getCard, 1);
