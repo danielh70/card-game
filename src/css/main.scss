@@ -41,8 +41,7 @@
 	box-shadow: 1px 2px 2px;
 }
 
-// variables
-// $main-background-color: rgba(230, 10, 10, .5);
+
 $main-background-color: rgba(51, 102, 255, .4);
 $main-color: rgb(230, 10, 10);
 $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
@@ -64,14 +63,14 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 		-webkit-transform-style: preserve-3d;
 		-webkit-transform: rotatey(180deg);
 		
-		// -moz-transform-style: preserve-3d;
-		// -moz-transform: rotatey(180deg);
+		-moz-transform-style: preserve-3d;
+		-moz-transform: rotatey(180deg);
 		
-		// -ms-transform-style: preserve-3d;
-		// -ms-transform: rotatey(180deg);
+		-ms-transform-style: preserve-3d;
+		-ms-transform: rotatey(180deg);
 		
-		// -o-transform-style: preserve-3d;
-		// -o-transform: rotatey(180deg);
+		-o-transform-style: preserve-3d;
+		-o-transform: rotatey(180deg);
 		
 
 	}
@@ -124,9 +123,6 @@ body {
 }
 
 .card {
-	// @include transform(rotatey(-180deg));
-	// 	@include transform-style(preserve-3d);
-	// 	@include transition(.5s);
 	margin-bottom: 10px;
 	position: relative;
 	float: left;
@@ -151,21 +147,14 @@ body {
 
 	.front {
 		@include transform(rotatey(-180deg));
-		// animation-name: cardenter;
 		-webkit-animation: cardenter 0.1s forwards;
 		animation: cardenter false forwards;
 		z-index: 1;
 		height: 100%;
 		position: absolute;
 		width: 100%;
-
 		animation-name: cardenter;
 		animation-fill-mode: forwards;
-		// animation-duration: .5s;
-		
-
-
-
 	}
 
 	.back {
@@ -183,13 +172,8 @@ body {
 .flipit {
 	@include transform(rotatey(-180deg));
 	@include transform-style(preserve-3d);
-	// @include transition(.5s);
-	// animation-name: cardenter;
-	// animation-fill-mode: forwards;
-	// animation-duration: .5s;
-	animation: cardenter .5s forwards;
-	-webkit-animation: cardenter .5s;
-	// animation: cardenter .5s forwards;   
+	animation: cardenter .5s;
+	-webkit-animation: cardenter .5s; 
 }
 
 .front > p {
@@ -197,7 +181,7 @@ body {
 	padding: auto;
 	margin: auto;
 	font: 80px/160px Georgia, Times New Roman, serif;
-	
+	position: absolute;
 	
 }
 

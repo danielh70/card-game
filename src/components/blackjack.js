@@ -69,9 +69,9 @@ class Blackjack extends Component {
 		p1Hand.push(deck.player1Deck[cards()]);
 
 		// match the index of the first 2 drawn cards and splice them out of the deck
-		let removeFirstP = deck.player1Deck.indexOf(this.state.player1[0]);
+		let removeFirstP = p1Deck.indexOf(deck.player1[0]);
 		deck.player1Deck.splice(removeFirstP, 1);
-		let removeSecondP = deck.player1Deck.indexOf(this.state.player1[1]);
+		let removeSecondP = p1Deck.indexOf(deck.player1[1]);
 		deck.player1Deck.splice(removeSecondP, 1);
 
 		let nu = 0;
@@ -79,8 +79,9 @@ class Blackjack extends Component {
 		// computer will keep drawing until their hand value is at least 17
 		while (deck.computerScore < 17 || nu < 1) {
 			nu++;
-			deck.computer.push(deck.computerDeck[cards()]);
-			let removeFirstC = deck.computerDeck.indexOf(this.state.computer[this.state.computer.length -1]);
+			compHand.push(deck.computerDeck[cards()]);
+			let removeFirstC = deck.computerDeck.indexOf(deck.computer[deck.computer.length -1]);
+			console.log("removeFirstC", removeFirstC);
 			deck.computerDeck.splice(removeFirstC, 1);
 
 			let val = Object.keys(deck.computer[deck.computer.length -1 ]);
