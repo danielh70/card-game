@@ -190,20 +190,25 @@ class Blackjack extends Component {
 						<Col md={2} xs={2}>
 
 						</Col>
-						{ this.state.computer.length &&
+						{ computer.length &&
 						<Col xs={6} xsOffset={2}>
 							<h3 style={{margin: 0, padding: 2, height: 30}}>Computer:</h3>
-							<div style={{margin: 0, height: 20, padding: 2}}>{ this.state.gameOver && <h4><span className="score-text">Score: { this.state.computerScore }</span> </h4>}</div>
+							<div style={{margin: 0, height: 20, padding: 2}}>{ gameOver && <h4><span className="score-text">Score: { this.state.computerScore }</span> </h4>}</div>
 							<br />
 
 							<div className="card-container">
-								{ gameOver &&
+								{ gameOver && 
 									computer.map((el, i) => {
 										let val = Object.keys(el);
 										let suit = Object.values(el);
 										return (
-											<div key={i} className={`card ${suit}`} id="show">
-												<p>{ val }</p> <br />
+											<div key={i} className={` card ${suit} flipit`} >
+												<div className="front">
+													<p>{ val }</p> 
+												</div>
+												<div className="back">
+													<div className="photo"></div>
+												</div>
 											</div>
 										);
 									})
@@ -215,7 +220,6 @@ class Blackjack extends Component {
 									<div className={`${this.state.flipped} ${Object.values(computer[0])}`}>
 										<div className="front">
 											<p>{ Object.keys(computer[0]) } </p>
-
 										</div>
 										<div className="back">
 											<div className="photo"></div>
@@ -223,13 +227,12 @@ class Blackjack extends Component {
 									</div>
 								</a>
 								}
-								{ !this.state.gameOver &&
-								<div className="front">
-									<div className={`card ${Object.values(computer[1])}`} id="show">
-
-										<p>{ Object.keys(computer[1]) }</p>
-
-									</div>
+								{ !gameOver &&
+								
+									<div className={`card ${Object.values(computer[1])} flipit`}>
+										<div className="front">
+											<p>{ Object.keys(computer[1]) }</p>
+										</div>
 									<div className="back">
 										<div className="photo"></div>
 									</div>
@@ -252,7 +255,7 @@ class Blackjack extends Component {
 
 					<Row>
 
-						{this.state.computer.length &&
+						{ computer.length &&
 						<Col xs={6} xsOffset={4}>
 							<br />
 							<h1 style={{margin: 0, padding: 2, height: 30}}>{ this.state.message }</h1>
