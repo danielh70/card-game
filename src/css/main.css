@@ -1,11 +1,15 @@
 @charset "UTF-8";
 @-webkit-keyframes cardenter {
   0% {
-    transform: rotatey(0deg);
-    transform-style: preserve-3d; }
+    transform: rotatey(180deg);
+    transform-style: preserve-3d;
+    -webkit-transform: rotatey(0deg);
+    -webkit-transform-style: preserve-3d; }
   100% {
     transform-style: preserve-3d;
-    transform: rotatey(180deg); } }
+    transform: rotatey(180deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: rotatey(180deg); } }
 
 @-webkit-keyframes react-logo-spin {
   from {
@@ -26,6 +30,11 @@ body {
   background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c); }
 
 /* line 98, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.test-wrapper {
+  transform: translate(0, 0);
+  -webkit-transform: translate(0, 0); }
+
+/* line 103, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .react-logo {
   animation: react-logo-spin infinite 15s linear;
   height: 50px;
@@ -33,7 +42,7 @@ body {
   position: relative;
   opacity: .8; }
 
-/* line 106, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 111, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .touch {
   height: 37px;
   margin: auto;
@@ -41,12 +50,14 @@ body {
   position: relative;
   opacity: .8; }
 
-/* line 114, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-.card-container {
-  *display: flex;
-  *flex-wrap: wrap; }
-
 /* line 119, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.card-container {
+  display: flex;
+  -webkit-display: flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap; }
+
+/* line 126, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .card {
   margin-bottom: 10px;
   position: relative;
@@ -58,7 +69,7 @@ body {
   background: #fff;
   -webkit-box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3); }
-  /* line 131, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 138, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .card .front, .card .back {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -71,7 +82,7 @@ body {
     -webkit-display: flex;
     align-content: space-around;
     justify-content: center; }
-  /* line 142, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 149, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .card .front {
     transform: rotatey(-180deg);
     -webkit-transform: rotatey(-180deg);
@@ -83,31 +94,27 @@ body {
     -o-transform-style: preserve-3d;
     -ms-transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    transition: 2s;
-    -webkit-transition: 2s;
-    -moz-transition: 2s;
-    -o-transition: 2s;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-animation: cardenter .5s forwards;
     z-index: 1;
     height: 100%;
     position: absolute;
     width: 100%; }
-    /* line 152, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-    .card .front p {
-      text-align: center;
-      font: 80px/160px Georgia, Times New Roman, serif;
-      z-index: 20; }
-  /* line 161, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 166, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .card .back {
     z-index: 3;
     width: 100%;
     height: 100%;
     background-image: url("../images/card-back.png");
     background-size: 100% 100%; }
-    /* line 168, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+    /* line 172, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
     .card .back:hover {
       cursor: pointer; }
 
-/* line 174, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 178, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .flipit {
   transform: rotatey(-180deg);
   -webkit-transform: rotatey(-180deg);
@@ -119,17 +126,21 @@ body {
   -o-transform-style: preserve-3d;
   -ms-transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  transition: 2s;
-  -webkit-transition: 2s;
-  -moz-transition: 2s;
-  -o-transition: 2s;
-  animation: cardenter .5s forwards;
-  -webkit-animation: cardenter .5s forwards;
-  -webkit-animation-name: cardenter;
-  -webkit-transition-duration: .5s;
-  /* Safari */ }
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  animation: cardenter .5s;
+  -webkit-animation: cardenter .5s; }
 
-/* line 192, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 190, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.front > p {
+  padding: auto;
+  margin: auto;
+  font: 80px/160px Georgia, Times New Roman, serif;
+  z-index: 20; }
+
+/* line 210, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .page-header {
   margin: 0;
   margin-bottom: 10px;
@@ -138,12 +149,12 @@ body {
   padding-top: 10px;
   height: 5em;
   box-shadow: 1px 1px 2px black; }
-  /* line 201, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 219, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .page-header h1 {
     margin: 0;
     padding: 0; }
 
-/* line 207, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 225, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 #button-group {
   min-width: 130px;
   position: fixed;
@@ -152,12 +163,12 @@ body {
   left: auto;
   z-index: 30; }
 
-/* line 216, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 234, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .score-text {
   text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.4);
   color: #e60a0a; }
 
-/* line 221, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 239, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 #custom-button {
   border-radius: 3px;
   border: 1px solid transparent;
@@ -165,10 +176,10 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   width: 100px; }
-  /* line 228, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 246, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   #custom-button:disabled {
     opacity: .4; }
-  /* line 231, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 249, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   #custom-button:hover {
     transition: 0.4s;
     -webkit-transition: 0.4s;
@@ -177,7 +188,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.5); }
 
 /* SIDE NAV */
-/* line 239, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 257, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .sidenav-button-a {
   background: rgba(0, 0, 255, 0.5);
   border-top-right-radius: 5px;
@@ -225,7 +236,7 @@ body {
   to {
     visibility: visible; } }
 
-/* line 299, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 317, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .nav-wrapper {
   position: fixed;
   height: 30px;
@@ -234,7 +245,7 @@ body {
   transition: 2s ease-out;
   z-index: 500;
   text-align: center; }
-  /* line 308, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 326, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .nav-wrapper .nav-menu {
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-top-right-radius: 5px;
@@ -244,17 +255,17 @@ body {
     animation-name: slideOut;
     animation-duration: 1s;
     animation-fill-mode: forwards; }
-    /* line 314, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+    /* line 332, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
     .nav-wrapper .nav-menu .menu-items {
       animation-name: showItems;
       animation-delay: .9s;
       animation-duration: .1s;
       animation-fill-mode: forwards; }
-      /* line 320, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+      /* line 338, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
       .nav-wrapper .nav-menu .menu-items ol {
         list-style-position: inside;
         padding: 5px; }
-  /* line 327, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 345, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .nav-wrapper .nav-menu-closed {
     background: rgba(244, 167, 66, 0.8);
     animation-name: slideIn;
@@ -264,18 +275,18 @@ body {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     box-shadow: 1px 2px 2px; }
-  /* line 335, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 353, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .nav-wrapper .menu-items {
     visibility: hidden; }
 
 /* CARD IMAGES */
-/* line 342, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 360, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .card-wrapper {
   width: 213px;
   height: 268px;
   display: inline-block; }
 
-/* line 349, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 367, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread > .card {
   position: absolute;
   top: 0;
@@ -287,14 +298,14 @@ body {
   transition: top 0.3s ease, left 0.3s ease;
   transition: .5s ease; }
 
-/* line 361, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 379, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread {
   margin-top: 20px;
   width: 250px;
   height: 250px;
   position: relative; }
 
-/* line 368, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 386, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread > .card {
   position: absolute;
   top: 0;
@@ -305,7 +316,7 @@ body {
   -ms-transition: top 0.3s ease, left 0.3s ease;
   transition: .5s ease; }
 
-/* line 381, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 399, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread :nth-child(1) {
   right: 100px;
   top: 10px;
@@ -316,7 +327,7 @@ body {
   transform: rotate(-30deg);
   transition: .5s; }
 
-/* line 395, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 413, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread :nth-child(2) {
   left: 50px;
   -webkit-transform: rotate(10deg);
@@ -326,7 +337,7 @@ body {
   transform: rotate(10deg);
   transition: .5s; }
 
-/* line 406, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 424, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread :nth-child(2):last-child {
   left: 100px;
   -webkit-transform: rotate(30deg);
@@ -336,7 +347,7 @@ body {
   transform: rotate(30deg);
   transition: .5s; }
 
-/* line 416, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 434, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread :nth-child(3) {
   left: 200px;
   top: 10px;
@@ -347,7 +358,7 @@ body {
   transform: rotate(30deg);
   transition: .5s; }
 
-/* line 427, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 445, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread :nth-child(4) {
   left: 80px;
   top: 20px;
@@ -358,7 +369,7 @@ body {
   transform: rotate(50deg);
   transition: .5s; }
 
-/* line 438, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 456, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread :nth-child(5) {
   left: 100px;
   top: 30px;
@@ -369,47 +380,47 @@ body {
   transform: rotate(70deg);
   transition: .5s; }
 
-/* line 483, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 501, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .spread > .card .fanned {
   -webkit-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4); }
 
-/* line 488, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 506, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 body {
   background: #00a651; }
 
-/* line 512, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 530, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .suitdiamonds:before, .suitdiamonds:after {
   content: "♦";
   color: #ff0000;
   position: absolute; }
 
-/* line 518, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 536, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .suithearts:before, .suithearts:after {
   content: "♥";
   color: #ff0000;
   position: absolute; }
 
-/* line 524, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 542, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .suitclubs:before, .suitclubs:after {
   content: "♣";
   color: #000;
   position: absolute; }
 
-/* line 530, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 548, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .suitspades:before, .suitspades:after {
   content: "♠";
   color: #000;
   position: absolute; }
 
-/* line 536, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 554, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 div[class*='suit']:before {
   position: absolute;
   font-size: 35px;
   left: 5px;
   top: 5px; }
 
-/* line 543, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 561, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 div[class*='suit']:after {
   position: absolute;
   font-size: 35px;

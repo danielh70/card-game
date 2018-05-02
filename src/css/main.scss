@@ -50,10 +50,10 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 
 @-webkit-keyframes cardenter {
 	0% {
-		transform: rotatey(0deg);
+		transform: rotatey(180deg);
 		transform-style: preserve-3d;
-		// -webkit-transform: rotatey(0deg);
-		// -webkit-transform-style: preserve-3d;
+		-webkit-transform: rotatey(0deg);
+		-webkit-transform-style: preserve-3d;
 
 	}
 
@@ -61,8 +61,8 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 		transform-style: preserve-3d;
 		transform: rotatey(180deg);
 		
-		// -webkit-transform-style: preserve-3d;
-		// -webkit-transform: rotatey(180deg);
+		-webkit-transform-style: preserve-3d;
+		-webkit-transform: rotatey(180deg);
 		
 		// -moz-transform-style: preserve-3d;
 		// -moz-transform: rotatey(180deg);
@@ -95,6 +95,11 @@ body {
 	background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
 }
 
+.test-wrapper {
+	transform: translate(0, 0);
+  	-webkit-transform: translate(0, 0);
+}
+
 .react-logo {
 	animation: react-logo-spin infinite 15s linear;
 	height: 50px;
@@ -112,8 +117,10 @@ body {
 }
 
 .card-container {
-	*display: flex;
-	*flex-wrap: wrap;
+	display: flex;
+	-webkit-display: flex;
+	flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
 }
 
 .card {
@@ -142,24 +149,21 @@ body {
 	.front {
 		@include transform(rotatey(-180deg));
 		@include transform-style(preserve-3d);
-		@include transition(2s);
+		@include transition(.5s);
 		// animation-name: cardenter;
-
+		-webkit-animation: cardenter .5s forwards;
+		// animation: cardenter 1s forwards;
 		z-index: 1;
 		height: 100%;
 		position: absolute;
 		width: 100%;
-			p {
-		text-align: center;
-		font: 80px/160px Georgia, Times New Roman, serif;
-		z-index: 20;
-	}
+		
+
 
 
 	}
 
 	.back {
-
 		z-index: 3;
 		width: 100%;
 		height: 100%;
@@ -174,20 +178,34 @@ body {
 .flipit {
 	@include transform(rotatey(-180deg));
 	@include transform-style(preserve-3d);
-	@include transition(2s);
+	@include transition(.5s);
 	// animation-name: cardenter;
 	// animation-fill-mode: forwards;
 	// animation-duration: .5s;
-	animation: cardenter .5s forwards;
-	-webkit-animation: cardenter .5s forwards;
-	-webkit-animation-name: cardenter;
-	
-	-webkit-transition-duration: .5s; /* Safari */
-	
-	
-
-	// border: 1px solid rgba(0, 0, 0, .5);
+	animation: cardenter .5s;
+	-webkit-animation: cardenter .5s;
+	// animation: cardenter .5s forwards;   
 }
+
+.front > p {
+	// @include transform(rotatey(-180deg));
+	
+	padding: auto;
+	margin: auto;
+	font: 80px/160px Georgia, Times New Roman, serif;
+	z-index: 20;
+	
+}
+
+// 		p {
+// 		animation-name: cardenter;
+// 		animation-fill-mode: forwards;
+// 		-webkit-animation-name: cardenter;
+
+			
+			
+	// 		font: 80px/160px Georgia, Times New Roman, serif;
+	// }
 
 .page-header {
 	margin: 0;
