@@ -79,7 +79,6 @@ class Blackjack extends Component {
 		deck.player1Deck.splice(removeSecondP, 1);
 
 		let nu = 0;
-
 		// computer will keep drawing until their hand value is at least 17
 		while (deck.computerScore < 17 || nu < 1) {
 			nu++;
@@ -214,7 +213,9 @@ class Blackjack extends Component {
 		console.log('blackjack state', this.state);
 		const { computer, player1, gameOver } = this.state;
 		const afterGame = computer.slice(2);
-		const duringGame = gameOver ? computer : computer.slice(-2);
+		const duringGame = gameOver ? computer : computer.slice(0, 2);
+
+		console.log("aftergame", afterGame, "duringGame", duringGame);
 		
 		
 
