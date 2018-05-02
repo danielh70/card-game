@@ -180,6 +180,9 @@ class Blackjack extends Component {
 		console.log('blackjack state', this.state);
 		const { computer, player1, gameOver } = this.state;
 		const afterGame = computer.slice(2);
+		const duringGame = gameOver ? computer : computer.slice(-2);
+		
+		
 
 		if (this.state.hasError) {
 			alert('Please refresh the page');
@@ -199,13 +202,12 @@ class Blackjack extends Component {
 							<br />
 
 							<div className="card-container">
-								{ gameOver && 
-									afterGame.map((el, i) => {
-
-										let val = Object.keys(el);
-										let suit = Object.values(el);
+								{ duringGame.map((el, i) => {
+									let val = Object.keys(el);
+									let suit = Object.values(el);
+		
 										return (
-											<div key={i} className={`${this.state.flipped} ${suit}`} >
+											<div key={i} className={`${this.state.flipped} ${suit} ${i === 1 ? "flipit" : ''}`} >
 												<div className="front">
 													<p>{ val }</p> 
 												</div>
@@ -215,31 +217,6 @@ class Blackjack extends Component {
 											</div>
 										);
 									})
-								}
-
-								{ !gameOver &&
-
-								<a onClick={this.flipCard}>
-									<div className={`${this.state.flipped} ${Object.values(computer[0])}`}>
-										<div className="front">
-											<p>{ Object.keys(computer[0]) } </p>
-										</div>
-										<div className="back">
-											<div className="photo"></div>
-										</div>
-									</div>
-								</a>
-								}
-								{ !gameOver &&
-									<div className={`card ${Object.values(computer[1])} flipit`}>
-										<div className="front">
-											<p>{ Object.keys(computer[1]) }</p>
-										</div>
-										<div className="back">
-											<div className="photo"></div>
-										</div>
-
-									</div>
 								}
 							</div>
 						</Col>
