@@ -9,7 +9,7 @@ class Loader extends Component {
   render() {
     return (
       <div id="loader-wrapper">
-        <img src={this.loaderAnim} />
+        <img src={this.loaderAnim} alt="loading" />
       </div>
     )
   }
