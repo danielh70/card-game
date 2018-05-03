@@ -17,7 +17,7 @@ export default class NavTop extends Component {
 	
 
 	render() {
-		console.log("navstate", this.state);
+		
 		return (
 			<div>
 				<div className={this.state.names}>

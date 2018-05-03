@@ -32,7 +32,7 @@ class App extends Component {
 
   render() {
   	const { blackjack } = this.state;
-  	console.log(this.state);
+  	// console.log(this.state);
 
   	return (
   		<div>

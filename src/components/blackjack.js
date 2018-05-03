@@ -217,7 +217,7 @@ class Blackjack extends Component {
 	};
 
 	render() {
-		console.log('blackjack state', this.state);
+		// console.log('blackjack state', this.state);
 		const { computer, player1, gameOver } = this.state;
 		const duringGame = gameOver ? computer : computer.slice(0, 2);
 
