@@ -234,7 +234,7 @@ class Blackjack extends Component {
 						</Col>
 						{ computer.length &&
 						<Col xs={6} xsOffset={2}>
-							<h3 style={{marginTop: 100, padding: 2, height: 30}}>Computer:</h3>
+							<h3 style={{marginTop: 30, padding: 2, height: 30}}>Computer:</h3>
 							<div style={{margin: 0, height: 20, padding: 2}}>{ gameOver && <h4><span className="score-text">Score: { this.state.computerScore }</span> </h4>}</div>
 							<br />
 

@@ -91,71 +91,29 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 	.player-one {
 		margin-top: 30px;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	#nav-wrapper-top {
-	
-
-		.collapsers input {
-			display: none;
-		}
-
-		#icon {
-			display: block;
-			float: right;		
-		}
-
-		#responsive #nav-wrapper-top{
-			
-			position: relative;
-			right: 0;
-			top: 0;
-			
-			display: block;
-			text-align: left;
-			.collapsers  input {
-				float: none;
-				display: block;
-				text-align: left;
-				top: 0;
-				right: 0;				
-			}
-
-			#icon {
-				position: absolute;
-				right: 0;
-				top: 0;
-			}
-		}
-
-		// #dropdown-top#responsive {
-
-		// }
-	}
-
 }
 
+@media screen and (max-width: 600px) {
+  .nav-wrapper-top > :nth-child(-n+4) {display: none;}
+  .nav-wrapper-top button.icon {
+    float: right;
+    display: block;
+  }
+}
 
-
-
+@media screen and (max-width: 600px) {
+  .nav-wrapper-top.responsive {position: relative;}
+  .nav-wrapper-top.responsive button.icon {
+    position: absolute;
+    right: 16px;
+    top: 14px;
+  }
+  .nav-wrapper-top.responsive button {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
 
 
 body {
@@ -666,49 +624,55 @@ div[class*='suit']:after {
 /* NAVBAR */
 @import url('https://fonts.googleapis.com/css?family=Laila');
 
-#nav-wrapper-top {
-	display: flex;
-	// flex-wrap: wrap; 
+.nav-wrapper-top {
 	opacity: .8;
 	width: 100%;
 	float: left;
 	margin: 0 0 3em 0;
-	padding: 5px;
-	list-style: none;
+	padding: 14px 16px;
+	text-decoration: none;
 	background: linear-gradient(to left, rgb(188, 3, 9), rgb(214, 32, 38), rgb(142, 9, 14));
 	border-bottom: 1px solid #ccc; 
 	border-top: 1px solid #ccc;
 	box-shadow: 0px 1px 1px black; 
-	position: fixed;
+	text-align: center;
+	// position: fixed;
+	display: block;
 
-	#icon {
+	.icon {
+		float: right;
+		display: none;
+		// margin: 0 auto !important;
 		
-		margin: 0 auto !important;
 	}
 
-	input {
+	button {
 		float: left;
-			display: block;
-			padding: 10px 20px;
-			text-decoration: none;
-			font-weight: italic;
-			font-family: "Laila";
-			font-size: 20px;
-			color: white;
+		display: block;
+		padding: 6px 6px;
+		text-decoration: none;
+		font-weight: italic;
+		font-family: "Laila";
+		font-size: 20px;
+		color: white;
+		background: none;
+		border: none;	
 
-			&:disabled {
-				background: none;
-				border: none;	
-				color: gray;
-			}
-
-			&:hover {
-				-webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
-				-webkit-mask-image: linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
-				@include transition(.2s);
-			}			
+		&:disabled {
+			color: gray;
 		}
+
+		&:hover {
+			-webkit-mask-image: -webkit-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
+			-webkit-mask-image: linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
+			@include transition(.2s);
+		}			
+	}
 }
+
+
+
+
 
 #footer {
 	width: 100%;
@@ -723,6 +687,14 @@ div[class*='suit']:after {
 	color: white;
 	text-align: center;
 	z-index: 30;
+}
+
+#dropdown-btn {
+	color: black;
+	opacity: .7;
+	right: 0;
+	top: 0;
+	padding: 10;
 }
 
 // html {

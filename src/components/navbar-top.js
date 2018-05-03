@@ -17,34 +17,21 @@ export default class NavTop extends Component {
 	
 
 	render() {
+		console.log("navstate", this.state);
 		return (
 			<div>
-				<div id={this.state.names}>
-			
-						<input type="button" value="High/Low" disabled />
-		
-		
-		
-		
-						<input type="button" value="War" disabled />
+				<div className={this.state.names}>
+						
+							<button  disabled>High/Low</button>
+							<button  disabled>Solitaire</button>
+							<button  disabled>War</button>
+							<button  disabled>Blackjack</button>
 				
-		
-		
-				
-						<input type="button" value="Solitaire" disabled />
-				
-		
-		
-					
-						<input type="button" value="Blackjack" disabled />
-					
-			
-						<div id="icon">
-							<a onClick={this.handleClick}>
-								<i className="fas fa-bars"></i>
-							</a>
-						</div>
-					</div>
+							<button className= "icon" onClick={this.handleClick}>
+								<i id="dropdown-btn" className="fas fa-bars fa-1x"></i>
+							</button>
+						
+				</div>
 							
 					<div id="footer">
 						<Grid>
