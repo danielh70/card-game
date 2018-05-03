@@ -5,7 +5,7 @@ class Navbar extends Component {
 	state = {
 		active: false,
 		classes: []
-	}
+	};
 
 	toggleNav = () => {
 		let currentState = this.state.classes.slice();
@@ -15,12 +15,12 @@ class Navbar extends Component {
 			currentState[0] = 'nav-menu';
 		}
 
-		this.setState({ classes: currentState })
-	}
+		this.setState({ classes: currentState });
+	};
 
 
 	render() {
-		console.log(this.state)
+		console.log(this.state);
 		return (
 			<div>
 		   <button className="sidenav-button-a" onClick={this.toggleNav}><i style={{color: 'white'}} className="fas fa-caret-right"></i></button>
@@ -28,17 +28,17 @@ class Navbar extends Component {
 					<div className={this.state.classes.join(' ')}>
 						<div className="menu-items">
 							<h3>Highscores</h3>
-								<ol>
-									<li>
+							<ol>
+								<li>
 										Daniel Hook
-									</li>
-									<li>
+								</li>
+								<li>
 										Daniel Hook
-									</li>
-									<li>
+								</li>
+								<li>
 										Daniel Hook
-									</li>
-								</ol>
+								</li>
+							</ol>
 							<br />
 							Other games: <br />
 
@@ -52,7 +52,7 @@ class Navbar extends Component {
 
 		    { this.props.children }
 		  </div>
-		)
+		);
 	}
 }
 

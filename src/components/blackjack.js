@@ -21,13 +21,10 @@ const initialState = deepFreeze({
 });
 
 class Blackjack extends Component {
+	
 	static propTypes = {
 		buildDeck: PropTypes.func.isRequired
 	};
-
-	static getState = () => {
-		return this.state
-	}
 
 	state = {
 		computer: [],
