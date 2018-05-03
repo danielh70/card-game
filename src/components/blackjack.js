@@ -234,7 +234,7 @@ class Blackjack extends Component {
 						</Col>
 						{ computer.length &&
 						<Col xs={6} xsOffset={2}>
-							<h3 style={{margin: 0, padding: 2, height: 30}}>Computer:</h3>
+							<h3 style={{marginTop: 100, padding: 2, height: 30}}>Computer:</h3>
 							<div style={{margin: 0, height: 20, padding: 2}}>{ gameOver && <h4><span className="score-text">Score: { this.state.computerScore }</span> </h4>}</div>
 							<br />
 
@@ -262,10 +262,10 @@ class Blackjack extends Component {
 					</Row>
 					<div id="button-group">
 						<Col md={2} xs={4} smOffset={6}>
-							<input id="custom-button" type="button" disabled={gameOver} value="Hit" onClick={this.drawCard} /> <br /><br />
-							<input id="custom-button" type="button" disabled={gameOver} value="Stand" onClick={this.handleStand} /> <br /><br />
-							<input id="custom-button" type="button" value="double" disabled /> <br /><br />
-							<input id="custom-button" type="button" value="New Game" onClick={this.newGame} /> <br /><br />
+							<button id="custom-button"  disabled={gameOver} value="Hit" onClick={this.drawCard}>Hit</button> <br /><br />
+							<button id="custom-button"  disabled={gameOver} value="Stand" onClick={this.handleStand}>Stand</button> <br /><br />
+							<button id="custom-button"  value="double" disabled>Double</button> <br /><br />
+							<button id="custom-button"  value="New Game" onClick={this.newGame}>New Game</button> <br /><br />
 						</Col>
 					</div>
 
