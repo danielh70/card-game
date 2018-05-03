@@ -532,16 +532,10 @@ div[class*='suit']:after {
       -moz-transition: 0.2s;
       -o-transition: 0.2s; }
 
-@media screen and (max-width: 600px) {
-  /* line 685, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-  #footer {
-    position: absolute;
-    bottom: -120vh; } }
-
-/* line 692, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 704, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 #footer {
   width: 100%;
-  padding: 2em;
+  padding: 1.2em;
   margin: 15px 0 0 0;
   position: fixed;
   display: inline-block;
@@ -553,7 +547,7 @@ div[class*='suit']:after {
   text-align: center;
   z-index: 30; }
 
-/* line 707, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 719, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 #dropdown-btn {
   color: black;
   opacity: .7;
@@ -561,6 +555,6 @@ div[class*='suit']:after {
   top: 0;
   padding: 10; }
 
-/* line 719, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 731, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 body {
   padding-bottom: 100px; }

@@ -35,14 +35,16 @@ export default class NavTop extends Component {
 							
 					<div id="footer">
 						<Grid>
-							<Col xs={4}>
+							<Col xs={3}>
 								<a target="_blank" href="https://github.com/danielh70"> <i className="fab fa-github fa-3x"></i></a>
 							</Col>
-							<Col xs={4}>
+							<Col md={6} xs={6}>
 								© Copyright - Daniel Hook <br />
 								<a target="_blank" href="https://www.djhookdesigns.com/">My Portfolio</a> 
 							</Col>
+							<Col xs={3}>
 								<a style={{margin: 5, padding: 5}} target="_blank" href="https://www.linkedin.com/in/daniel-hook-010101/"> <i className="fab fa-linkedin fa-3x"></i></a>
+							</Col>
 						</Grid>
 					</div>
 			</div>
