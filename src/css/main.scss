@@ -248,7 +248,7 @@ body {
 	min-width: 130px;
 	position: fixed;
 	display: inline-block;
-	top: 30%;
+	top: 26%;
 	left: auto;
 	z-index: 30;
 }
@@ -264,6 +264,7 @@ body {
 	background: linear-gradient(to left, rgba(188, 3, 9, .7), rgba(214, 32, 38, .7), rgba(142, 9, 14, .7));
 	padding-top: 10px;
 	padding-bottom: 10px;
+	font-size: 1.1em;
 	width: 100px;
 	&:disabled {
 		opacity: .4;
@@ -680,6 +681,12 @@ div[class*='suit']:after {
 
 
 
+@media screen and (max-width: 600px) {
+ 	#footer {
+ 		position: absolute;
+ 		bottom: -120vh;
+ 	}
+}
 
 
 #footer {
