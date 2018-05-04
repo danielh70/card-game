@@ -40,11 +40,12 @@ class Navbar extends Component {
 								</li>
 							</ol>
 							<br />
-							Other games: <br />
+							Rules: <br />     
 
-							War (coming soon)<br />
-							Solitare (coming soon)<br />
-							Multiplayer (coming soon)<br />
+							Aces count as 1 or 11<br />
+							Player and computer operate off their own deck<br />
+							The computer hits until at least a score of 17<br />
+							
 						</div>
 					</div>
 				</div>
