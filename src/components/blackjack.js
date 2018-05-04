@@ -276,7 +276,7 @@ class Blackjack extends Component {
 							<h3 className="player-one">Player One:</h3>
 							<h4> <span className="score-text">Score: { this.state.player1Score }</span></h4>
 
-							<div className={`hand ${this.state.fanned}`} >
+							<div className="card-container">
 
 								{ player1.map((el, i) => {
 									let val = Object.keys(el);
@@ -285,6 +285,9 @@ class Blackjack extends Component {
 										<div key={i} className={`card ${suit} flipit`} >
 											<div className="front">
 												<p>{ val }</p>
+											</div>
+											<div className="back">
+												<div className="photo"></div>
 											</div>
 										</div>
 									);

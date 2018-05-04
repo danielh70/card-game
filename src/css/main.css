@@ -123,8 +123,7 @@ body {
     -moz-transform: rotatey(-180deg);
     -ms-transform: rotatey(-180deg);
     -o-transform: rotatey(-180deg);
-    -webkit-animation: cardenter 0.1s forwards;
-    animation: cardenter false forwards;
+    animation: cardenter 0.01s forwards;
     z-index: 1;
     height: 100%;
     position: absolute;
