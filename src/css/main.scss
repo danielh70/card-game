@@ -261,6 +261,9 @@ body {
 	width: 100px;
 	&:disabled {
 		opacity: .4;
+		&:hover {
+			border: 1px solid rgba(0,0,0, .0);
+		}
 	}
 	&:hover {
 		@include transition(.2s);

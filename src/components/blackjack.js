@@ -290,7 +290,6 @@ class Blackjack extends Component {
 									);
 								})}
 							</div>
-							
 						</Col>
 						}
 					</Row>
