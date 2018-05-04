@@ -519,8 +519,8 @@ div[class*='suit']:after {
       color: gray; }
     /* line 670, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
     .nav-wrapper-top button:hover {
-      -webkit-mask-image: -webkit-linear-gradient(top, black, rgba(0, 0, 0, 0.5) 50%, black);
-      -webkit-mask-image: linear-gradient(top, black, rgba(0, 0, 0, 0.5) 50%, black);
+      -webkit-mask-image: -webkit-linear-gradient(to top, black, rgba(0, 0, 0, 0.5) 50%, black);
+      -webkit-mask-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5) 50%, black);
       transition: 0.2s;
       -webkit-transition: 0.2s;
       -moz-transition: 0.2s;
