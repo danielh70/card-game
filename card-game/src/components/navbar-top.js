@@ -33,8 +33,9 @@ export default class NavTop extends Component {
 						
 					<button  disabled>High/Low</button>
 					<button  disabled>Solitaire</button>
-					<button  disabled>War</button>
+					<button ><a href="/">Home</a></button>
 					<button  disabled>Blackjack</button>
+					<button><a href="/signup">Sign Up</a></button>
 				
 					<button className= "icon" onClick={this.handleClick}>
 						<i id="dropdown-btn" className="fas fa-bars fa-1x"></i>
