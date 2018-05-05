@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h3.
+		Users
+	ul
+		each student, i in userlist
+			li#user_name
+				a(href="#") #{user.username}
