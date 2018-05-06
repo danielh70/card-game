@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Grid } from 'react-bootstrap';
 
-const APIURL = 'http://localhost:3000/newuser'
+const APIURL = 'http://localhost:3000/register'
 
 export default class Signup extends Component {
 
@@ -26,16 +26,16 @@ export default class Signup extends Component {
 		e.preventDefault();
 		console.log(this.state.form);
 
-		// fetch(APIURL, {
-		// 	method: "POST",
-		// 	headers: { "content-type": 'application/json' },
-		// 	body: JSON.stringify(this.state.form)
-		// })
-		// .then(res => res.json())
-		// .then(res => {
-		// 	console.log("response", res);
-		// })
-		// .catch(e => console.log(e));
+		fetch(APIURL, {
+			method: "POST",
+			headers: { "content-type": 'application/json' },
+			body: JSON.stringify(this.state.form)
+		})
+		.then(res => res.json())
+		.then(res => {
+			console.log("response", res);
+		})
+		.catch(e => console.log(e));
 	}
 
 	render() {

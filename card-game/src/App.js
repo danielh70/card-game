@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Blackjack from './components/blackjack.js';
 import NavTop from './components/navbar-top';
 import Signup from './components/sign-up';
+import Login from './components/log-in';
 
 
 class App extends Component {
@@ -45,7 +46,11 @@ class App extends Component {
   					<Signup />
   				}
   				/>
-	          	
+
+  				<Route exact path="/login" render={props => 
+  				<Login />
+  				}
+  				/>          	
 	  		
 	  			
   			</NavTop>
