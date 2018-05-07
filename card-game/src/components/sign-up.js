@@ -23,21 +23,21 @@ export default class Signup extends Component {
 		this.setState({ form: state });
 	}
 
-	handleSubmit = (e) => {
-		e.preventDefault();
-		console.log(this.state.form);
+	// handleSubmit = (e) => {
+	// 	e.preventDefault();
+	// 	console.log(this.state.form);
 
-		fetch(`${APIURL}/register`, {
-			method: "POST",
-			headers: { "content-type": 'application/json' },
-			body: JSON.stringify(this.state.form)
-		})
-		.then(res => res.json())
-		.then(res => {
-			console.log("response", res);
-		})
-		.catch(e => console.log(e));
-	}
+	// 	fetch(`${APIURL}/register`, {
+	// 		method: "POST",
+	// 		headers: { "content-type": 'application/json' },
+	// 		body: JSON.stringify(this.state.form)
+	// 	})
+	// 	.then(res => res.json())
+	// 	.then(res => {
+	// 		console.log("response", res);
+	// 	})
+	// 	.catch(e => console.log(e));
+	// }
 
 	render() {
 		const { name, password, password2, email } = this.state.form

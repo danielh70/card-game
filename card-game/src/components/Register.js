@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { registerUser } from "../reducer";
+import { registerUser } from "../reducers/authReducer";
 import SocialLoginLinks from "./SocialLoginLinks";
+import { Col } from 'react-bootstrap';
 
 class Register extends Component {
   state = {
@@ -41,10 +42,12 @@ class Register extends Component {
     const { unMatchPwd } = this.state;
 
     return (
-      <div>
+    	<Col lgOffset={4} lg={4} mdOffset={3} md={6} xs={12}>
+      <div className="form-wrapper">
+
         <form onSubmit={this.handleFormSubmit}>
-          <h2 style={{ textAlign: "center" }}>Register</h2>
-          <hr />
+          
+          
 
           <label>User Name</label>
           <input
@@ -55,9 +58,9 @@ class Register extends Component {
             required
             maxLength="50"
             autoFocus
-            style={{ margin: 10 }}
+            className="input-item"
           />
-          <span style={{ color: "red" }}>*</span>
+          
           <span style={{ color: "red", marginLeft: 8 }}>
             {registerErrors.name}
           </span>
@@ -71,9 +74,10 @@ class Register extends Component {
             }}
             required
             maxLength="50"
-            style={{ margin: 10 }}
+            className="input-item"
+            
           />
-          <span style={{ color: "red" }}>*</span>
+          
           <span style={{ color: "red", marginLeft: 8 }}>
             {registerErrors.email}
           </span>
@@ -84,15 +88,16 @@ class Register extends Component {
             type="password"
             pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
             title="Password must be at least 8 characters and include at least 1 uppercase character, 1 lowercase character, and 1 number."
-            style={{ margin: 10 }}
+            
             ref={node => {
               this.password = node;
             }}
             required
             minLength="8"
             maxLength="50"
+            className="input-item"
           />
-          <span style={{ color: "red" }}>*</span>
+          
           <span style={{ color: "red", marginLeft: 8 }}>
             {registerErrors.password}
           </span>
@@ -106,20 +111,21 @@ class Register extends Component {
             }}
             required
             maxLength="50"
-            style={{ margin: 10 }}
+            className="input-item"
           />
-          <span style={{ color: "red" }}>*</span>
+          
           <span style={{ color: "red", marginLeft: 8 }}>{unMatchPwd}</span>
           <br />
 
           <input
             type="submit"
             value="Submit!"
-            style={{ display: "block", margin: "auto" }}
+            id="custom-button"
           />
         </form>
         <SocialLoginLinks />
       </div>
+      </Col>
     );
   }
 }

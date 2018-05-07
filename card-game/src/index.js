@@ -22,8 +22,8 @@ import AppContainer from "./components/AppContainer";
 const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <AppContainer />
-  </Provider>,
-  document.getElementById("root")
+	<Provider store={store}>
+		<AppContainer />
+	</Provider>,
+	document.getElementById("root")
 );

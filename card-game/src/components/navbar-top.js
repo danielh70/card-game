@@ -3,23 +3,29 @@ import { Grid, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
-import { logoutUser } from "../reducer";
+import { logoutUser } from "../reducers/authReducer";
+import "../css/main.css";
 
 
-const APIURL = 'http://localhost:3000'
+	// 				<button  disabled>High/Low</button>
+	// 				<button  disabled>Solitaire</button>
+	// 				<button ><a href="/">Home</a></button>
+	// 				<button  disabled>Blackjack</button>
+	// 				<button><a href="/register">Sign Up</a></button>
+	// 				<button><a href="/login">Log In</a></button>
+	// 				<button onClick={this.logOut}>Log Out</button>
 
 let NavTop = ({ isAuthed, dispatch, history, userInfo }) => {
   if (isAuthed) {
     return (
-      <div style={{ display: "flex" }}>
-        <NavLink
-          exact
-          to="/"
-          style={{ flexGrow: 10 }}
-          activeStyle={{ color: "red" }}
-        >
-          Home
-        </NavLink>
+      <div className="nav-wrapper-top">
+  		<NavLink
+        to="/blackjack"
+        style={{ flexGrow: 1 }}
+        activeStyle={{ color: "red" }}
+      >
+        Blackjack
+      </NavLink>
         <NavLink
           to={`/profile/${userInfo._id}`}
           style={{ flexGrow: 1 }}
@@ -33,25 +39,22 @@ let NavTop = ({ isAuthed, dispatch, history, userInfo }) => {
         >
           Logout
         </div>
+        <button onClick={() => dispatch(logoutUser(() => history.push("/")))}
+        >
+        Log Out
+        </button>
       </div>
     );
   }
   return (
-    <div style={{ display: "flex" }}>
-      <NavLink
-        exact
-        to="/"
-        style={{ flexGrow: 10 }}
-        activeStyle={{ color: "red" }}
-      >
-        Home
-      </NavLink>
+    <div className="nav-wrapper-top">
+    <button  disabled>High/Low</button>
       <NavLink
         to="/register"
         style={{ flexGrow: 1 }}
         activeStyle={{ color: "red" }}
       >
-        Register
+        Sign Up
       </NavLink>
       <NavLink
         to="/login"

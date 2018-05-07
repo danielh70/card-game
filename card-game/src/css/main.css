@@ -40,7 +40,7 @@
   .nav-wrapper-top > :nth-child(-n+4) {
     display: none; }
   /* line 98, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-  .nav-wrapper-top button.icon {
+  .nav-wrapper-top NavLink.icon {
     float: right;
     display: block; } }
 
@@ -49,12 +49,12 @@
   .nav-wrapper-top.responsive {
     position: relative; }
   /* line 106, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-  .nav-wrapper-top.responsive button.icon {
+  .nav-wrapper-top.responsive a.icon {
     position: absolute;
     right: 16px;
     top: 14px; }
   /* line 112, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-  .nav-wrapper-top.responsive button {
+  .nav-wrapper-top.responsive a {
     float: none;
     display: block;
     text-align: left; } }
@@ -503,7 +503,7 @@ div[class*='suit']:after {
     float: right;
     display: none; }
   /* line 654, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-  .nav-wrapper-top button {
+  .nav-wrapper-top a {
     float: left;
     display: block;
     padding: 6px 6px;
@@ -515,10 +515,10 @@ div[class*='suit']:after {
     background: none;
     border: none; }
     /* line 666, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-    .nav-wrapper-top button:disabled {
+    .nav-wrapper-top a:disabled {
       color: gray; }
     /* line 670, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-    .nav-wrapper-top button:hover {
+    .nav-wrapper-top a:hover {
       -webkit-mask-image: -webkit-linear-gradient(to top, black, rgba(0, 0, 0, 0.5) 50%, black);
       -webkit-mask-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.5) 50%, black);
       transition: 0.2s;

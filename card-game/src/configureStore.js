@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
-import authReducer from "./reducer";
+import authReducer from "./reducers/authReducer";
 
 export default function configureStore(preloadedState) {
   return createStore(
