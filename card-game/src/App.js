@@ -5,6 +5,7 @@ import NavTop from './components/navbar-top';
 import Signup from './components/sign-up';
 import Login from './components/log-in';
 
+const APIURL = 'http://localhost:3000/'
 
 class App extends Component {
 	
@@ -27,6 +28,12 @@ class App extends Component {
   	return deck;
   };
 
+  // componentWillMount() {
+  // 	fetch(APIURL)
+  // 		.then(res => res.json())
+  // 		.then(res => console.log(res))
+  // }
+
 
   render() {
   	const { blackjack } = this.state;
@@ -34,25 +41,23 @@ class App extends Component {
 
   	return (
   		<div>
-  			<NavTop>
-  				
+  			<NavTop>	
 
   				<Route exact path="/" render={props => 
   					<Blackjack buildDeck={this.buildDeck} />
   				}
   				/>
 	  			
-	  			<Route exact path="/signup" render={props => 
+	  			<Route exact path="/register" render={props => 
   					<Signup />
   				}
   				/>
 
   				<Route exact path="/login" render={props => 
-  				<Login />
+  					<Login />
   				}
   				/>          	
 	  		
-	  			
   			</NavTop>
   		</div>
   	);
