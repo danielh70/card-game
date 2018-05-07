@@ -9,11 +9,14 @@ mongoose.Promise = global.Promise;
 const passport = require("passport");
 const path = require('path')
 
+
+
 require("./userModel");
 require("./config/passport");
 const routes = require("./routes");
 
 const app = express();
+app.use(express.static(path.resolve(__dirname, '../card-game/build')));
 
 app.use(helmet());
 app.use(cors());
@@ -27,10 +30,9 @@ app.use((err, req, res, next) => {
   res.status(500).json(err);
 });
 
-app.use(express.static(path.resolve(__dirname, '../card-game/build')));
 
 app.get("*", (req, res) => {  
-    res.sendFile(path.join(__dirname, "client", "card-game/build", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "../card-game/build", "index.html"));
 });
 
 app.listen(port, () => {
