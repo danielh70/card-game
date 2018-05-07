@@ -2,10 +2,7 @@ import React, { Component} from 'react';
 import { Route } from 'react-router-dom';
 import Blackjack from './components/blackjack.js';
 import NavTop from './components/navbar-top';
-import Signup from './components/sign-up';
-import Login from './components/log-in';
 
-const APIURL = 'http://localhost:3000/'
 
 class App extends Component {
 	
@@ -27,13 +24,6 @@ class App extends Component {
   	}
   	return deck;
   };
-
-  // componentWillMount() {
-  // 	fetch(APIURL)
-  // 		.then(res => res.json())
-  // 		.then(res => console.log(res))
-  // }
-
 
   render() {
   	const { blackjack } = this.state;
