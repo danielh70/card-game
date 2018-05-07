@@ -29,6 +29,6 @@
    "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node backend-card-game/server.js",
-        "heroku-postbuild": "cd backend-card-game && node server.js && cd .. && cd card-game && yarn install && yarn build"
+        "heroku-postbuild": "cd card-game && yarn install && yarn build"
     }
 }
