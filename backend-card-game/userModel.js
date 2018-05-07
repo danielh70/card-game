@@ -6,7 +6,7 @@ require("dotenv").config();
 const mongoDB = 'mongodb://heroku_tr8ltrqs:h0usa97lajqf0akarnffkcss4p@ds217310.mlab.com:17310/heroku_tr8ltrqs';
 const jwt_secret = 'secrettt';
 
-mongoose.connect(process.env.MONGODB_URI || mongoDB);
+mongoose.connect(process.env.MONGODB_URI || mongoDB || 'mongodb://localhost:27017/card-games');
 mongoose.connection.on("error", err => {
   console.error(err.message);
 });

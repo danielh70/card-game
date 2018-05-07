@@ -103,7 +103,7 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 
 @media screen and (max-width: 600px) {
   .nav-wrapper-top.responsive {position: relative;}
-  .nav-wrapper-top.responsive a.icon {
+  .nav-wrapper-top.responsive button.icon {
 
     position: absolute;
     right: 16px;
@@ -644,6 +644,14 @@ div[class*='suit']:after {
 	// position: fixed;
 	display: block;
 
+	.log-out-button {
+		float: right;
+		&:hover {
+		cursor: pointer;
+		}
+	}
+
+
 	.icon {
 		float: right;
 		display: none;
@@ -651,7 +659,7 @@ div[class*='suit']:after {
 		
 	}
 
-	a {
+		a {
 		float: left;
 		display: block;
 		padding: 6px 6px;
@@ -662,6 +670,30 @@ div[class*='suit']:after {
 		color: white;
 		background: none;
 		border: none;	
+		&:disabled {
+			color: gray;
+		}
+
+		&:hover {
+			-webkit-mask-image: -webkit-linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
+			-webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,.5) 50%, rgba(0,0,0,1));
+			@include transition(.2s);
+		}	
+	}
+
+	button {
+		float: left;
+		display: block;
+		padding: 6px 6px;
+		text-decoration: none;
+		font-weight: italic;
+		font-family: "Laila";
+		font-size: 20px;
+		color: white;
+		background: none;
+		border: none;	
+
+
 
 		&:disabled {
 			color: gray;
@@ -757,12 +789,6 @@ textarea:focus, input:focus{
 }
 
 
-.log-out-button {
-	float: right !important;
-	&:hover {
-		cursor: pointer;
-	}
-}
 
 
 

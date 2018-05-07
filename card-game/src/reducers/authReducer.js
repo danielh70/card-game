@@ -11,6 +11,7 @@ const AUTH_USER = "AUTH_USER";
 const UNAUTH_USER = "UNAUTH_USER";
 const REGISTER_FAIL = "REGISTER_FAIL";
 const LOGIN_FAIL = "LOGIN_FAIL";
+const RESPONSIVE_NAV = "RESPONSIVE_NAV";
 
 const authUser = userInfo => {
   return {
@@ -35,6 +36,10 @@ const loginFail = errors => {
     type: LOGIN_FAIL,
     errors
   };
+};
+
+export const responsiveNav = () => {
+	return { type: RESPONSIVE_NAV };
 };
 
 export const registerUser = (userInfo, redirect) => async dispatch => {
@@ -95,7 +100,8 @@ const initialState = {
   isAuthed: false,
   registerErrors: {},
   loginErrors: {},
-  userInfo: {}
+  userInfo: {},
+  classes: ''
 };
 
 const authReducer = (state = initialState, action) => {
@@ -119,6 +125,20 @@ const authReducer = (state = initialState, action) => {
         ...state,
         loginErrors: action.errors
       };
+      case RESPONSIVE_NAV:
+      if (state.classes === '' || state.classes === undefined) {
+      	return {
+      		...state,
+      		classes: 'responsive'
+      	};
+      }
+      else {
+      	return {
+      		...state,
+      		classes: ''
+      	}
+      }
+      	
     default:
       return state;
   }

@@ -3,42 +3,58 @@ import { Grid, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
-import { logoutUser } from "../reducers/authReducer";
+import { logoutUser, responsiveNav } from "../reducers/authReducer";
 import "../css/main.css";
 
 
-	// 				<button  disabled>High/Low</button>
-	// 				<button  disabled>Solitaire</button>
-	// 				<button ><a href="/">Home</a></button>
-	// 				<button  disabled>Blackjack</button>
-	// 				<button><a href="/register">Sign Up</a></button>
-	// 				<button><a href="/login">Log In</a></button>
-	// 				<button onClick={this.logOut}>Log Out</button>
 
-let NavTop = ({ isAuthed, dispatch, history, userInfo }) => {
+
+let NavTop = ({ isAuthed, dispatch, classes, history, userInfo,  children }) => {
+	// console.log("classes....", classes)
 	if (isAuthed) {
 		return (
-			<div className="nav-wrapper-top">
-				<NavLink to="/blackjack" activeStyle={{ color: "red" }}>
+			<div>
+			<div className={`nav-wrapper-top ${classes}`}>
+				<NavLink to="/blackjack" className="nav-item" activeStyle={{ color: "red" }}>
 					Blackjack
 				</NavLink>
 				<NavLink
 					to={`/profile/${userInfo._id}`}
 					activeStyle={{ color: "red" }}
+					className="nav-item"
 				>
 					Profile
 				</NavLink>
 				<a className="log-out-button" onClick={() => dispatch(logoutUser(() => history.push("/")))}>
 				Log Out
 				</a>
-				<button className= "icon">
+				<button onClick={() => dispatch(responsiveNav())} className= "icon">
 					<i id="dropdown-btn" className="fas fa-bars fa-1x"></i>
 				</button>
+			</div>
+
+			
+				<div id="footer">
+					<Grid>
+						<Col xs={3}>
+							<a rel="noopener noreferrer" target="_blank" href="https://github.com/danielh70"> <i className="fab fa-github fa-3x"></i></a>
+						</Col>
+						<Col md={6} xs={6}>
+								© Copyright - Daniel Hook <br />
+							<a rel="noopener noreferrer" target="_blank" href="https://www.djhookdesigns.com/">My Portfolio</a> 
+						</Col>
+						<Col xs={3}>
+							<a rel="noopener noreferrer" style={{margin: 5, padding: 5}} target="_blank" href="https://www.linkedin.com/in/daniel-hook-010101/"> <i className="fab fa-linkedin fa-3x"></i></a>
+						</Col>
+					</Grid>
+				</div>
+				{ children }
 			</div>
 		);
 	}
 	return (
-		<div className="nav-wrapper-top">
+		<div>
+		<div className={`nav-wrapper-top ${classes}`}>
 			<NavLink
 				to="/blackjack"
 				activeStyle={{ color: "red" }}
@@ -56,9 +72,32 @@ let NavTop = ({ isAuthed, dispatch, history, userInfo }) => {
 			<NavLink
 				to="/login"
 				activeStyle={{ color: "red" }}
+				className="log-out-button"
 			>
 				Login
 			</NavLink>
+			<button onClick={() => dispatch(responsiveNav())} className= "icon">
+				<i id="dropdown-btn" className="fas fa-bars fa-1x"></i>
+			</button>
+		</div>
+
+		<div>
+		<div id="footer">
+					<Grid>
+						<Col xs={3}>
+							<a rel="noopener noreferrer" target="_blank" href="https://github.com/danielh70"> <i className="fab fa-github fa-3x"></i></a>
+						</Col>
+						<Col md={6} xs={6}>
+								© Copyright - Daniel Hook <br />
+							<a rel="noopener noreferrer" target="_blank" href="https://www.djhookdesigns.com/">My Portfolio</a> 
+						</Col>
+						<Col xs={3}>
+							<a rel="noopener noreferrer" style={{margin: 5, padding: 5}} target="_blank" href="https://www.linkedin.com/in/daniel-hook-010101/"> <i className="fab fa-linkedin fa-3x"></i></a>
+						</Col>
+					</Grid>
+				</div>
+				{ children }
+			</div>
 		</div>
 	);
 };
@@ -146,21 +185,5 @@ export default withRouter(NavTop);
 						
 	// 			</div>
 							
-	// 			<div id="footer">
-	// 				<Grid>
-	// 					<Col xs={3}>
-	// 						<a rel="noopener noreferrer" target="_blank" href="https://github.com/danielh70"> <i className="fab fa-github fa-3x"></i></a>
-	// 					</Col>
-	// 					<Col md={6} xs={6}>
-	// 							© Copyright - Daniel Hook <br />
-	// 						<a rel="noopener noreferrer" target="_blank" href="https://www.djhookdesigns.com/">My Portfolio</a> 
-	// 					</Col>
-	// 					<Col xs={3}>
-	// 						<a rel="noopener noreferrer" style={{margin: 5, padding: 5}} target="_blank" href="https://www.linkedin.com/in/daniel-hook-010101/"> <i className="fab fa-linkedin fa-3x"></i></a>
-	// 					</Col>
-	// 				</Grid>
-	// 			</div>
-	// 			{ this.props.children }
-	// 		</div>
-	// 	);
-	// }
+				
+	
