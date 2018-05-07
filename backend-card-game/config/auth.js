@@ -13,11 +13,11 @@ module.exports = {
   facebookAuth: {
     appID: FB_APP_ID,
     appSecret: FB_SECRET,
-    callbackURL: "http://localhost:5150/auth/facebook/callback"
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   googleAuth: {
     appID: GO_APP_ID,
     appSecret: GO_SECRET,
-    callbackURL: "http://localhost:5150/auth/google/callback"
+    callbackURL: "http://localhost:3000/auth/google/callback"
   }
 };

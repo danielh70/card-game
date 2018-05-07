@@ -95,7 +95,7 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 
 @media screen and (max-width: 600px) {
   .nav-wrapper-top > :nth-child(-n+4) {display: none;}
-  .nav-wrapper-top NavLink.icon {
+  .nav-wrapper-top button.icon {
     float: right;
     display: block;
   }
@@ -718,6 +718,7 @@ div[class*='suit']:after {
 	right: 0;
 	top: 0;
 	padding: 10;
+	backround: none;
 }
 
 // html {
@@ -756,7 +757,12 @@ textarea:focus, input:focus{
 }
 
 
-
+.log-out-button {
+	float: right !important;
+	&:hover {
+		cursor: pointer;
+	}
+}
 
 
 

@@ -8,7 +8,7 @@ module.exports.secret = (req, res) => {
     });
   } else {
     res.status(200).json({
-      code: "I love you!"
+      code: "You're awesome"
     });
   }
 };

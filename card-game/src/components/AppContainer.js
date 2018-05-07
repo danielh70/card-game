@@ -40,7 +40,9 @@ class AppContainer extends Component {
       	<div>
 	      	<NavBar>
 		        	<NavTop />          
-		          <Route exact path="/" component={Home} />
+		          <Route exact path="/" render={props => {
+		          		return <Blackjack buildDeck={this.buildDeck} />
+		          }} />
 		          <Route exact path="/blackjack" render={props => {
 		          		return <Blackjack buildDeck={this.buildDeck} />
 		          }} />

@@ -40,7 +40,7 @@
   .nav-wrapper-top > :nth-child(-n+4) {
     display: none; }
   /* line 98, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
-  .nav-wrapper-top NavLink.icon {
+  .nav-wrapper-top button.icon {
     float: right;
     display: block; } }
 
@@ -547,18 +547,19 @@ div[class*='suit']:after {
   opacity: .7;
   right: 0;
   top: 0;
-  padding: 10; }
+  padding: 10;
+  backround: none; }
 
-/* line 727, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 728, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 body {
   padding-bottom: 100px; }
 
 /* FORM */
-/* line 734, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 735, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 textarea:focus, input:focus {
   outline: none; }
 
-/* line 738, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+/* line 739, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .form-wrapper > form {
   padding: 5px;
   display: flex;
@@ -566,12 +567,12 @@ textarea:focus, input:focus {
   position: relative;
   align-items: center;
   border: 2px transparent; }
-  /* line 746, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  /* line 747, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
   .form-wrapper > form .input-item {
     width: 75%;
     height: 36px;
     border-radius: 5px; }
-    /* line 750, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+    /* line 751, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
     .form-wrapper > form .input-item:focus {
       transition: 0.2s;
       -webkit-transition: 0.2s;
@@ -579,3 +580,10 @@ textarea:focus, input:focus {
       -o-transition: 0.2s;
       border: 2px solid rgba(51, 122, 183, 0.8);
       box-shadow: 0px 0px 4px 2px rgba(51, 122, 183, 0.5); }
+
+/* line 760, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.log-out-button {
+  float: right !important; }
+  /* line 762, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+  .log-out-button:hover {
+    cursor: pointer; }

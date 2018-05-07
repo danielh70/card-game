@@ -16,55 +16,51 @@ import "../css/main.css";
 	// 				<button onClick={this.logOut}>Log Out</button>
 
 let NavTop = ({ isAuthed, dispatch, history, userInfo }) => {
-  if (isAuthed) {
-    return (
-      <div className="nav-wrapper-top">
-  		<NavLink
-        to="/blackjack"
-        style={{ flexGrow: 1 }}
-        activeStyle={{ color: "red" }}
-      >
-        Blackjack
-      </NavLink>
-        <NavLink
-          to={`/profile/${userInfo._id}`}
-          style={{ flexGrow: 1 }}
-          activeStyle={{ color: "red" }}
-        >
-          Profile
-        </NavLink>
-        <div
-          onClick={() => dispatch(logoutUser(() => history.push("/")))}
-          style={{ flexGrow: 1 }}
-        >
-          Logout
-        </div>
-        <button onClick={() => dispatch(logoutUser(() => history.push("/")))}
-        >
-        Log Out
-        </button>
-      </div>
-    );
-  }
-  return (
-    <div className="nav-wrapper-top">
-    <button  disabled>High/Low</button>
-      <NavLink
-        to="/register"
-        style={{ flexGrow: 1 }}
-        activeStyle={{ color: "red" }}
-      >
-        Sign Up
-      </NavLink>
-      <NavLink
-        to="/login"
-        style={{ flexGrow: 1 }}
-        activeStyle={{ color: "red" }}
-      >
-        Login
-      </NavLink>
-    </div>
-  );
+	if (isAuthed) {
+		return (
+			<div className="nav-wrapper-top">
+				<NavLink to="/blackjack" activeStyle={{ color: "red" }}>
+					Blackjack
+				</NavLink>
+				<NavLink
+					to={`/profile/${userInfo._id}`}
+					activeStyle={{ color: "red" }}
+				>
+					Profile
+				</NavLink>
+				<a className="log-out-button" onClick={() => dispatch(logoutUser(() => history.push("/")))}>
+				Log Out
+				</a>
+				<button className= "icon">
+					<i id="dropdown-btn" className="fas fa-bars fa-1x"></i>
+				</button>
+			</div>
+		);
+	}
+	return (
+		<div className="nav-wrapper-top">
+			<NavLink
+				to="/blackjack"
+				activeStyle={{ color: "red" }}
+				className="nav-item"
+			>
+				Blackjack
+			</NavLink>
+			<NavLink
+				to="/register"
+				activeStyle={{ color: "red" }}
+				className="nav-item"
+			>
+				Sign Up
+			</NavLink>
+			<NavLink
+				to="/login"
+				activeStyle={{ color: "red" }}
+			>
+				Login
+			</NavLink>
+		</div>
+	);
 };
 
 
@@ -120,7 +116,7 @@ let NavTop = ({ isAuthed, dispatch, history, userInfo }) => {
 // }
 
 const mapStateToProps = state => {
-  return state;
+	return state;
 };
 
 NavTop = connect(mapStateToProps, null)(NavTop);

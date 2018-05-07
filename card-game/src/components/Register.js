@@ -123,7 +123,7 @@ class Register extends Component {
             id="custom-button"
           />
         </form>
-        <SocialLoginLinks />
+        
       </div>
       </Col>
     );
