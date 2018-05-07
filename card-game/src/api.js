@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "./helper";
 
-const SERVER_URL = process.env.NODE_ENV === 'production' ? "/" : "http://localhost:3000";
+const SERVER_URL = process.env.NODE_ENV === 'production' ? "" : "http://localhost:3000";
 // const APIURL = process.env.NODE_ENV === 'production' ? "/" : "http://localhost:3000/";
 
 const register = userInfo => axios.post(`${SERVER_URL}/register`, userInfo);
