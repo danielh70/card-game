@@ -7,6 +7,7 @@ const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 const passport = require("passport");
+const path = require('path')
 
 require("./userModel");
 require("./config/passport");
