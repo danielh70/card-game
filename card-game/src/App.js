@@ -1,6 +1,9 @@
 import React, { Component} from 'react';
+import { Route } from 'react-router-dom';
 import Blackjack from './components/blackjack.js';
 import NavTop from './components/navbar-top';
+import Signup from './components/sign-up';
+import Login from './components/log-in';
 
 
 class App extends Component {
@@ -32,10 +35,24 @@ class App extends Component {
   	return (
   		<div>
   			<NavTop>
-	  			{ 
-	  			blackjack &&
-	          		<Blackjack buildDeck={this.buildDeck} />
-	  			}
+  				
+
+  				<Route exact path="/" render={props => 
+  					<Blackjack buildDeck={this.buildDeck} />
+  				}
+  				/>
+	  			
+	  			<Route exact path="/signup" render={props => 
+  					<Signup />
+  				}
+  				/>
+
+  				<Route exact path="/login" render={props => 
+  				<Login />
+  				}
+  				/>          	
+	  		
+	  			
   			</NavTop>
   		</div>
   	);
