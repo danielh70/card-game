@@ -30,7 +30,7 @@ app.use((err, req, res, next) => {
 app.use(express.static(path.resolve(__dirname, '../card-game/build')));
 
 app.get("*", (req, res) => {  
-    res.sendFile(path.join(__dirname, "client", "../card-game/build", "index.html"));
+    res.sendFile(path.join(__dirname, "client", "card-game/build", "index.html"));
 });
 
 app.listen(port, () => {
