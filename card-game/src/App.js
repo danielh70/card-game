@@ -34,20 +34,10 @@ class App extends Component {
   			<NavTop>	
 
   				<Route exact path="/" render={props => 
-  					<Blackjack buildDeck={this.buildDeck} />
+  					return <Blackjack buildDeck={this.buildDeck} />
   				}
   				/>
-	  			
-	  			<Route exact path="/register" render={props => 
-  					<Signup />
-  				}
-  				/>
-
-  				<Route exact path="/login" render={props => 
-  					<Login />
-  				}
-  				/>          	
-	  		
+  				
   			</NavTop>
   		</div>
   	);
