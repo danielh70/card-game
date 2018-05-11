@@ -6,6 +6,6 @@ export default function configureStore(preloadedState) {
   return createStore(
     authReducer,
     preloadedState,
-    compose(applyMiddleware(thunkMiddleware), window.devToolsExtension())
+    compose(applyMiddleware(thunkMiddleware))
   );
 }
