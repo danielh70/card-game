@@ -12,6 +12,7 @@ const UNAUTH_USER = "UNAUTH_USER";
 const REGISTER_FAIL = "REGISTER_FAIL";
 const LOGIN_FAIL = "LOGIN_FAIL";
 const RESPONSIVE_NAV = "RESPONSIVE_NAV";
+const UPDATE_USER_CHIPS = "UPDATE_USER_CHIPS";
 
 const authUser = userInfo => {
   return {
@@ -38,9 +39,52 @@ const loginFail = errors => {
   };
 };
 
+const updateChips = chips => {
+  return {
+    type: UPDATE_USER_CHIPS,
+    payload: chips
+  }
+}
+
 export const responsiveNav = () => {
 	return { type: RESPONSIVE_NAV };
 };
+
+
+ // api.getChips(this.props.userInfo)
+ //      .then(res => {
+ //        deck.chips = res.data.user.chips
+ //        // this.setState({ chips: res.data.user.chips });
+ //      })
+
+
+export const getChips = userInfo => async dispatch => {
+  try {
+    // console.log("userinfo", userInfo);
+
+    let { data } = await api.getChips(userInfo)
+
+    dispatch(updateChips(data.user.chips))
+
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export const adjustChips = userInfo => async dispatch => {
+  try {
+    console.log("userinfo", userInfo);
+
+    let { data } = await api.adjustChips(userInfo)
+
+    
+    console.log("data user chips", data.user.chips);
+    dispatch(updateChips(data.user.chips))
+
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 export const registerUser = (userInfo, redirect) => async dispatch => {
   try {
@@ -101,7 +145,8 @@ const initialState = {
   registerErrors: {},
   loginErrors: {},
   userInfo: {},
-  classes: ''
+  classes: '',
+  chips: 0
 };
 
 const authReducer = (state = initialState, action) => {
@@ -138,7 +183,11 @@ const authReducer = (state = initialState, action) => {
       		classes: ''
       	}
       }
-      	
+      case UPDATE_USER_CHIPS:
+        return {
+          ...state,
+          chips: action.payload
+        }
     default:
       return state;
   }

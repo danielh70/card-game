@@ -36,8 +36,19 @@ module.exports.adjustChips = async (req, res) => {
 
       user.save();
   })
+}
 
+module.exports.resetChips = async (req, res) => {
+  console.log("req body...", req.body);
+  const { _id, chips } = req.body
 
+  User.findByIdAndUpdate({ _id: _id })
+    .then(function(user) {
+      user.chips = 500;
+      res.json({ user: user })
+
+      user.save();
+  })
 }
 
 module.exports.addPushNotificationId = async (req, res) => {

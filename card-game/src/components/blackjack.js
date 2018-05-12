@@ -3,6 +3,7 @@ import { Row, Grid, Col } from 'react-bootstrap';
 import '../css/main.css';
 import PropTypes from 'prop-types';
 import api from '../api';
+import { getChips, adjustChips } from '../reducers/authReducer';
 import { connect } from 'react-redux';
 const deepFreeze = require('deep-freeze');
 
@@ -20,7 +21,6 @@ const initialState = deepFreeze({
 	message: '',
 	statusText: '',
 	hasError: false,
-  chips: 0,
   wager: 0
 });
 
@@ -44,14 +44,12 @@ class Blackjack extends Component {
 		message: '',
 		statusText: '',
 		hasError: false,
-    chips: 0,
     wager: 0
 	};
 
 
 	componentDidMount() {
 		this.gameSetup();
-
 	}
 
 	componentDidCatch(error, info) {
@@ -65,7 +63,7 @@ class Blackjack extends Component {
 		});
 	};
 
-	gameSetup = () => {
+	gameSetup = async () => {
 		let p1Hand = [];
 		let compHand = [];
 		let deck = { ...this.state, player1: p1Hand, computer: compHand };
@@ -151,16 +149,10 @@ class Blackjack extends Component {
 			deck.player1Score += val;
 		}
 
-      api.getChips(this.props.userInfo)
-      .then(res => {
-        deck.chips = res.data.user.chips
-        // this.setState({ chips: res.data.user.chips });
-      })
-      .then(res => {
-        this.setState(deck);    
-      })
+      this.props.dispatch(getChips(this.props.userInfo))
 
-		
+      this.setState(deck);    
+      
 	};
 
 	drawCard = async () => {
@@ -210,7 +202,7 @@ class Blackjack extends Component {
 	};
 
 	newGame = () => {
-    let currentChips = api.getChips(this.props.userInfo);
+    let currentChips = getChips(this.props.userInfo);
 		// callback in setState, to make sure the state is refreshed before making decks
 		this.setState(initialState, () => {
 			this.gameSetup();
@@ -222,29 +214,29 @@ class Blackjack extends Component {
 		const { player1Score, computerScore } = this.state;
 
 		if (player1Score > computerScore) {
-
-      await this.adjustChips(this.state.wager, true)
+      
 			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true, statusText: 'winner' });
+      await this.adjustChips(this.state.wager, true)
 
 		} else if (computerScore > player1Score && computerScore > 21) {
-
-      await this.adjustChips(this.state.wager, true)
+      
 			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true, statusText: 'winner' });
+      await this.adjustChips(this.state.wager, true)
 
 		} else if (computerScore > player1Score && computerScore <= 21){
-
-      await this.adjustChips(this.state.wager, false)
+      
 			this.setState({ message: 'GAME OVER', flipped: 'card flipit', gameOver: true, statusText: 'loser' });
+      await this.adjustChips(this.state.wager, false)
 
 		} else {
 
-      await this.adjustChips(this.state.wager, false)
 			this.setState({ message: 'TIE', flipped: 'card flipit', gameOver: true, statusText: 'loser' });
+      await this.adjustChips(this.state.wager, false)
 		}
 	};
 
   adjustChips = (wager, outcome) => {
-    let curState = Object.assign({}, this.state);
+    let curState = Object.assign({}, this.props);
 
     if (outcome) {
       curState.chips += wager;
@@ -255,10 +247,7 @@ class Blackjack extends Component {
 
     this.props.userInfo.chips = curState.chips;
 
-    api.adjustChips(this.props.userInfo)
-    .then(res => {
-      this.setState({ chips: res.data.user.chips })
-    })
+    this.props.dispatch(adjustChips(this.props.userInfo))
   }
 
   handleChange = e => {
@@ -270,7 +259,8 @@ class Blackjack extends Component {
   }
 
 	render() {
-		console.log('blackjack state', this.state);
+		// console.log('blackjack state', this.state);
+    console.log('blackjack props', this.props);
 		const { computer, player1, gameOver } = this.state;
 		const duringGame = gameOver ? computer : computer.slice(0, 2);
 
@@ -320,7 +310,7 @@ class Blackjack extends Component {
 							<button id="custom-button"  disabled={gameOver} value="Stand" onClick={this.handleStand}>Stand</button> <br /><br />
 							<button id="custom-button"  value="double" disabled>Double</button> <br /><br />
 							<button id="custom-button"  value="New Game" onClick={this.newGame}>New Game</button> <br /><br />
-              <button id="custom-button"  value="Add200" onClick={this.adjustChips}>Add 200</button> <br /><br />
+              <button id="custom-button"  disabled value="Add200" onClick={this.adjustChips}>Add 200</button> <br /><br />
               <input onChange={this.handleChange} value={this.state.wager} name="wager" type="number" />
 						</Col>
 					</div>
@@ -332,7 +322,7 @@ class Blackjack extends Component {
 							<br />
 							<h1 style={{margin: 10, padding: 1, height: 20}} className={this.state.statusText}>{ this.state.message }</h1>
 							<br />
-              <h4>Chips: {this.state.chips}</h4>
+              <h4>Chips: {this.props.chips}</h4>
 							<h3 className="player-one">Player One:</h3>
 							<h4> <span className="score-text">Score: { this.state.player1Score }</span></h4>
 
