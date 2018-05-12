@@ -3,10 +3,12 @@ mongoose.Promise = global.Promise;
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const mongoDB = 'mongodb://heroku_tr8ltrqs:h0usa97lajqf0akarnffkcss4p@ds217310.mlab.com:17310/heroku_tr8ltrqs';
+const mongoDB = 'mongodb://localhost/card-games';
 const jwt_secret = 'secrettt';
 
-mongoose.connect(process.env.MONGODB_URI || mongoDB || 'mongodb://localhost:27017/card-games');
+// 'mongodb://heroku_tr8ltrqs:h0usa97lajqf0akarnffkcss4p@ds217310.mlab.com:17310/heroku_tr8ltrqs'
+
+mongoose.connect(process.env.MONGODB_URI || mongoDB );
 mongoose.connection.on("error", err => {
   console.error(err.message);
 });
@@ -33,7 +35,8 @@ const userSchema = new mongoose.Schema({
   },
   hash: String,
   salt: String,
-  pushTokenId: String
+  pushTokenId: String,
+  chips: Number
 });
 
 userSchema.methods.setPassword = function(password) {

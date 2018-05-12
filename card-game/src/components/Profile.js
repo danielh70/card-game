@@ -22,6 +22,7 @@ class Profile extends Component {
   };
 
   render() {
+    console.log("props profile", this.props);
     const { userInfo } = this.props;
     return (
       <div>

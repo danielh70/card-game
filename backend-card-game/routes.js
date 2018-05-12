@@ -18,7 +18,10 @@ router.get("/auth/facebook/callback", authCtrl.fbAuthCB);
 router.get("/auth/google", authCtrl.goAuth);
 router.get("/auth/google/callback", authCtrl.goAuthCB);
 
+
 router.get("/secret/:uid", auth, profileCtrl.secret);
+router.post("/getchips", profileCtrl.getChips);
+router.post("/adjustchips", profileCtrl.adjustChips);
 router.post("/pushtoken/add", profileCtrl.addPushNotificationId);
 router.post("/pushtoken/send", profileCtrl.sendPushNotifications);
 

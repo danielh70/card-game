@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Row, Grid, Col } from 'react-bootstrap';
 import '../css/main.css';
 import PropTypes from 'prop-types';
+import api from '../api';
+import { connect } from 'react-redux';
 const deepFreeze = require('deep-freeze');
 
 const initialState = deepFreeze({
@@ -17,7 +19,9 @@ const initialState = deepFreeze({
 	gameOver: false,
 	message: '',
 	statusText: '',
-	hasError: false
+	hasError: false,
+  chips: 0,
+  wager: 0
 });
 
 class Blackjack extends Component {
@@ -39,12 +43,15 @@ class Blackjack extends Component {
 		gameOver: false,
 		message: '',
 		statusText: '',
-		hasError: false
+		hasError: false,
+    chips: 0,
+    wager: 0
 	};
 
 
 	componentDidMount() {
 		this.gameSetup();
+
 	}
 
 	componentDidCatch(error, info) {
@@ -144,7 +151,16 @@ class Blackjack extends Component {
 			deck.player1Score += val;
 		}
 
-		this.setState(deck);
+      api.getChips(this.props.userInfo)
+      .then(res => {
+        deck.chips = res.data.user.chips
+        // this.setState({ chips: res.data.user.chips });
+      })
+      .then(res => {
+        this.setState(deck);    
+      })
+
+		
 	};
 
 	drawCard = () => {
@@ -193,9 +209,11 @@ class Blackjack extends Component {
 	};
 
 	newGame = () => {
+    let currentChips = api.getChips(this.props.userInfo);
 		// callback in setState, to make sure the state is refreshed before making decks
 		this.setState(initialState, () => {
 			this.gameSetup();
+      
 		});
 	};
 
@@ -213,10 +231,45 @@ class Blackjack extends Component {
 		}
 	};
 
+  adjustChips = (wager, outcome) => {
+    let curState = Object.assign({}, this.state);
+
+    if (outcome) {
+      curState.chips += wager;
+    }
+    else {
+      curState.chips -= wager;
+    }
+
+    this.props.userInfo.chips = curState.chips;
+
+    api.adjustChips(this.props.userInfo)
+    .then(res => {
+      console.log(res);
+    })
+  }
+
+  handleChange = e => {
+    let _state = Object.assign({}, this.state)
+
+    _state[e.target.name] = parseInt(e.target.value);
+
+    this.setState(_state);
+  }
+
 	render() {
-		// console.log('blackjack state', this.state);
+		console.log('blackjack state', this.state);
 		const { computer, player1, gameOver } = this.state;
 		const duringGame = gameOver ? computer : computer.slice(0, 2);
+
+    if (this.state.gameOver) {
+      if (this.state.statusText === 'winner') {
+        this.adjustChips(this.state.wager, true)
+      }
+      else {
+        this.adjustChips(this.state.wager, false)
+      }
+    }
 
 		if (this.state.hasError) {
 			alert('Please refresh the page');
@@ -263,6 +316,8 @@ class Blackjack extends Component {
 							<button id="custom-button"  disabled={gameOver} value="Stand" onClick={this.handleStand}>Stand</button> <br /><br />
 							<button id="custom-button"  value="double" disabled>Double</button> <br /><br />
 							<button id="custom-button"  value="New Game" onClick={this.newGame}>New Game</button> <br /><br />
+              <button id="custom-button"  value="Add200" onClick={this.adjustChips}>Add 200</button> <br /><br />
+              <input onChange={this.handleChange} value={this.state.wager} name="wager" type="number" />
 						</Col>
 					</div>
 
@@ -273,6 +328,7 @@ class Blackjack extends Component {
 							<br />
 							<h1 style={{margin: 10, padding: 1, height: 20}} className={this.state.statusText}>{ this.state.message }</h1>
 							<br />
+              <h4>Chips: {this.state.chips}</h4>
 							<h3 className="player-one">Player One:</h3>
 							<h4> <span className="score-text">Score: { this.state.player1Score }</span></h4>
 
@@ -300,9 +356,12 @@ class Blackjack extends Component {
 			</div>
 		);
 	}
-
 }
 
-export default Blackjack;
+const mapStateToProps = state => {
+  return state;
+}
+
+export default connect(mapStateToProps, null)(Blackjack);
 
 

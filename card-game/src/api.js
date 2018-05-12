@@ -10,10 +10,14 @@ const getSecret = uid =>
   axios.get(`${SERVER_URL}/secret/${uid}`, {
     headers: { authorization: `Bearer ${getToken()}` }
   });
+const getChips = userInfo => axios.post(`${SERVER_URL}/getchips`, userInfo);
+const adjustChips = userInfo => axios.post(`${SERVER_URL}/adjustchips`, userInfo);
 
 const api = {
   register,
   login,
-  getSecret
+  getSecret,
+  getChips,
+  adjustChips
 };
 export default api;

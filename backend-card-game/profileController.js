@@ -13,6 +13,33 @@ module.exports.secret = (req, res) => {
   }
 };
 
+module.exports.getChips = (req, res) => {
+  console.log(req.body);
+  const { _id } = req.body
+
+  User.findById({ _id: _id })
+    .then(function(user) {
+      res.json({ user: user })
+
+      console.log("found user", user);
+  })
+}
+
+module.exports.adjustChips = async (req, res) => {
+  console.log("req body...", req.body);
+  const { _id, chips } = req.body
+
+  User.findByIdAndUpdate({ _id: _id })
+    .then(function(user) {
+      user.chips = chips;
+      res.json({ user: user })
+
+      user.save();
+  })
+
+
+}
+
 module.exports.addPushNotificationId = async (req, res) => {
   const { uid, token } = req.body;
   try {
