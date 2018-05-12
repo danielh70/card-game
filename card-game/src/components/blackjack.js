@@ -163,7 +163,7 @@ class Blackjack extends Component {
 		
 	};
 
-	drawCard = () => {
+	drawCard = async () => {
 		const { player1Deck, player1 } = this.state;
 		let state = Object.assign({}, this.state);
 		let getCard = Math.floor(Math.random() * player1Deck.length);
@@ -197,6 +197,7 @@ class Blackjack extends Component {
 			state.statusText = 'loser';
 			state.gameOver = true;
 			state.message = 'YOU BUSTED';
+      await this.adjustChips(this.state.wager, false)
 		}
 		else if (state.player1Score > 21 && state.highAces > 0){
 			state.highAces--;
@@ -217,16 +218,27 @@ class Blackjack extends Component {
 		});
 	};
 
-	handleStand = () => {
+	handleStand = async () => {
 		const { player1Score, computerScore } = this.state;
 
 		if (player1Score > computerScore) {
+
+      await this.adjustChips(this.state.wager, true)
 			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true, statusText: 'winner' });
+
 		} else if (computerScore > player1Score && computerScore > 21) {
+
+      await this.adjustChips(this.state.wager, true)
 			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true, statusText: 'winner' });
+
 		} else if (computerScore > player1Score && computerScore <= 21){
+
+      await this.adjustChips(this.state.wager, false)
 			this.setState({ message: 'GAME OVER', flipped: 'card flipit', gameOver: true, statusText: 'loser' });
+
 		} else {
+
+      await this.adjustChips(this.state.wager, false)
 			this.setState({ message: 'TIE', flipped: 'card flipit', gameOver: true, statusText: 'loser' });
 		}
 	};
@@ -245,7 +257,7 @@ class Blackjack extends Component {
 
     api.adjustChips(this.props.userInfo)
     .then(res => {
-      console.log(res);
+      this.setState({ chips: res.data.user.chips })
     })
   }
 
@@ -262,14 +274,6 @@ class Blackjack extends Component {
 		const { computer, player1, gameOver } = this.state;
 		const duringGame = gameOver ? computer : computer.slice(0, 2);
 
-    if (this.state.gameOver) {
-      if (this.state.statusText === 'winner') {
-        this.adjustChips(this.state.wager, true)
-      }
-      else {
-        this.adjustChips(this.state.wager, false)
-      }
-    }
 
 		if (this.state.hasError) {
 			alert('Please refresh the page');
