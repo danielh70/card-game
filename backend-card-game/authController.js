@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const jwt_secret = 'secrettt';
+const jwt_secret = process.env.JWT_SECRET;
 
 module.exports.register = async (req, res, next) => {
   const user = new User();

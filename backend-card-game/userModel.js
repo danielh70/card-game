@@ -4,9 +4,8 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const mongoDB = process.env.MONGODB_URI;
-const jwt_secret = 'secrettt';
+const jwt_secret = process.env.JWT_SECRET;
 
-// 'mongodb://heroku_tr8ltrqs:h0usa97lajqf0akarnffkcss4p@ds217310.mlab.com:17310/heroku_tr8ltrqs'
 
 mongoose.connect(process.env.MONGODB_URI || mongoDB );
 mongoose.connection.on("error", err => {
