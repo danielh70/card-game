@@ -21,6 +21,7 @@ router.get("/auth/google/callback", authCtrl.goAuthCB);
 
 router.get("/secret/:uid", auth, profileCtrl.secret);
 router.post("/getchips", profileCtrl.getChips);
+router.post("/resetchips", profileCtrl.resetChips);
 router.post("/adjustchips", profileCtrl.adjustChips);
 router.post("/pushtoken/add", profileCtrl.addPushNotificationId);
 router.post("/pushtoken/send", profileCtrl.sendPushNotifications);

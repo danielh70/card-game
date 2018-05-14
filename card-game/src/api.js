@@ -12,12 +12,14 @@ const getSecret = uid =>
   });
 const getChips = userInfo => axios.post(`${SERVER_URL}/getchips`, userInfo);
 const adjustChips = userInfo => axios.post(`${SERVER_URL}/adjustchips`, userInfo);
+const resetChips = userInfo => axios.post(`${SERVER_URL}/resetchips`, userInfo);
 
 const api = {
   register,
   login,
   getSecret,
   getChips,
-  adjustChips
+  adjustChips,
+  resetChips
 };
 export default api;

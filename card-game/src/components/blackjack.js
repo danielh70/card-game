@@ -77,6 +77,11 @@ class Blackjack extends Component {
 	};
 
 	gameSetup = async () => {
+
+    if (this.props.chips - this.state.wager < 0) {
+      return;
+    }
+
 		let p1Hand = [];
 		let compHand = [];
 		let deck = { ...this.state, player1: p1Hand, computer: compHand };
@@ -242,7 +247,6 @@ class Blackjack extends Component {
 		} else {
 
 			this.setState({ message: 'TIE', flipped: 'card flipit', gameOver: true, statusText: 'loser' });
-      await this.adjustChips(this.state.wager, false)
 		}
 	};
 
@@ -296,6 +300,12 @@ class Blackjack extends Component {
         </div>
       </Col>
     );
+
+    const noAuth = (
+      <Col xsOffset={4}>
+        <h2>Please log in to play</h2>
+      </Col>
+    );
     
 
 		return (
@@ -344,7 +354,7 @@ class Blackjack extends Component {
 
 					<Row>
 
-            {!this.state.inProgress && preGame }
+            {!this.state.inProgress && this.props.isAuthed ? preGame : noAuth }
 
 						{ this.state.inProgress &&
 						<Col xs={6} xsOffset={4}>
