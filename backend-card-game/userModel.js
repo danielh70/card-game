@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise;
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const mongoDB = 'mongodb://heroku_tr8ltrqs:h0usa97lajqf0akarnffkcss4p@ds217310.mlab.com:17310/heroku_tr8ltrqs';
+const mongoDB = process.env.MONGODB_URI;
 const jwt_secret = 'secrettt';
 
 // 'mongodb://heroku_tr8ltrqs:h0usa97lajqf0akarnffkcss4p@ds217310.mlab.com:17310/heroku_tr8ltrqs'
