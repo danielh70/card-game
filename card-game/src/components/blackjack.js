@@ -354,7 +354,8 @@ class Blackjack extends Component {
 
 					<Row>
 
-            {!this.state.inProgress && this.props.isAuthed ? preGame : noAuth }
+            {!this.state.inProgress && this.props.isAuthed && preGame }
+            {!this.props.isAuthed && noAuth }
 
 						{ this.state.inProgress &&
 						<Col xs={6} xsOffset={4}>
