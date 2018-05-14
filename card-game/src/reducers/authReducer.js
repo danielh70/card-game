@@ -50,22 +50,12 @@ export const responsiveNav = () => {
 	return { type: RESPONSIVE_NAV };
 };
 
-
- // api.getChips(this.props.userInfo)
- //      .then(res => {
- //        deck.chips = res.data.user.chips
- //        // this.setState({ chips: res.data.user.chips });
- //      })
-
-
 export const getChips = userInfo => async dispatch => {
   try {
-    // console.log("userinfo", userInfo);
-
     let { data } = await api.getChips(userInfo)
 
     dispatch(updateChips(data.user.chips))
-
+    
   } catch (e) {
     console.log(e);
   }
