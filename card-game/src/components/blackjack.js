@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import api from '../api';
 import { getChips, adjustChips } from '../reducers/authReducer';
 import { connect } from 'react-redux';
+import Loader from './loader';
 const deepFreeze = require('deep-freeze');
+
 
 const initialState = deepFreeze({
 	computer: [],
@@ -21,7 +23,8 @@ const initialState = deepFreeze({
 	message: '',
 	statusText: '',
 	hasError: false,
-  wager: 0
+  wager: {},
+  inProgress: false
 });
 
 class Blackjack extends Component {
@@ -44,18 +47,28 @@ class Blackjack extends Component {
 		message: '',
 		statusText: '',
 		hasError: false,
-    wager: 0
+    wager: {},
+    inProgress: false
 	};
 
-
 	componentDidMount() {
-		this.gameSetup();
+		// this.gameSetup();
+    this.props.dispatch(getChips(this.props.userInfo))
 	}
 
 	componentDidCatch(error, info) {
 		this.forceUpdate();
 		this.setState({ hasError: true });
 	}
+
+  // if they leave mid game, count as a loss and subtract chips
+  componentWillUnmount() {
+    const { inProgress, wager } = this.state;
+
+    if (inProgress && wager > 0) {
+      this.adjustChips(wager, false);
+    }
+  }
 
 	flipCard = () => {
 		this.setState({
@@ -71,6 +84,7 @@ class Blackjack extends Component {
 		let x;
 		let p1Deck;
 		let compDeck;
+    deck.inProgress = true;
 		p1Deck = this.props.buildDeck(p1Deck);
 		compDeck = this.props.buildDeck(compDeck);
 		deck.player1Deck = p1Deck;
@@ -151,8 +165,7 @@ class Blackjack extends Component {
 
       this.props.dispatch(getChips(this.props.userInfo))
 
-      this.setState(deck);    
-      
+      this.setState(deck);       
 	};
 
 	drawCard = async () => {
@@ -202,11 +215,9 @@ class Blackjack extends Component {
 	};
 
 	newGame = () => {
-    let currentChips = getChips(this.props.userInfo);
 		// callback in setState, to make sure the state is refreshed before making decks
 		this.setState(initialState, () => {
-			this.gameSetup();
-      
+			// this.gameSetup();
 		});
 	};
 
@@ -258,16 +269,34 @@ class Blackjack extends Component {
     this.setState(_state);
   }
 
+
 	render() {
-		// console.log('blackjack state', this.state);
+		console.log('blackjack state', this.state);
     console.log('blackjack props', this.props);
-		const { computer, player1, gameOver } = this.state;
+		const { computer, player1, gameOver, inProgress } = this.state;
 		const duringGame = gameOver ? computer : computer.slice(0, 2);
 
 
 		if (this.state.hasError) {
 			alert('Please refresh the page');
 		}
+
+    const preGame = (
+      <Col xsOffset={4}>
+        <div>
+
+          <h1>Place bet</h1>
+          <br />
+          Current Chips: {this.props.chips}
+          <br />
+          <input onChange={this.handleChange} value={this.state.wager} name="wager" type="number" placeholder="Place bet" />
+          <br />
+          <br />
+          <button id="custom-button" onClick={this.gameSetup}>Start Game</button>
+        </div>
+      </Col>
+    );
+    
 
 		return (
 			<div className="App">
@@ -276,7 +305,7 @@ class Blackjack extends Component {
 						<Col md={2} xs={2}>
 
 						</Col>
-						{ computer.length &&
+						{ this.state.inProgress &&
 						<Col xs={6} xsOffset={2}>
 							<h3 style={{marginTop: 30, padding: 2, height: 30}}>Computer:</h3>
 							<div style={{margin: 0, height: 20, padding: 2}}>{ gameOver && <h4><span className="score-text">Score: { this.state.computerScore }</span> </h4>}</div>
@@ -306,18 +335,18 @@ class Blackjack extends Component {
 					</Row>
 					<div id="button-group">
 						<Col md={2} xs={4} smOffset={6}>
-							<button id="custom-button"  disabled={gameOver} value="Hit" onClick={this.drawCard}>Hit</button> <br /><br />
-							<button id="custom-button"  disabled={gameOver} value="Stand" onClick={this.handleStand}>Stand</button> <br /><br />
+							<button id="custom-button"  disabled={!inProgress || gameOver} value="Hit" onClick={this.drawCard}>Hit</button> <br /><br />
+							<button id="custom-button"  disabled={!inProgress || gameOver} value="Stand" onClick={this.handleStand}>Stand</button> <br /><br />
 							<button id="custom-button"  value="double" disabled>Double</button> <br /><br />
 							<button id="custom-button"  value="New Game" onClick={this.newGame}>New Game</button> <br /><br />
-              <button id="custom-button"  disabled value="Add200" onClick={this.adjustChips}>Add 200</button> <br /><br />
-              <input onChange={this.handleChange} value={this.state.wager} name="wager" type="number" />
 						</Col>
 					</div>
 
 					<Row>
 
-						{ computer.length &&
+            {!this.state.inProgress && preGame }
+
+						{ this.state.inProgress &&
 						<Col xs={6} xsOffset={4}>
 							<br />
 							<h1 style={{margin: 10, padding: 1, height: 20}} className={this.state.statusText}>{ this.state.message }</h1>

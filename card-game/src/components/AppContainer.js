@@ -11,6 +11,7 @@ import Profile from "./Profile";
 import NavBar from './NavBar';
 import PrivateRoute from "./PrivateRoute";
 import Blackjack from './blackjack';
+import Loader from './loader';
 import '../index.css';
 
 class AppContainer extends Component {
