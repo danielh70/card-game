@@ -3,7 +3,7 @@ import { Grid, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
-import { logoutUser, responsiveNav } from "../reducers/authReducer";
+import { logoutUser, responsiveNav } from "../actions/auth";
 import "../css/main.css";
 
 

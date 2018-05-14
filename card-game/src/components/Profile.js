@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Col, Grid, Row } from 'react-bootstrap';
-import { getChips } from '../reducers/authReducer';
+import { getChips } from '../actions/auth';
 import '../css/main.css';
 import api from "../api";
 

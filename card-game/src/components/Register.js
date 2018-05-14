@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { registerUser } from "../reducers/authReducer";
+import { registerUser } from "../actions/auth";
 import SocialLoginLinks from "./SocialLoginLinks";
 import { Col } from 'react-bootstrap';
 

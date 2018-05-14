@@ -3,7 +3,7 @@ import { Row, Grid, Col } from 'react-bootstrap';
 import '../css/main.css';
 import PropTypes from 'prop-types';
 import api from '../api';
-import { getChips, adjustChips } from '../reducers/authReducer';
+import { getChips, adjustChips } from '../actions/auth';
 import { connect } from 'react-redux';
 import Loader from './loader';
 const deepFreeze = require('deep-freeze');
