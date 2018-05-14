@@ -90,8 +90,8 @@ class Blackjack extends Component {
 		let p1Deck;
 		let compDeck;
     deck.inProgress = true;
-		p1Deck = this.props.buildDeck(p1Deck);
-		compDeck = this.props.buildDeck(compDeck);
+		p1Deck = await this.props.buildDeck(p1Deck);
+		compDeck = await this.props.buildDeck(compDeck);
 		deck.player1Deck = p1Deck;
 		deck.computerDeck = compDeck;
 

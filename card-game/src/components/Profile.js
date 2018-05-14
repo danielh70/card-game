@@ -46,7 +46,7 @@ class Profile extends Component {
             <h2>{userInfo.name}'s Profile Page</h2>
             <p>You're email is {userInfo.email}</p>
 
-            <h3>Your net worth is {this.props.chips}</h3>
+            <h3>Your net worth is {this.props.chips} chips</h3>
           </Col>
         </Row>
         <Row>
