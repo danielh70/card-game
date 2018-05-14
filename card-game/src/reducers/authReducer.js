@@ -12,7 +12,6 @@ const initialState = {
   chips: 0
 };
 
-
 export default (state = initialState, action) => {
   switch (action.type) {
     case AUTH_USER:

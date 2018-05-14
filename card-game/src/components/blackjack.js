@@ -63,9 +63,9 @@ class Blackjack extends Component {
 
   // if they leave mid game, count as a loss and subtract chips
   componentWillUnmount() {
-    const { inProgress, wager } = this.state;
+    const { gameOver, wager } = this.state;
 
-    if (inProgress && wager > 0) {
+    if (!gameOver && wager > 0) {
       this.adjustChips(wager, false);
     }
   }
@@ -236,7 +236,7 @@ class Blackjack extends Component {
 
 		} else if (computerScore > player1Score && computerScore > 21) {
       
-			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true, statusText: 'winner' });
+			this.setState({ message: 'YOU WIN!', flipped: 'card flipit', gameOver: true, statusText: 'winner'});
       await this.adjustChips(this.state.wager, true)
 
 		} else if (computerScore > player1Score && computerScore <= 21){
@@ -275,8 +275,8 @@ class Blackjack extends Component {
 
 
 	render() {
-		console.log('blackjack state', this.state);
-    console.log('blackjack props', this.props);
+		// console.log('blackjack state', this.state);
+    // console.log('blackjack props', this.props);
 		const { computer, player1, gameOver, inProgress } = this.state;
 		const duringGame = gameOver ? computer : computer.slice(0, 2);
 

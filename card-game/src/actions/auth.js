@@ -63,12 +63,8 @@ export const getChips = userInfo => async dispatch => {
 
 export const adjustChips = userInfo => async dispatch => {
   try {
-    console.log("userinfo", userInfo);
-
+    // console.log("userinfo", userInfo);
     let { data } = await api.adjustChips(userInfo)
-
-    
-    console.log("data user chips", data.user.chips);
     dispatch(updateChips(data.user.chips))
 
   } catch (e) {

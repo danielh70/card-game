@@ -36,7 +36,7 @@ class Profile extends Component {
 
   render() {
     const { userInfo } = this.props;
-    console.log("props prifle", this.props);
+    // console.log("props prifle", this.props);
 
     return (
       <div className="App">
