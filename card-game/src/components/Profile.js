@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Col, Grid, Row } from 'react-bootstrap';
 import { getChips } from '../actions/auth';
+import PokerChip from './PokerChip';
 import '../css/main.css';
 import api from "../api";
 
@@ -58,6 +59,7 @@ class Profile extends Component {
           </Col>
         </Row>
           
+        <PokerChip />
         </Grid>
       </div>
     );

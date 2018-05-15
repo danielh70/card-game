@@ -788,8 +788,25 @@ textarea:focus, input:focus{
 	}
 }
 
-.profile-page-wrapper {
-  
+.chip-outer-wrapper {
+  border-radius: 90px;
+  border: solid 1px black;
+  position: relative;
+  height: 60px;
+  width: 60px;
+
+  .chip-inner-wrapper {
+    border-radius: 90px;
+    border: solid 1px black;
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
 
 
