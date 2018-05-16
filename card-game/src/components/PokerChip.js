@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import '../css/main.css';
 
-const PokerChip = ({ value }) => (
+const PokerChip = ({ value, onClick }) => (
   <Fragment>
-    <div className="chip-outer-wrapper">
-      <div className="chip-inner-wrapper">
-        
-      </div>
-    </div>
+    <input
+      type="submit"
+      onClick={onClick}
+      value={value}
+      className="pokerchip flat"
+    />
   </Fragment>
 );
 

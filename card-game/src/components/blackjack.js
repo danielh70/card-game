@@ -6,6 +6,7 @@ import api from '../api';
 import { getChips, adjustChips } from '../actions/auth';
 import { connect } from 'react-redux';
 import Loader from './loader';
+import PokerChip from './PokerChip';
 const deepFreeze = require('deep-freeze');
 
 
@@ -23,7 +24,7 @@ const initialState = deepFreeze({
 	message: '',
 	statusText: '',
 	hasError: false,
-  wager: {},
+  wager: 0,
   inProgress: false
 });
 
@@ -47,7 +48,7 @@ class Blackjack extends Component {
 		message: '',
 		statusText: '',
 		hasError: false,
-    wager: {},
+    wager: 0,
     inProgress: false
 	};
 
@@ -273,6 +274,12 @@ class Blackjack extends Component {
     this.setState(_state);
   }
 
+  handleChipClick = e => {
+    let state = Object.assign({}, this.state);
+
+    state.wager += parseInt(e.target.value);
+    this.setState(state);
+  }
 
 	render() {
 		// console.log('blackjack state', this.state);
@@ -293,6 +300,7 @@ class Blackjack extends Component {
           <br />
           Current Chips: {this.props.chips}
           <br />
+          <PokerChip name="wager" onClick={this.handleChipClick} value="100" />
           <input onChange={this.handleChange} value={this.state.wager} name="wager" type="number" placeholder="Place bet" />
           <br />
           <br />

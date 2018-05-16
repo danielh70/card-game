@@ -34,9 +34,9 @@ class Profile extends Component {
     window.location.reload();
   }
 
-
   render() {
     const { userInfo } = this.props;
+    // console.log("profile state", this.state);
     // console.log("props prifle", this.props);
 
     return (
@@ -59,7 +59,6 @@ class Profile extends Component {
           </Col>
         </Row>
           
-        <PokerChip />
         </Grid>
       </div>
     );
