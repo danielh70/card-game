@@ -7,6 +7,7 @@ import Home from "./Home";
 import Register from "./Register";
 import Login from "./Login";
 import SocialAuthRedirect from "./SocialAuthRedirect";
+import BlackjackContainer from '../containers/BlackjackContainer';
 import Profile from "./Profile";
 import NavBar from './NavBar';
 import HighLow from './HighLow';
@@ -27,7 +28,7 @@ class AppContainer extends Component {
 	      	<NavBar>
 		        <NavTop>          
 		          <Route exact path="/"               component={Blackjack} />
-		          <Route exact path="/blackjack"      component={Blackjack} />
+		          <Route exact path="/blackjack"      component={BlackjackContainer} />
               <Route exact path="/highlow"        component={HighLow} />
 		          <Route path="/register"             component={Register} />
 		          <Route path="/login"                component={Login} />

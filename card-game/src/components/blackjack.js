@@ -3,7 +3,7 @@ import { Row, Grid, Col } from 'react-bootstrap';
 import '../css/main.css';
 import PropTypes from 'prop-types';
 import api from '../api';
-import { getChips, adjustChips, buildDeck } from '../actions/auth';
+import { buildDeck } from '../actions/auth';
 import { connect } from 'react-redux';
 import Loader from './loader';
 import PokerChip from './PokerChip';
@@ -49,7 +49,7 @@ class Blackjack extends Component {
 
 	componentDidMount() {
 		// this.gameSetup();
-    this.props.dispatch(getChips(this.props.userInfo))
+    this.props.getChips(this.props.userInfo);
 	}
 
 	componentDidCatch(error, info) {
@@ -164,7 +164,7 @@ class Blackjack extends Component {
 			deck.player1Score += val;
 		}
 
-      this.props.dispatch(getChips(this.props.userInfo))
+      this.props.getChips(this.props.userInfo);
 
       this.setState(deck);       
 	};
@@ -258,7 +258,7 @@ class Blackjack extends Component {
 
     this.props.userInfo.chips = curState.chips;
 
-    this.props.dispatch(adjustChips(this.props.userInfo))
+    this.props.adjustChips(this.props.userInfo);
   }
 
   handleChange = e => {
@@ -395,10 +395,8 @@ class Blackjack extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-  return state;
-}
 
-export default connect(mapStateToProps, null)(Blackjack);
+
+export default Blackjack;
 
 
