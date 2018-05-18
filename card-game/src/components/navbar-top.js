@@ -18,6 +18,9 @@ let NavTop = ({ isAuthed, dispatch, classes, history, userInfo,  children }) => 
 				<NavLink to="/blackjack" className="nav-item" activeStyle={{ color: "red" }}>
 					Blackjack
 				</NavLink>
+        <NavLink to="/highlow" className="nav-item" activeStyle={{ color: "red" }}>
+          High/Low
+        </NavLink>
 				<NavLink
 					to={`/profile/${userInfo._id}`}
 					activeStyle={{ color: "red" }}

@@ -9,6 +9,7 @@ import Login from "./Login";
 import SocialAuthRedirect from "./SocialAuthRedirect";
 import Profile from "./Profile";
 import NavBar from './NavBar';
+import HighLow from './HighLow';
 import PrivateRoute from "./PrivateRoute";
 import Blackjack from './blackjack';
 import Loader from './loader';
@@ -19,42 +20,23 @@ class AppContainer extends Component {
     this.props.dispatch(reAuthUser(() => this.props.history.push("/login")));
   }
 
-    buildDeck = (deck = []) => {
-  	let suits = [ 'suithearts', 'suitspades', 'suitdiamonds', 'suitclubs' ];
-  	let numbers = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A' ];
-
-  	for (var i = 0; i < numbers.length; i++) {
-  		for (var j = 0; j < 4; j++) {
-  			deck.push({
-  				[numbers[i]]: suits[j]
-  			});
-  		}
-  	}
-  	return deck;
-  };
-
-
   render() {
-    return (
-    	
+    return (    	
       <Router>
       	<div>
 	      	<NavBar>
-		        	<NavTop />          
-		          <Route exact path="/" render={props => {
-		          		return <Blackjack buildDeck={this.buildDeck} />
-		          }} />
-		          <Route exact path="/blackjack" render={props => {
-		          		return <Blackjack buildDeck={this.buildDeck} />
-		          }} />
-		          <Route path="/register" component={Register} />
-		          <Route path="/login" component={Login} />
-		          <Route path="/socialauthredirect/" component={SocialAuthRedirect} />
+		        <NavTop>          
+		          <Route exact path="/"               component={Blackjack} />
+		          <Route exact path="/blackjack"      component={Blackjack} />
+              <Route exact path="/highlow"        component={HighLow} />
+		          <Route path="/register"             component={Register} />
+		          <Route path="/login"                component={Login} />
+		          <Route path="/socialauthredirect/"  component={SocialAuthRedirect} />
 		          <PrivateRoute path="/profile/:uid?" component={Profile} />
-	          </NavBar>
+            </NavTop>
+	        </NavBar>
       	</div>
       </Router>
-      
     );
   }
 }

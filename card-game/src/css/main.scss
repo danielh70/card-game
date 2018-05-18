@@ -1,3 +1,7 @@
+$main-background-color: rgba(51, 102, 255, .4);
+$main-color: rgb(230, 10, 10);
+$text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
+
 @mixin transition($time){
 	transition: $time;
 	-webkit-transition: $time;
@@ -29,7 +33,6 @@
 	-o-transform: $transformation;
 }
 
-
 @mixin border-opacity($color, $opacity) {
 	$opacity: $opacity / 100;
 }
@@ -41,19 +44,12 @@
 	box-shadow: 1px 2px 2px;
 }
 
-
-$main-background-color: rgba(51, 102, 255, .4);
-$main-color: rgb(230, 10, 10);
-$text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
-
-
 @-webkit-keyframes cardenter {
 	0% {
 		transform: rotatey(0deg);
 		transform-style: preserve-3d;
 		-webkit-transform: rotatey(0deg);
 		-webkit-transform-style: preserve-3d;
-
 	}
 
 	100% {
@@ -71,8 +67,6 @@ $text-shadow: -1px 1px 1px rgba(0, 0, 0, .4);
 		
 		-o-transform-style: preserve-3d;
 		-o-transform: rotatey(180deg);
-		
-
 	}
 }
 
@@ -124,15 +118,10 @@ div.responsive {
             transition: all .25s ease;
 }
 
-body {
-	background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
-}
-
 .test-wrapper {
 	transform: translate(0, 0);
   	-webkit-transform: translate(0, 0);
 }
-
 
 .touch {
 	height: 37px;
@@ -204,23 +193,11 @@ body {
 }
 
 .front > p {
-
 	padding: auto;
 	margin: auto;
 	font: 80px/160px Georgia, Times New Roman, serif;
 	position: absolute;
-	
 }
-
-// 		p {
-// 		animation-name: cardenter;
-// 		animation-fill-mode: forwards;
-// 		-webkit-animation-name: cardenter;
-
-			
-			
-	// 		font: 80px/160px Georgia, Times New Roman, serif;
-	// }
 
 .page-header {
 	margin: 0;
@@ -434,8 +411,6 @@ body {
 		transition: .5s;
 	}
 
-	// @if(.spread.)
-
 	:nth-child(2) {
 		left: 50px;
 		-webkit-transform: rotate(10deg);
@@ -445,7 +420,6 @@ body {
 		transform: rotate(10deg);
 		transition: .5s;
 	}
-
 
 	:nth-child(2):last-child {
 		left: 100px;
@@ -491,38 +465,6 @@ body {
 	}
 }
 
-// .spread:hover .suithearts {
-//   left: 30px;
-//   top: 0px;
-//   -webkit-transform: rotate(0deg);
-//   -moz-transform: rotate(0deg);
-//   -o-transform: rotate(0deg);
-//   -ms-transform: rotate(0deg);
-//   transform: rotate(0deg);
-//   transition: .5s;
-// }
-//
-// .spread:hover .suitclubs {
-//   left: 60px;
-//   top: 5px;
-//   -webkit-transform: rotate(10deg);
-//   -moz-transform: rotate(10deg);
-//   -o-transform: rotate(10deg);
-//   -ms-transform: rotate(10deg);
-//   transform: rotate(10deg);
-//   transition: .5s;
-// }
-//
-// .spread:hover .suitspades{
-//   left: 80px;
-//   top: 10px;
-//   -webkit-transform: rotate(20deg);
-//   -moz-transform: rotate(20deg);
-//   -o-transform: rotate(20deg);
-//   -ms-transform: rotate(20deg);
-//   transform: rotate(20deg);
-//   transition: .5s;
-// }
 
 .spread > .card .fanned {
 	-webkit-box-shadow: 1px 1px 7px rgba(0,0,0,0.4);
@@ -532,26 +474,6 @@ body {
 body {
 	background: #00a651;
 }
-
-// .card {
-
-// 	position: relative;
-// 	float: left;
-// 	margin-right: 10px;
-// 	width: 123px;
-// 	height: 178px;
-// 	border-radius: 10px;
-// 	background: #fff;
-// 	-webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
-// 	box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
-
-
-// 	p {
-// 		text-align: center;
-// 		font: 80px/160px Georgia, Times New Roman, serif;
-// 	}
-
-// }
 
 .suitdiamonds:before, .suitdiamonds:after {
 	content: "♦";
@@ -625,8 +547,8 @@ div[class*='suit']:after {
 	animation: loser 2s;
 }	
 
-
 /* NAVBAR */
+
 @import url('https://fonts.googleapis.com/css?family=Laila');
 
 .nav-wrapper-top {
@@ -651,12 +573,9 @@ div[class*='suit']:after {
 		}
 	}
 
-
 	.icon {
 		float: right;
 		display: none;
-		// margin: 0 auto !important;
-		
 	}
 
 		a {
@@ -693,8 +612,6 @@ div[class*='suit']:after {
 		background: none;
 		border: none;	
 
-
-
 		&:disabled {
 			color: gray;
 		}
@@ -706,28 +623,6 @@ div[class*='suit']:after {
 		}			
 	}
 }
-
-
-
-// @media only screen and (max-width: 600px){
-// 	div[id="footer"] {
-//  		position: absolute;
-//  		bottom: -120vh;
-//  		width: 100%;
-// 		padding: 2em;
-// 		margin: 15px 0 0 0;
-		
-// 		display: inline-block;
-// 		left: 0;
-		
-// 		box-shadow: 1px -2px 1px black;
-// 		background-color: rgba(0, 0, 0, .9);
-// 		color: white;
-// 		text-align: center;
-// 		z-index: 30;
-//  	}
-// }
-
 
 #footer {
 	width: 100%;
@@ -753,18 +648,9 @@ div[class*='suit']:after {
 	backround: none;
 }
 
-// html {
-// 	padding-bottom: 500px;
-// }
-
-body {
-	padding-bottom: 100px;
-}
-
-
 /* FORM */
 
-textarea:focus, input:focus{
+textarea:focus, input:focus {
     outline: none;
 }
 
@@ -809,13 +695,7 @@ textarea:focus, input:focus{
   }
 }
 
-
-
-
-
-
-
-.pokerchip{
+.pokerchip {
   margin:.5em;
   font-size:1.2em;
   position:relative;
@@ -845,21 +725,19 @@ textarea:focus, input:focus{
   }
 }
 
-.pokerchip.red{
+.pokerchip.red {
   background:#DD4631;
 }
 
-.pokerchip.blue{
+.pokerchip.blue {
   background:#317DDD;
 }
 
-
-
-.pokerchip.flat{
+.pokerchip.flat {
   box-shadow:0 0 0 .2em #fff;
 }
 
-.pokerchip.iso{
+.pokerchip.iso {
   transform: perspective(3000px) rotateX(55deg) rotateZ(-40deg);
   box-shadow:
     -1px 1px 0px #555,
@@ -870,11 +748,11 @@ textarea:focus, input:focus{
     -6px 6px 10px #555;
 }
 
-.pokerchip.flat:hover{
+.pokerchip.flat:hover {
   transform:rotate(20deg);
   cursor: pointer;
 }
 
-.pokerchip.iso:hover{
+.pokerchip.iso:hover {
   transform: perspective(3000px) rotateX(20deg) rotateZ(-40deg) translateZ(.5em);
 }

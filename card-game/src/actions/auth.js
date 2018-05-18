@@ -13,6 +13,7 @@ export const REGISTER_FAIL     = "REGISTER_FAIL";
 export const LOGIN_FAIL        = "LOGIN_FAIL";
 export const RESPONSIVE_NAV    = "RESPONSIVE_NAV";
 export const UPDATE_USER_CHIPS = "UPDATE_USER_CHIPS";
+export const BUILD_DECK        = "BUILD_DECK";
 
 export const authUser = userInfo => {
   return {
@@ -44,10 +45,24 @@ export const updateChips = chips => {
     type: UPDATE_USER_CHIPS,
     payload: chips
   }
-}
+};
 
 export const responsiveNav = () => {
   return { type: RESPONSIVE_NAV };
+};
+
+export const buildDeck = (deck = []) => {
+  let suits = [ 'suithearts', 'suitspades', 'suitdiamonds', 'suitclubs' ];
+  let numbers = [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A' ];
+
+  for (var i = 0; i < numbers.length; i++) {
+    for (var j = 0; j < 4; j++) {
+      deck.push({
+        [numbers[i]]: suits[j]
+      });
+    }
+  }
+  return deck;
 };
 
 export const getChips = userInfo => async dispatch => {
@@ -59,7 +74,7 @@ export const getChips = userInfo => async dispatch => {
   } catch (e) {
     console.log(e);
   }
-}
+};
 
 export const adjustChips = userInfo => async dispatch => {
   try {
@@ -70,7 +85,7 @@ export const adjustChips = userInfo => async dispatch => {
   } catch (e) {
     console.log(e);
   }
-}
+};
 
 export const registerUser = (userInfo, redirect) => async dispatch => {
   try {

@@ -3,12 +3,11 @@ import { Row, Grid, Col } from 'react-bootstrap';
 import '../css/main.css';
 import PropTypes from 'prop-types';
 import api from '../api';
-import { getChips, adjustChips } from '../actions/auth';
+import { getChips, adjustChips, buildDeck } from '../actions/auth';
 import { connect } from 'react-redux';
 import Loader from './loader';
 import PokerChip from './PokerChip';
 const deepFreeze = require('deep-freeze');
-
 
 const initialState = deepFreeze({
 	computer: [],
@@ -30,10 +29,6 @@ const initialState = deepFreeze({
 
 class Blackjack extends Component {
 	
-	static propTypes = {
-		buildDeck: PropTypes.func.isRequired
-	};
-
 	state = {
 		computer: [],
 		player1: [],
@@ -91,8 +86,8 @@ class Blackjack extends Component {
 		let p1Deck;
 		let compDeck;
     deck.inProgress = true;
-		p1Deck = await this.props.buildDeck(p1Deck);
-		compDeck = await this.props.buildDeck(compDeck);
+		p1Deck = await buildDeck(p1Deck);
+		compDeck = await buildDeck(compDeck);
 		deck.player1Deck = p1Deck;
 		deck.computerDeck = compDeck;
 

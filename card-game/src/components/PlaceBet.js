@@ -1,16 +1,5 @@
 import React, { Fragment } from 'react';
 
-function assert(condition, message) {
-  if (!condition) {
-    message = message || 'Assertion Failed';
-    if (typeof Error !== 'undefined') {
-      throw new Error(message);
-    }
-    throw message; // Fallback
-  }
-  return true; 
-}
-
 const checkBet = (chips, wager) => {
   return assert(chips - wager >= 0)
 }
