@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { buildDeck } from '../actions/auth';
 import Loader from './loader';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
+const HigherButton = styled.button`
+  
+`;
 
+const LowerButton = styled.button`
+
+`;
 
 class HighLow extends Component {
 
@@ -31,7 +38,7 @@ class HighLow extends Component {
         Welcome to High/Low!
 
 
-        <Loader />
+        {/*<Loader />*/}
       </div>
     );
   }
