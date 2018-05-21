@@ -27,7 +27,7 @@ class AppContainer extends Component {
       	<div>
 	      	<NavBar>
 		        <NavTop>          
-		          <Route exact path="/"               component={Blackjack} />
+		          <Route exact path="/"               component={Home} />
 		          <Route exact path="/blackjack"      component={BlackjackContainer} />
               <Route exact path="/highlow"        component={HighLow} />
 		          <Route path="/register"             component={Register} />

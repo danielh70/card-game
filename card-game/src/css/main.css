@@ -675,3 +675,406 @@ textarea:focus, input:focus {
 /* line 756, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
 .pokerchip.iso:hover {
   transform: perspective(3000px) rotateX(20deg) rotateZ(-40deg) translateZ(0.5em); }
+
+/* line 762, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.cardstack, .hand {
+  position: relative;
+  height: 9.6em; }
+
+/* line 767, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.card-test {
+  height: 8.85em;
+  width: 6.4em;
+  background: #fff url("../images/card-set.png") no-repeat;
+  background-size: 1300% 400%;
+  border: 1px solid #695d39;
+  -webkit-border-radius: .5em;
+  -moz-border-radius: .5em;
+  border-radius: .5em;
+  -webkit-box-shadow: 0 0 .5em -.15em #000;
+  -moz-box-shadow: 0 0 .5em -.15em #000;
+  box-shadow: 0 0 .5em -.15em #000;
+  font-family: 'Times', serif;
+  text-align: left;
+  line-height: 1em;
+  padding-top: .25em;
+  padding-left: .1em;
+  letter-spacing: -.2em;
+  position: absolute; }
+
+/* SUITS */
+/* line 789, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.C {
+  background-position-y: 0;
+  color: #000; }
+
+/* line 790, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.D {
+  background-position-y: -9.1em;
+  color: #890000; }
+
+/* line 791, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.S {
+  background-position-y: -18.2em;
+  color: #000; }
+
+/* line 792, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.H {
+  background-position-y: -27.3em;
+  color: #890000; }
+
+/* RANKS */
+/* line 795, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankA {
+  background-position-x: 0; }
+
+/* line 796, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank2 {
+  background-position-x: -6.5em; }
+
+/* line 797, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank3 {
+  background-position-x: -13em; }
+
+/* line 798, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank4 {
+  background-position-x: -19.5em; }
+
+/* line 799, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank5 {
+  background-position-x: -26em; }
+
+/* line 800, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank6 {
+  background-position-x: -32.5em; }
+
+/* line 801, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank7 {
+  background-position-x: -39em; }
+
+/* line 802, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank8 {
+  background-position-x: -45.5em; }
+
+/* line 803, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank9 {
+  background-position-x: -52em; }
+
+/* line 804, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank10 {
+  background-position-x: -58.5em; }
+
+/* line 805, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankJ {
+  background-position-x: -65em; }
+
+/* line 806, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankQ {
+  background-position-x: -71.5em; }
+
+/* line 807, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankK {
+  background-position-x: -78em; }
+
+/* Lay cards out edge-to-edge */
+/* line 810, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.card-test:nth-of-type(1) {
+  left: 0; }
+
+/* line 811, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.card-test:nth-of-type(2) {
+  left: 7em; }
+
+/* line 812, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.card-test:nth-of-type(3) {
+  left: 14em; }
+
+/* line 813, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.card-test:nth-of-type(4) {
+  left: 21em; }
+
+/* line 814, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.card-test:nth-of-type(5) {
+  left: 28em; }
+
+/* Lay card-tests out in a stacked hand showing indices */
+/* line 817, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.hand .card-test:nth-of-type(1) {
+  left: 0; }
+
+/* line 818, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.hand .card-test:nth-of-type(2) {
+  left: 1em; }
+
+/* line 819, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.hand .card-test:nth-of-type(3) {
+  left: 2em; }
+
+/* line 820, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.hand .card-test:nth-of-type(4) {
+  left: 3em; }
+
+/* line 821, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.hand .card-test:nth-of-type(5) {
+  left: 4em; }
+
+/* For FF compatibility, the combined rank-suit classes */
+/* line 824, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankAC {
+  color: #000;
+  background-position: 0 0; }
+
+/* line 825, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankAD {
+  color: #890000;
+  background-position: 0 -9.1em; }
+
+/* line 826, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankAS {
+  color: #000;
+  background-position: 0 -18.2em; }
+
+/* line 827, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankAH {
+  color: #890000;
+  background-position: 0 -27.3em; }
+
+/* line 828, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank2C {
+  color: #000;
+  background-position: -6.5em 0; }
+
+/* line 829, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank2D {
+  color: #890000;
+  background-position: -6.5em -9.1em; }
+
+/* line 830, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank2S {
+  color: #000;
+  background-position: -6.5em -18.2em; }
+
+/* line 831, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank2H {
+  color: #890000;
+  background-position: -6.5em -27.3em; }
+
+/* line 832, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank3C {
+  color: #000;
+  background-position: -13em 0; }
+
+/* line 833, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank3D {
+  color: #890000;
+  background-position: -13em -9.1em; }
+
+/* line 834, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank3S {
+  color: #000;
+  background-position: -13em -18.2em; }
+
+/* line 835, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank3H {
+  color: #890000;
+  background-position: -13em -27.3em; }
+
+/* line 836, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank4C {
+  color: #000;
+  background-position: -19.5em 0; }
+
+/* line 837, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank4D {
+  color: #890000;
+  background-position: -19.5em -9.1em; }
+
+/* line 838, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank4S {
+  color: #000;
+  background-position: -19.5em -18.2em; }
+
+/* line 839, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank4H {
+  color: #890000;
+  background-position: -19.5em -27.3em; }
+
+/* line 840, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank5C {
+  color: #000;
+  background-position: -26em 0; }
+
+/* line 841, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank5D {
+  color: #890000;
+  background-position: -26em -9.1em; }
+
+/* line 842, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank5S {
+  color: #000;
+  background-position: -26em -18.2em; }
+
+/* line 843, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank5H {
+  color: #890000;
+  background-position: -26em -27.3em; }
+
+/* line 844, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank6C {
+  color: #000;
+  background-position: -32.5em 0; }
+
+/* line 845, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank6D {
+  color: #890000;
+  background-position: -32.5em -9.1em; }
+
+/* line 846, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank6S {
+  color: #000;
+  background-position: -32.5em -18.2em; }
+
+/* line 847, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank6H {
+  color: #890000;
+  background-position: -32.5em -27.3em; }
+
+/* line 848, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank7C {
+  color: #000;
+  background-position: -39em 0; }
+
+/* line 849, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank7D {
+  color: #890000;
+  background-position: -39em -9.1em; }
+
+/* line 850, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank7S {
+  color: #000;
+  background-position: -39em -18.2em; }
+
+/* line 851, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank7H {
+  color: #890000;
+  background-position: -39em -27.3em; }
+
+/* line 852, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank8C {
+  color: #000;
+  background-position: -45.5em 0; }
+
+/* line 853, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank8D {
+  color: #890000;
+  background-position: -45.5em -9.1em; }
+
+/* line 854, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank8S {
+  color: #000;
+  background-position: -45.5em -18.2em; }
+
+/* line 855, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank8H {
+  color: #890000;
+  background-position: -45.5em -27.3em; }
+
+/* line 856, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank9C {
+  color: #000;
+  background-position: -52em 0; }
+
+/* line 857, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank9D {
+  color: #890000;
+  background-position: -52em -9.1em; }
+
+/* line 858, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank9S {
+  color: #000;
+  background-position: -52em -18.2em; }
+
+/* line 859, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank9H {
+  color: #890000;
+  background-position: -52em -27.3em; }
+
+/* line 860, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank10C {
+  color: #000;
+  background-position: -58.5em 0; }
+
+/* line 861, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank10D {
+  color: #890000;
+  background-position: -58.5em -9.1em; }
+
+/* line 862, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank10S {
+  color: #000;
+  background-position: -58.5em -18.2em; }
+
+/* line 863, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rank10H {
+  color: #890000;
+  background-position: -58.5em -27.3em; }
+
+/* line 864, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankJC {
+  color: #000;
+  background-position: -65em 0; }
+
+/* line 865, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankJD {
+  color: #890000;
+  background-position: -65em -9.1em; }
+
+/* line 866, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankJS {
+  color: #000;
+  background-position: -65em -18.2em; }
+
+/* line 867, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankJH {
+  color: #890000;
+  background-position: -65em -27.3em; }
+
+/* line 868, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankQC {
+  color: #000;
+  background-position: -71.5em 0; }
+
+/* line 869, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankQD {
+  color: #890000;
+  background-position: -71.5em -9.1em; }
+
+/* line 870, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankQS {
+  color: #000;
+  background-position: -71.5em -18.2em; }
+
+/* line 871, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankQH {
+  color: #890000;
+  background-position: -71.5em -27.3em; }
+
+/* line 872, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankKC {
+  color: #000;
+  background-position: -78em 0; }
+
+/* line 873, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankKD {
+  color: #890000;
+  background-position: -78em -9.1em; }
+
+/* line 874, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankKS {
+  color: #000;
+  background-position: -78em -18.2em; }
+
+/* line 875, /Users/danielhook/Desktop/card-game/card-game/src/css/main.scss */
+.rankKH {
+  color: #890000;
+  background-position: -78em -27.3em; }
